@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include "Vector3D.h"
 #include "Color.h"
+#include<time.h>
 
 using namespace std;
 
@@ -42,6 +43,7 @@ void Game::Update() {
 }
 
 void Game::ChangeProperties() {
+	srand(time(NULL));
 	int randomNumber = rand() % 4 + 1;
 	Vector3D v(0.1, 0.1, 0.1);
 	Color c(0.1, 0.1, 0.1);
@@ -78,5 +80,6 @@ void Game::ChangeProperties() {
 		this->cube2.SetSize(this->cube2.GetSize() + 0.1);
 		this->sphere1.SetRadius(this->sphere1.GetRadius() + 0.1);
 		this->sphere2.SetRadius(this->sphere2.GetRadius() + 0.1);
+		
 	}
 }
