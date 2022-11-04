@@ -1,25 +1,156 @@
-﻿  Game.cpp
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(24,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(25,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(33,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(34,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(52,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(55,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(73,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(76,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.h(20,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.h(21,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.h(22,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.h(23,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.h(24,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.h(25,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(46,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(48,26): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(49,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(77,49): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(78,49): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(79,45): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(80,45): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(81,53): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(82,53): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-  P1_HolaMundo.vcxproj -> C:\Users\claul\OneDrive\Escritorio\PA_Practicas\x64\Debug\P1_HolaMundo.exe
+﻿  Color.cpp
+  Cube.cpp
+  Game.cpp
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(24,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(25,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(33,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(34,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(52,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(55,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(73,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(76,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(20,1): error C2440: '<function-style-cast>': no se puede realizar la conversión de 'initializer list' a 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(20,1): message : Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(21,1): error C2440: '<function-style-cast>': no se puede realizar la conversión de 'initializer list' a 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(21,1): message : Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(22,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(23,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(24,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(25,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(46,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(48,26): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(49,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(53,17): error C2039: "SetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(53,32): error C2039: "GetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(54,17): error C2039: "SetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(54,32): error C2039: "GetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(61,17): error C2039: "SetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(61,40): error C2039: "GetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(62,17): error C2039: "SetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(62,40): error C2039: "GetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(69,17): error C2039: "SetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(69,46): error C2039: "GetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(70,17): error C2039: "SetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(70,46): error C2039: "GetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(77,49): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(78,49): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(79,45): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(80,45): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(81,53): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.cpp(82,53): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+  P1_HolaMundo.cpp
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(24,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(25,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(33,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(34,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(52,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(55,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(73,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(76,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(20,1): error C2440: '<function-style-cast>': no se puede realizar la conversión de 'initializer list' a 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(20,1): message : Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(21,1): error C2440: '<function-style-cast>': no se puede realizar la conversión de 'initializer list' a 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(21,1): message : Ningún constructor ha podido aceptar el tipo de origen o bien la resolución de sobrecarga del constructor era ambigua
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(22,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(23,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(24,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Game.h(25,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\P1_HolaMundo.cpp(22,25): warning C4305: 'inicializando': truncamiento de 'double' a 'GLclampf'
+R:\source\PA_Practicas\P1_HolaMundo\P1_HolaMundo.cpp(23,27): warning C4305: 'inicializando': truncamiento de 'double' a 'GLclampf'
+  Prisma.cpp
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.h(13,8): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(6,43): error C2039: "GetX": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(6,79): error C2039: "GetY": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(6,115): error C2039: "GetZ": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(6,121): error C2660: 'glTranslatef': la función no acepta 1 argumentos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GL\gl.h(1466,25): message : vea la declaración de 'glTranslatef'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(7,35): error C2039: "GetR": no es un miembro de "Color"
+R:\source\PA_Practicas\P1_HolaMundo\Color.h(4): message : vea la declaración de 'Color'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(7,66): error C2039: "GetG": no es un miembro de "Color"
+R:\source\PA_Practicas\P1_HolaMundo\Color.h(4): message : vea la declaración de 'Color'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(7,97): error C2039: "GetB": no es un miembro de "Color"
+R:\source\PA_Practicas\P1_HolaMundo\Color.h(4): message : vea la declaración de 'Color'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(7,103): error C2660: 'glColor3f': la función no acepta 1 argumentos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GL\gl.h(1178,25): message : vea la declaración de 'glColor3f'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(8,41): error C2039: "GetX": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(9,41): error C2039: "GetY": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Prisma.cpp(10,41): error C2039: "GetZ": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+  Solid.cpp
+  Sphere.cpp
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(24,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(25,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(33,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(34,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(52,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(55,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(73,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.h(76,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.cpp(12,69): warning C4244: 'argumento': conversión de 'float' a 'GLint'; posible pérdida de datos
+R:\source\PA_Practicas\P1_HolaMundo\Sphere.cpp(12,51): warning C4244: 'argumento': conversión de 'float' a 'GLint'; posible pérdida de datos
+  Teapot.cpp
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(5,21): error C2039: "GetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(5,54): error C2039: "GetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(5,87): error C2039: "GetPos": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(5,112): error C2660: 'glTranslatef': la función no acepta 1 argumentos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GL\gl.h(1466,25): message : vea la declaración de 'glTranslatef'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(6,18): error C2039: "GetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(6,54): error C2039: "GetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(6,92): error C2039: "GetColor": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(6,121): error C2660: 'glColor3f': la función no acepta 1 argumentos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GL\gl.h(1178,25): message : vea la declaración de 'glColor3f'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(8,18): error C2039: "GetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(9,18): error C2039: "GetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.cpp(10,18): error C2039: "GetOrientation": no es un miembro de "Teapot"
+R:\source\PA_Practicas\P1_HolaMundo\Teapot.h(7): message : vea la declaración de 'Teapot'
+  Toroide.cpp
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.h(14,9): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(6,43): error C2039: "GetX": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(6,79): error C2039: "GetY": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(6,115): error C2039: "GetZ": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(6,121): error C2660: 'glTranslatef': la función no acepta 1 argumentos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GL\gl.h(1466,25): message : vea la declaración de 'glTranslatef'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(7,35): error C2039: "GetR": no es un miembro de "Color"
+R:\source\PA_Practicas\P1_HolaMundo\Color.h(4): message : vea la declaración de 'Color'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(7,66): error C2039: "GetG": no es un miembro de "Color"
+R:\source\PA_Practicas\P1_HolaMundo\Color.h(4): message : vea la declaración de 'Color'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(7,97): error C2039: "GetB": no es un miembro de "Color"
+R:\source\PA_Practicas\P1_HolaMundo\Color.h(4): message : vea la declaración de 'Color'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(7,103): error C2660: 'glColor3f': la función no acepta 1 argumentos
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\GL\gl.h(1178,25): message : vea la declaración de 'glColor3f'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(8,41): error C2039: "GetX": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(9,41): error C2039: "GetY": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+R:\source\PA_Practicas\P1_HolaMundo\Toroide.cpp(10,41): error C2039: "GetZ": no es un miembro de "Vector3D"
+R:\source\PA_Practicas\P1_HolaMundo\Vector3D.h(2): message : vea la declaración de 'Vector3D'
+  Vector3D.cpp
+  Generando código...
