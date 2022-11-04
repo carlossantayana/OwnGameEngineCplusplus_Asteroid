@@ -15,7 +15,7 @@ private: //Los atributos serán privados
 	Cube cube2;
 	Sphere sphere1;
 	Sphere sphere2;
-
+	/*
 	Vector3D posTeapot1 = Vector3D(-1.0, 1.0, -2.0);
 	Color colorTeapot1 = Color(1.0, 0.5, 0.6);
 	Vector3D orientationTeapot1 = Vector3D(180.0, 180.0, 90.0);
@@ -39,15 +39,16 @@ private: //Los atributos serán privados
 	Vector3D posSphere2 = Vector3D(1.0, 0.0, -2.0);
 	Color colorSphere2 = Color(1.0, 0.5, 0.6);
 	Vector3D orientationSphere2 = Vector3D(0.0, 45.0, 0.0);
+	*/ //Preguntar por qué
 public: //El método constructor así como el resto de métodos serán públicos
 
 	Game() :
-		teapot1 (Teapot(posTeapot1, colorTeapot1, orientationTeapot1, 0.2)),
-		teapot2 (Teapot(posTeapot2, colorTeapot2, orientationTeapot2, 0.4)),
-		cube1 (Cube(posCube1, colorCube1, orientationCube1, 0.2)),
-		cube2 (Cube(posCube2, colorCube2, orientationCube2, 0.4)),
-		sphere1 (Sphere(posSphere1,colorSphere1, orientationSphere1, 0.2, 20, 20)),
-		sphere2 (Sphere(posSphere2, colorSphere2, orientationSphere2, 0.4, 20, 20))
+		teapot1 (Teapot(Vector3D(-1.0, 1.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(180.0, 180.0, 90.0), 0.2)),
+		teapot2 (Teapot(Vector3D(-1.0, 0.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(180.0, 180.0, 90.0), 0.4)),
+		cube1 (Cube(Vector3D(0.0, 1.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), 0.2)),
+		cube2 (Cube(Vector3D(0.0, 0.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), 0.4)),
+		sphere1 (Sphere(Vector3D(1.0, 1.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), 0.2, 20, 20)),
+		sphere2 (Sphere(Vector3D(1.0, 0.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), 0.4, 20, 20))
 	{}
 
 	Teapot GetTeapot1() { return this->teapot1; }
