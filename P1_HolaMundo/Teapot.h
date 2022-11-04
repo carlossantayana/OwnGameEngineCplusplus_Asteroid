@@ -2,63 +2,32 @@
 #include "Vector3D.h"
 #include "Color.h"
 #include <GL/glut.h>
+#include "Solid.h"
 
-class Teapot
+class Teapot : public Solid
 {
 private: //Atributos de la clase Teapot
-	Vector3D pos;
-
-	Color color;
-
-	Vector3D orientation;
-
+	
 	float size;
+
 public:
-	Teapot(float x, float y, float z, float red, float green, float blue, float rx, float ry, float rz, float sizeParameter) : //Constructor
-		pos (Vector3D(x, y, z)),
-		color (Color(red, green, blue)),
-		orientation (Vector3D(rx, ry, rz)),
+	Teapot(Vector3D position, Color color,Vector3D orientation, float sizeParameter) : //Constructor
+
+		Solid(position, orientation, color),
 		size (sizeParameter)
 	{}
 	Teapot(float sizeParameter = 0) : //Constructor alternativo que solo recibe el tamaño y a su vez se puede omitir, contando entonces con un constructor por defecto
-		pos (Vector3D()),
-		color (Color()),
-		orientation (Vector3D()),
+		
+		Solid(),
 		size (sizeParameter)
 	{}
 
 	//Getters
-
-	inline Vector3D GetPos() const{
-		return this->pos;
-	}
-
-	inline Color GetColor() const{
-		return this->color;
-	}
-
-	inline Vector3D GetOrientation() const {
-		return this->orientation;
-	}
-	
 	inline float GetSize() const{
 		return this->size;
 	}
 
 	//Setters
-
-	inline void SetPos(Vector3D newPos) {
-		this->pos = newPos;
-	}
-
-	inline void SetColor(Color newColor) {
-		this->color = newColor;
-	}
-
-	inline void SetOrientation(Vector3D newOrientation) {
-		this->orientation = newOrientation;
-	}
-	
 	inline void SetSize(const float& sizeToSet) {
 		this->size = sizeToSet;
 	}
