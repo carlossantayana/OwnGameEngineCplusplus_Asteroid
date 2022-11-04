@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include<GL/glut.h>
 #include"Solid.h"
 class Toroide :public Solid
@@ -40,5 +40,5 @@ public:
 	inline void SetRings(const int& ringsToSet) { this->rings = ringsToSet; }
 
 	void Render();
-};
+};*/
 

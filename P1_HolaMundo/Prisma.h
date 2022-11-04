@@ -1,4 +1,4 @@
-#pragma once
+/*#pragma once
 #include<GL/glut.h>
 #include"Solid.h"
 class Prisma :public Solid
@@ -33,5 +33,5 @@ public:
 	inline void SetWidht(const float& widhtToSet) { this->anchura = widhtToSet; }
 
 	void Render();
-};
+};*/
 

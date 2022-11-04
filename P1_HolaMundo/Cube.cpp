@@ -2,12 +2,12 @@
 
 void Cube::Render() {
 	glPushMatrix();
-	glTranslatef(this->GetVectorCoordinate().GetCoordinateX(), this->GetVectorCoordinate().GetCoordinateY(), this->GetVectorCoordinate().GetCoordinateZ());
-	glColor3f(this->GetVectorColor().GetRedComponent(), this->GetVectorColor().GetGreenComponent(), this->GetVectorColor().GetBlueComponent());
+	glTranslatef(this->GetPos().GetCoordinateX(), this->GetPos().GetCoordinateY(), this->GetPos().GetCoordinateZ());
+	glColor3f(this->GetColor().GetRedComponent(), this->GetColor().GetGreenComponent(), this->GetColor().GetBlueComponent());
 
-	glRotatef(this->GetVectorOrientation().GetCoordinateX(), 1.0, 0.0, 0.0);
-	glRotatef(this->GetVectorOrientation().GetCoordinateY(), 0.0, 1.0, 0.0);
-	glRotatef(this->GetVectorOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
+	glRotatef(this->GetOrientation().GetCoordinateX(), 1.0, 0.0, 0.0);
+	glRotatef(this->GetOrientation().GetCoordinateY(), 0.0, 1.0, 0.0);
+	glRotatef(this->GetOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
 
 	glutSolidCube(this->GetSize());
 	glPopMatrix();

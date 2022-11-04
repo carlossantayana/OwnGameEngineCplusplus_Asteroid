@@ -13,7 +13,7 @@ private: //Atributos de la clase Teapot
 public:
 	Teapot(Vector3D position, Color color,Vector3D orientation, float sizeParameter) : //Constructor
 
-		Solid(position, orientation, color),
+		Solid(position, color, orientation),
 		size (sizeParameter)
 	{}
 	Teapot(float sizeParameter = 0) : //Constructor alternativo que solo recibe el tamaño y a su vez se puede omitir, contando entonces con un constructor por defecto

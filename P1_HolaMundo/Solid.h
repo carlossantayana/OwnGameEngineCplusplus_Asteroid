@@ -4,22 +4,22 @@
 class Solid
 {
 private:
-	Vector3D vectorPosition;
-	Vector3D vectorRotation;
-	Color vectorColor;
+	Vector3D pos;
+	Color color;
+	Vector3D orientation;
 
 public:
-	Solid(Vector3D vectorPos = Vector3D(), Vector3D vectorRot = Vector3D(), Color vectorCol = Color()) :vectorPosition(vectorPos), vectorRotation(vectorRot), vectorColor(vectorCol) {};
+	Solid(Vector3D posArgument = Vector3D(), Color colorArgument = Color(), Vector3D orientationArgument = Vector3D()) :pos(posArgument), color(colorArgument), orientation(orientationArgument) {};
 
 	//Getters
-	inline Vector3D GetVectorCoordinate() const { return this->vectorPosition; }
-	inline Color GetVectorColor() const { return this->vectorColor; }
-	inline Vector3D GetVectorOrientation() const { return this->vectorRotation; }
+	inline Vector3D GetPos() const { return this->pos; }
+	inline Color GetColor() const { return this->color; }
+	inline Vector3D GetOrientation() const { return this->orientation; }
 
 	//Setters
-	inline void SetVectorCoordinate(const Vector3D& vectorToSet) { this->vectorPosition = vectorToSet; }
-	inline void SetVectorColor(const Color& colorToSet) { this->vectorColor = colorToSet; }
-	inline void SetVectorOrientation(const Vector3D& orientationToSet) { this->vectorRotation = orientationToSet; }
+	inline void SetPos(const Vector3D& posToSet) { this->pos = posToSet; }
+	inline void SetColor(const Color& colorToSet) { this->color = colorToSet; }
+	inline void SetOrientation(const Vector3D& orientationToSet) { this->orientation = orientationToSet; }
 
 	virtual void Render() = 0;
 

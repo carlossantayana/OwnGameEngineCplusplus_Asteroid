@@ -10,7 +10,7 @@ private:
 	int slacks;
 public:
 	Sphere(Vector3D posArgument, Color colorArgument, Vector3D orientationArgument, float radius, float slices, float slacks) : //Constructor
-		Solid(posArgument,orientationArgument,colorArgument),
+		Solid(posArgument, colorArgument, orientationArgument),
 		radius(radius),
 		slices(slices),
 		slacks(slacks)

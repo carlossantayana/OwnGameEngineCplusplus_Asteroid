@@ -1,4 +1,4 @@
-#include "Toroide.h"
+/*#include "Toroide.h"
 
 void Toroide::Render() {
 
@@ -10,4 +10,4 @@ void Toroide::Render() {
 	glRotatef(this->GetVectorOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
 	glutSolidTorus(GetRadioI(), GetRadioE(), GetFaces(), GetRings());
 	glPopMatrix();
-}
+}*/

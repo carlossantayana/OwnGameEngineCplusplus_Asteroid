@@ -1,4 +1,4 @@
-#include "Prisma.h"
+/*#include "Prisma.h"
 
 void Prisma::Render() {
 
@@ -11,4 +11,4 @@ void Prisma::Render() {
 	glScalef(this->GetLongitude(), this->GetHigh(), this->GetWidht());
 	glutSolidCube(1);
 	glPopMatrix();
-}
+}*/
