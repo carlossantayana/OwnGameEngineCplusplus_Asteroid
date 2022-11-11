@@ -7,27 +7,20 @@ D:\PA_Practicas\P1_HolaMundo\Sphere.h(32,14): warning C4244: 'return': conversi�
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(35,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(44,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(47,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.h(20,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(24,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(28,19): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(32,19): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(36,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(40,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(45,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(46,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(47,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(48,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(49,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(50,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(46,12): warning C4244: 'argumento': conversión de 'time_t' a 'unsigned int'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(48,26): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(49,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(77,49): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(78,49): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(79,45): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(80,45): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(81,53): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.cpp(82,53): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(28,76): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(28,113): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(29,69): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(29,104): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(30,75): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(30,116): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(31,76): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(31,121): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(32,72): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(32,117): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(32,111): warning C4244: 'argumento': conversión de 'double' a 'int'; posible pérdida de datos
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(32,122): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(33,81): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+D:\PA_Practicas\P1_HolaMundo\Game.cpp(33,130): warning C4305: 'argumento': truncamiento de 'double' a 'float'
   P1_HolaMundo.cpp
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(15,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(16,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
@@ -37,18 +30,6 @@ D:\PA_Practicas\P1_HolaMundo\Sphere.h(32,14): warning C4244: 'return': conversi�
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(35,14): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(44,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
 D:\PA_Practicas\P1_HolaMundo\Sphere.h(47,18): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
-D:\PA_Practicas\P1_HolaMundo\Game.h(20,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(24,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(28,19): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(32,19): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(36,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(40,21): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(45,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(46,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(47,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(48,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(49,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-D:\PA_Practicas\P1_HolaMundo\Game.h(50,1): warning C4305: 'argumento': truncamiento de 'double' a 'float'
 D:\PA_Practicas\P1_HolaMundo\P1_HolaMundo.cpp(22,25): warning C4305: 'inicializando': truncamiento de 'double' a 'GLclampf'
 D:\PA_Practicas\P1_HolaMundo\P1_HolaMundo.cpp(23,27): warning C4305: 'inicializando': truncamiento de 'double' a 'GLclampf'
   Generando código...

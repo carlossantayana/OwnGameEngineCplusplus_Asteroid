@@ -8,7 +8,7 @@
 using namespace std;
 
 void Game::ProcessKeyPressed(unsigned char key, int px, int py) {
-	ChangeProperties();
+	
 
 	cout << "Tecla pulsada: " << key << endl;
 }
@@ -19,67 +19,34 @@ void Game::ProcessMouseMovement(int x, int y) {
 }
 
 void Game::ProcessMouseClick(int button, int state, int x, int y) {
-	ChangeProperties();
+	
 
 	cout << "Click: " << button << endl;
 }
 
 void Game::Init() {
+	Teapot* teapot = new Teapot(Vector3D(-1.0, 0.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(180.0, 180.0, 90.0), 0.4);
+	Cube* cube = new Cube(Vector3D(0.0, 0.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), 0.4);
+	Sphere* sphere = new Sphere(Vector3D(1.0, 0.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), 0.4, 20, 20);
+	Cuboid* cuboid = new Cuboid(Vector3D(-1.0, 1.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), 0.4, 0.4, 0.4);
+	Torus* torus = new Torus(Vector3D(0.0, 1.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), 0.2, 0.4, 20.0, 20.0);
+	Cylinder* cylinder = new Cylinder(Vector3D(1.0, 1.0, -2.0), Color(1.0, 0.5, 0.6), Vector3D(180, 180, 90), 0.4, 0.4, 0.5, 20, 20);
 
+	this->gameObjects.push_back(teapot);
+	this->gameObjects.push_back(cuboid);
+	this->gameObjects.push_back(cube);
+	this->gameObjects.push_back(torus);
+	this->gameObjects.push_back(sphere);
+	this->gameObjects.push_back(cylinder);
 }
 
 void Game::Render() {
-	this->GetTeapot1().Render();
-	this->GetCube1().Render();
-	this->GetSphere1().Render();
-
-	this->GetTeapot2().Render();
-	this->GetCube2().Render();
-	this->GetSphere2().Render();
+	for (int i = 0; i < gameObjects.size(); i++) {
+		gameObjects[i]->Render();
+	}
 }
 
 void Game::Update() {
 
 }
 
-void Game::ChangeProperties() {
-	srand(time(NULL));
-	int randomNumber = rand() % 4 + 1;
-	Vector3D v(0.1, 0.1, 0.1);
-	Color c(0.1, 0.1, 0.1);
-
-	switch (randomNumber) {
-	case 1:
-		this->teapot1.SetPos(teapot1.GetPos() + v);
-		this->teapot2.SetPos(teapot2.GetPos() + v);
-		this->cube1.SetPos(cube1.GetPos() + v);
-		this->cube2.SetPos(cube2.GetPos() + v);
-		this->sphere1.SetPos(sphere1.GetPos() + v);
-		this->sphere2.SetPos(sphere2.GetPos() + v);
-		break;
-	case 2:
-		this->teapot1.SetColor(this->teapot1.GetColor() + c);
-		this->teapot2.SetColor(this->teapot2.GetColor() + c);
-		this->cube1.SetColor(this->cube1.GetColor() + c);
-		this->cube2.SetColor(this->cube2.GetColor() + c);
-		this->sphere1.SetColor(this->sphere1.GetColor() + c);
-		this->sphere2.SetColor(this->sphere2.GetColor() + c);
-		break;
-	case 3:
-		this->teapot1.SetOrientation(this->teapot1.GetOrientation() + v);
-		this->teapot2.SetOrientation(this->teapot2.GetOrientation() + v);
-		this->cube1.SetOrientation(this->cube1.GetOrientation() + v);
-		this->cube2.SetOrientation(this->cube2.GetOrientation() + v);
-		this->sphere1.SetOrientation(this->sphere1.GetOrientation() + v);
-		this->sphere2.SetOrientation(this->sphere2.GetOrientation() + v);
-		break;
-	case 4:
-		this->teapot1.SetSize(this->teapot1.GetSize() + 0.1);
-		this->teapot2.SetSize(this->teapot2.GetSize() + 0.1);
-		this->cube1.SetSize(this->cube1.GetSize() + 0.1);
-		this->cube2.SetSize(this->cube2.GetSize() + 0.1);
-		this->sphere1.SetRadius(this->sphere1.GetRadius() + 0.1);
-		this->sphere2.SetRadius(this->sphere2.GetRadius() + 0.1);
-		
-	}
-}
