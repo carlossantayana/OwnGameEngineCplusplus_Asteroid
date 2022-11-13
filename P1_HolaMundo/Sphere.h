@@ -9,8 +9,8 @@ private:
 	int slices;
 	int slacks;
 public:
-	Sphere(Vector3D posArgument, Color colorArgument, Vector3D orientationArgument, float radius, float slices, float slacks) : //Constructor
-		Solid(posArgument, colorArgument, orientationArgument),
+	Sphere(Vector3D posArgument, Color colorArgument, Vector3D orientationArgument, Vector3D orientationSpeedArgument, Vector3D speedArgument, float radius, float slices, float slacks) : //Constructor
+		Solid(posArgument, colorArgument, orientationArgument, orientationSpeedArgument, speedArgument),
 		radius(radius),
 		slices(slices),
 		slacks(slacks)
@@ -24,29 +24,17 @@ public:
 		{}
 
 	//Getters
-
-	inline float GetRadius() const {
-		return this->radius;
-	}
-	inline float GetSlices() const {
-		return this->slices;
-	}
-	inline float GetSlacks() const {
-		return this->slacks;
-	}
+	inline float GetRadius() const { return this->radius; }
+	inline float GetSlices() const { return this->slices; }
+	inline float GetSlacks() const { return this->slacks; }
 
 	//Setters
+	inline void SetRadius(const float& radiusToSet) { this->radius = radiusToSet; }
+	inline void SetSlices(const float& slicesToSet) { this->slices = slicesToSet; }
+	inline void SetSlacks(const float& slacksToSet) { this->slacks = slacksToSet; }
 
-	inline void SetRadius(const float& radiusToSet) {
-		this->radius = radiusToSet;
-	}
-	inline void SetSlices(const float& slicesToSet) {
-		this->slices = slicesToSet;
-	}
-	inline void SetSlacks(const float& slacksToSet) {
-		this->slacks = slacksToSet;
-	}
-
+	//Metodos
 	void Render();
+	void Update();
 };
 

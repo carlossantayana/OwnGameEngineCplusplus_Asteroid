@@ -10,17 +10,6 @@ public:
 
 	Vector3D(float x, float y, float z) : coordinateX(x), coordinateY(y), coordinateZ(z) {} //Constructor
 
-	//Redefinimos el operador suma para poder hacer sumas de vectores 3D
-	Vector3D operator+(Vector3D b) {
-		Vector3D r;
-
-		r.coordinateX = coordinateX + b.coordinateX;
-		r.coordinateY = coordinateY + b.coordinateY;
-		r.coordinateZ = coordinateZ + b.coordinateZ;
-
-		return r;
-	}
-
 	//Getters
 
 	inline float GetCoordinateX() const {
@@ -44,5 +33,19 @@ public:
 	inline void SetCoordinateZ(const float& coordinateZToSet) {
 		this->coordinateZ = coordinateZToSet;
 	}
+
+	//Metodos para las operaciones
+
+	Vector3D Add(const Vector3D& vector);
+	Vector3D Substract(const Vector3D& vector);
+	Vector3D Product(const float& value);
+	Vector3D Division(const float& value);
+	float DotProduct(const Vector3D& vector);
+
+	Vector3D operator+(const Vector3D& vector);
+	Vector3D operator-(const Vector3D& vector);
+	Vector3D operator*(const float& value);
+	Vector3D operator/(const float& value);
+	float operator*(const Vector3D& vector);
 };
 

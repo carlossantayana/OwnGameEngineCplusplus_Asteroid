@@ -12,3 +12,10 @@ void Sphere::Render() {
 	glutSolidSphere(this->GetRadius(),this->GetSlices(),this->GetSlacks());
 	glPopMatrix();
 }
+
+void Sphere::Update() {
+	float timeIncrement = 1;
+
+	this->SetOrientation(this->GetOrientation() + this->GetOrientationSpeed() * timeIncrement);
+	this->SetPos(this->GetPos() + this->GetSpeed() * timeIncrement);
+}

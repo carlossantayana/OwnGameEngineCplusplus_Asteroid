@@ -14,8 +14,8 @@ private: //Atributos de la clase Cylinder
 	int slacks;
 
 public:
-	Cylinder(Vector3D posArgument, Color colorArgument, Vector3D orientationArgument, float radiusB, float radiusT, float hight, int slices, int slacks) : //Constructor
-		Solid(posArgument, colorArgument, orientationArgument),
+	Cylinder(Vector3D posArgument, Color colorArgument, Vector3D orientationArgument, Vector3D orientationSpeedArgument, Vector3D speedArgument, float radiusB, float radiusT, float hight, int slices, int slacks) : //Constructor
+		Solid(posArgument, colorArgument, orientationArgument, orientationSpeedArgument, speedArgument),
 		radiusB(radiusB),
 		radiusT(radiusT),
 		hight(hight),
@@ -33,41 +33,21 @@ public:
 	{}
 
 	//Getters
-
-	inline float GetRadiusB() const {
-		return this->radiusB;
-	}
-	inline float GetRadiusT() const {
-		return this->radiusT;
-	}
-	inline float GetHight() const {
-		return this->hight;
-	}
-	inline int GetSlices() const {
-		return this->slices;
-	}
-	inline int GetSlacks() const {
-		return this->slacks;
-	}
+	inline float GetRadiusB() const { return this->radiusB; }
+	inline float GetRadiusT() const { return this->radiusT; }
+	inline float GetHight() const { return this->hight; }
+	inline int GetSlices() const { return this->slices; }
+	inline int GetSlacks() const { return this->slacks; }
 
 	//Setters
+	inline void SetRadiusB(const float& radiusToSet) { this->radiusB = radiusToSet; }
+	inline void SetRadiusT(const float& radiusToSet) { this->radiusT = radiusToSet; }
+	inline void SetHight(const float& hightToSet) { this->hight = hightToSet; }
+	inline void SetSlices(const int& slicesToSet) { this->slices = slicesToSet; }
+	inline void SetSlacks(const int& slacksToSet) { this->slacks = slacksToSet; }
 
-	inline void SetRadiusB(const float& radiusToSet) {
-		this->radiusB = radiusToSet;
-	}
-	inline void SetRadiusT(const float& radiusToSet) {
-		this->radiusT = radiusToSet;
-	}
-	inline void SetHight(const float& hightToSet) {
-		this->hight = hightToSet;
-	}
-	inline void SetSlices(const int& slicesToSet) {
-		this->slices = slicesToSet;
-	}
-	inline void SetSlacks(const int& slacksToSet) {
-		this->slacks = slacksToSet;
-	}
-
+	//Metodos
 	void Render();
+	void Update();
 };
 
