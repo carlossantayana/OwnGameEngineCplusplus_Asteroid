@@ -38,7 +38,7 @@ private: //Los atributos serán privados
 	Vector3D posSphere2 = Vector3D(1.0, 0.0, -2.0);
 	Color colorSphere2 = Color(1.0, 0.5, 0.6);
 	Vector3D orientationSphere2 = Vector3D(0.0, 45.0, 0.0);
-	*/ //Preguntar por qué
+	*/ //Preguntar por qué no funcionan
 	vector <Solid*> gameObjects;
 	Vector3D boundary;
 
@@ -46,7 +46,7 @@ private: //Los atributos serán privados
 
 public: //El método constructor así como el resto de métodos serán públicos
 
-	Game() : gameObjects(), boundary(Vector3D(8.0, 6.0, 4.0)) {}
+	Game() : boundary(Vector3D(8.0, 6.0, 4.0)) {}
 	
 	void Init(); //Método de inicialización
 	void Render(); //Método de dibujado

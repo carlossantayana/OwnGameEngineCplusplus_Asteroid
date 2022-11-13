@@ -12,27 +12,15 @@ public:
 
 	//Getters
 
-	inline float GetCoordinateX() const {
-		return this->coordinateX;
-	}
-	inline float GetCoordinateY() const {
-		return this->coordinateY;
-	}
-	inline float GetCoordinateZ() const {
-		return this->coordinateZ;
-	}
+	inline float GetCoordinateX() const { return this->coordinateX; }
+	inline float GetCoordinateY() const { return this->coordinateY; }
+	inline float GetCoordinateZ() const { return this->coordinateZ; }
 
 	//Setters
 
-	inline void SetCoordinateX(const float& coordinateXToSet) {
-		this->coordinateX = coordinateXToSet;
-	}
-	inline void SetCoordinateY(const float& coordinateYToSet) {
-		this->coordinateY = coordinateYToSet;
-	}
-	inline void SetCoordinateZ(const float& coordinateZToSet) {
-		this->coordinateZ = coordinateZToSet;
-	}
+	inline void SetCoordinateX(const float& coordinateXToSet) { this->coordinateX = coordinateXToSet; }
+	inline void SetCoordinateY(const float& coordinateYToSet) { this->coordinateY = coordinateYToSet; }
+	inline void SetCoordinateZ(const float& coordinateZToSet) { this->coordinateZ = coordinateZToSet; }
 
 	//Metodos para las operaciones
 
