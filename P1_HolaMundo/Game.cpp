@@ -41,7 +41,7 @@ void Game::Init() {
 }
 
 void Game::Render() {
-	glTranslatef(-4.0, -3.0, -12.0);
+	
 	for (int i = 0; i < gameObjects.size(); i++) {
 		gameObjects[i]->Render();
 	}
