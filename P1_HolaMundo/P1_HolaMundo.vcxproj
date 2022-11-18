@@ -134,6 +134,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="P1_HolaMundo.cpp" />
     <ClCompile Include="Cuboid.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Solid.cpp" />
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Teapot.cpp" />
@@ -150,6 +151,7 @@
     <ClInclude Include="Cylinder.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Cuboid.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Solid.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Teapot.h" />
