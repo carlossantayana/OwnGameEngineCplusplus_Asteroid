@@ -28,7 +28,7 @@ void Game::Init() {
 	Teapot* teapot = new Teapot(Vector3D(3.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(180.0, 180.0, 90.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.001, 0.002, 0.003), 0.4);
 	Cube* cube = new Cube(Vector3D(4.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.005, 0.002, 0.002), 0.4);
 	Sphere* sphere = new Sphere(Vector3D(5.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.008, 0.002, 0.001), 0.4, 20, 20);
-	Cuboid* cuboid = new Cuboid(Vector3D(3.0, 1.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.007, 0.002, 0.003), 0.4, 0.4, 0.4);
+	Cuboid* cuboid = new Cuboid(Vector3D(3.0, 1.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.007, 0.002, 0.003), 1.0, 0.4, 0.7);
 	Torus* torus = new Torus(Vector3D(4.0, 1.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.01, 0.002, 0.001), 0.2, 0.4, 20.0, 20.0);
 	Cylinder* cylinder = new Cylinder(Vector3D(5.0, 1.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(180, 180, 90), Vector3D(0.0, 1.0, 0.0), Vector3D(0.002, 0.002, 0.004), 0.4, 0.4, 0.5, 20, 20);
 
