@@ -35,6 +35,5 @@ public:
 
 	//Metodos
 	void Render();
-	void Update();
 };
 

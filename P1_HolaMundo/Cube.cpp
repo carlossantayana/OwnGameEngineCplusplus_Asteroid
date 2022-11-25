@@ -12,10 +12,3 @@ void Cube::Render() {
 	glutSolidCube(this->GetSize());
 	glPopMatrix();
 }
-
-void Cube::Update() {
-	float timeIncrement = 1;
-
-	this->SetOrientation(this->GetOrientation() + this->GetOrientationSpeed() * timeIncrement);
-	this->SetPos(this->GetPos() + this->GetSpeed() * timeIncrement);
-}

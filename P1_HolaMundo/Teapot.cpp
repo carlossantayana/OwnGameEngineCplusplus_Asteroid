@@ -12,10 +12,3 @@ void Teapot::Render() {
 	glutSolidTeapot(this->GetSize());
 	glPopMatrix();
 }
-
-void Teapot::Update() {
-	float timeIncrement = 1;
-
-	this->SetOrientation(this->GetOrientation() + this->GetOrientationSpeed() * timeIncrement);
-	this->SetPos(this->GetPos() + this->GetSpeed() * timeIncrement);
-}

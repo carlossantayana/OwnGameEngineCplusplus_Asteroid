@@ -11,10 +11,3 @@ void Torus::Render() {
 	glutSolidTorus(GetRadiusI(), GetRadiusE(), GetFaces(), GetRings());
 	glPopMatrix();
 }
-
-void Torus::Update() {
-	float timeIncrement = 1;
-
-	this->SetOrientation(this->GetOrientation() + this->GetOrientationSpeed() * timeIncrement);
-	this->SetPos(this->GetPos() + this->GetSpeed() * timeIncrement);
-}
