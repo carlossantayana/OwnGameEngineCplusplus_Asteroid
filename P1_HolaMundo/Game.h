@@ -16,7 +16,7 @@ class Game
 {
 private: 
 	Scene mainScene;
-	vector <Solid*> gameObjects;
+	
 
 
 public: //El método constructor así como el resto de métodos serán públicos
