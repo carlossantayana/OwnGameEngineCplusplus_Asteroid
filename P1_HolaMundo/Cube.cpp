@@ -9,6 +9,6 @@ void Cube::Render() {
 	glRotatef(this->GetOrientation().GetCoordinateY(), 0.0, 1.0, 0.0);
 	glRotatef(this->GetOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
 
-	glutSolidCube(this->GetSize());
+	this->GetIsTransparent() ? glutWireCube(this->GetSize()) : glutSolidCube(this->GetSize());
 	glPopMatrix();
 }

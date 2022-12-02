@@ -9,6 +9,6 @@ void Sphere::Render() {
 	glRotatef(this->GetOrientation().GetCoordinateY(), 0.0, 1.0, 0.0);
 	glRotatef(this->GetOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
 
-	glutSolidSphere(this->GetRadius(),this->GetSlices(),this->GetSlacks());
+	this->GetIsTransparent() ? glutWireSphere(GetRadius(), GetSlices(), GetSlacks()) : glutSolidSphere(GetRadius(), GetSlices(), GetSlacks());
 	glPopMatrix();
 }

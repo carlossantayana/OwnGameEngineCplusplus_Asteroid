@@ -1,4 +1,6 @@
-﻿  Scene.cpp
+﻿  Cube.cpp
+  Cuboid.cpp
+  Sphere.cpp
 C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(15,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(16,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
 C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(22,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
@@ -7,20 +9,11 @@ C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(28,46): wa
 C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(29,46): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
 C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(33,67): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
 C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(34,67): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(18,39): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(22,39): warning C4244: 'argumento': conversión de 'double' a 'const float'; posible pérdida de datos
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(31,67): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(31,153): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(31,160): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(32,67): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(32,152): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(32,159): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(33,62): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(33,146): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(33,153): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(34,66): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(34,148): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(34,163): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(44,39): warning C4305: 'argumento': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Scene.cpp(47,46): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.cpp(12,79): warning C4244: 'argumento': conversión de 'float' a 'GLint'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.cpp(12,66): warning C4244: 'argumento': conversión de 'float' a 'GLint'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.cpp(12,136): warning C4244: 'argumento': conversión de 'float' a 'GLint'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.cpp(12,123): warning C4244: 'argumento': conversión de 'float' a 'GLint'; posible pérdida de datos
+  Teapot.cpp
+  Torus.cpp
+  Generando código...
   P1_HolaMundo.vcxproj -> C:\Users\claul\OneDrive\Escritorio\PA_Practicas\x64\Debug\P1_HolaMundo.exe

@@ -8,6 +8,8 @@ void Torus::Render() {
 	glRotatef(this->GetOrientation().GetCoordinateX(), 1.0, 0.0, 0.0);
 	glRotatef(this->GetOrientation().GetCoordinateY(), 0.0, 1.0, 0.0);
 	glRotatef(this->GetOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
-	glutSolidTorus(GetRadiusI(), GetRadiusE(), GetFaces(), GetRings());
+	this->GetIsTransparent() ?
+		glutWireTorus(this->GetRadiusI(), this->GetRadiusE(), this->GetFaces(), this->GetRings()) :
+		glutSolidTorus(this->GetRadiusI(), this->GetRadiusE(), this->GetFaces(), this->GetRings());
 	glPopMatrix();
 }

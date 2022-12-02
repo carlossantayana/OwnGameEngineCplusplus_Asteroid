@@ -9,6 +9,6 @@ void Teapot::Render() {
 	glRotatef(this->GetOrientation().GetCoordinateY(), 0.0, 1.0, 0.0);
 	glRotatef(this->GetOrientation().GetCoordinateZ(), 0.0, 0.0, 1.0);
 
-	glutSolidTeapot(this->GetSize());
+	this->GetIsTransparent() ? glutWireTeapot(this->GetSize()) : glutSolidTeapot(this->GetSize());
 	glPopMatrix();
 }

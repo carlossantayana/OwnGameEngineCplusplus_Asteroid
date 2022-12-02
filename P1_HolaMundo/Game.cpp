@@ -21,7 +21,12 @@ void Game::ProcessMouseClick(int button, int state, int x, int y) {
 }
 
 void Game::Init() {
+	//agregado
+	this->mainScene.setDrawVertexes(false);
+	this->mainScene.setDrawBox(true);
+	//agregado
 	this->mainScene.Init();
+	
 }
 
 void Game::Render() {

@@ -16,7 +16,7 @@ void ModelLoader::loadModel(const string& filePath) {
 					Vector3D normal = this->parseObjLineToVector3D(line);	//convierte la linea en un vector3D
 					readNormals.push_back(normal);                          //agregamos el vector de normales a la lista
 				}
-				else if (line[0] == 'v') {                                  //ejemplo v 0.5 0.34 1.5 -> vertice
+				else if (line[0] == 'v' && line[1] != 'n') {                //ejemplo v 0.5 0.34 1.5 -> vertice
 					Vector3D vertex = this->parseObjLineToVector3D(line);   
 					this->calcBoundaries(vertex);                           //calculamos los limites 
 					readVertex.push_back(vertex);                           //agrega el vector a los vertices de la lista
@@ -45,6 +45,15 @@ void ModelLoader::clear() {
 	readNormals.clear();
 	readVertex.clear();
 	model.clear();
+
+	//agregado
+	this->maxX = 0;
+	this->maxY = 0;
+	this->maxZ = 0;
+	this->minX = 0;
+	this->minY = 0;
+	this->minZ = 0;
+	//agregado
 }
 
 Vector3D ModelLoader::parseObjLineToVector3D(const string& line) {
