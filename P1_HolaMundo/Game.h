@@ -15,13 +15,15 @@ using namespace std;
 class Game
 {
 private: 
-	Scene mainScene;
-	
+	Scene* activeScene;
+	vector<Scene*> scenes;
 
+	const double TIME_INCREMENT = 0.4; //
+	const long UPDATE_PERIOD = 10; //ms en tiempo real
 
 public: //El método constructor así como el resto de métodos serán públicos
 
-	Game()  {}
+	Game() : activeScene(nullptr) {}
 	
 	void Init(); //Método de inicialización
 	void Render(); //Método de dibujado

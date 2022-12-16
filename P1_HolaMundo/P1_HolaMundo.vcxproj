@@ -24,6 +24,7 @@
     <ProjectGuid>{82b7ab64-6fc0-4b06-944b-cc444d8265aa}</ProjectGuid>
     <RootNamespace>P1HolaMundo</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>P3_Game</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -134,7 +135,7 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
-    <ClCompile Include="P1_HolaMundo.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="Cuboid.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Solid.cpp" />
