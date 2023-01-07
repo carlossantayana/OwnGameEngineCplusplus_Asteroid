@@ -7,6 +7,11 @@ using namespace std;
 #include <string>
 #include <GL/glut.h>
 
+#define BUTTON_UP   0
+#define BUTTON_DOWN 1
+
+unsigned char keyState[255];
+
 //////////////////    USANDO GAME      ////////////////////////
 
 Game game = Game();
@@ -72,7 +77,14 @@ void idle() {
 }
 
 void keyPressed(unsigned char key, int px, int py) {
-    game.ProcessKeyPressed(key, px, py);
+    keyState[key] = BUTTON_DOWN;
+    game.ProcessKeyPressed(key, keyState, px, py);
+    glutPostRedisplay();
+}
+
+void keyUp(unsigned char key, int px, int py){
+	keyState[key] = BUTTON_UP;
+    game.ProcessKeyUp(key, keyState, px, py);
     glutPostRedisplay();
 }
 
@@ -116,6 +128,7 @@ int main(int argc, char** argv)
     glutReshapeFunc(reshape); //Tratamiento del evento de redimensionado de la pantalla
     glutDisplayFunc(display); //Tratamiento del evento de repintado de la ventana
     glutKeyboardFunc(keyPressed); //Tratamiento del evento de tecla pulsada
+    glutKeyboardUpFunc(keyUp); //Tratamiento del evento de tecla soltada
     glutSpecialFunc(specialKey); //Tratamiento del evento de tecla especial pulsada
     glutMotionFunc(mouseMoved); //Tratamiento del evento de movimiento del ratón
     glutMouseFunc(mouseClicked); //Tratamiento del evento de click del ratón

@@ -6,7 +6,9 @@
 #include "Camera.h"
 #include "ModelLoader.h"
 #include "Model.h"
-//#include "Game.h"
+
+
+
 using namespace std;
 class Scene
 {
@@ -18,8 +20,8 @@ private:
 	//Game* game;
 
 	//agregado
-	//bool drawVertexes;
-	//bool drawBox;
+	bool drawVertexes;
+	bool drawBox;
 	//agregado
 
 	void CheckBoundary();
@@ -35,12 +37,13 @@ public:
 	inline Vector3D getBoundary() const { return this->boundary; }
 	inline void setBoundary(const Vector3D& boundaryToSet) { this->boundary = boundaryToSet; }
 
-	/*inline bool getDrawVertexes() const { return this->drawVertexes; }
+	inline bool getDrawVertexes() const { return this->drawVertexes; }
 	inline void setDrawVertexes(const bool& drawVertexesToSet) { this->drawVertexes = drawVertexesToSet; }
 	inline bool getDrawBox() const { return this->drawBox; }
-	inline void setDrawBox(const bool& drawBoxToSet) { this->drawBox = drawBoxToSet; }*/
+	inline void setDrawBox(const bool& drawBoxToSet) { this->drawBox = drawBoxToSet; }
 	
-	void ProcessKeyPressed(unsigned char key, int px, int py); //Recoger info de pulsación de teclas
+	void ProcessKeyPressed(unsigned char key, unsigned char keyState[], int px, int py); //Recoger info de pulsación de teclas
+	void ProcessKeyUp(unsigned char key, unsigned char keyState[], int px, int py);
 	void ProcessMouseMovement(int x, int y); //Recoger info de movimiento del ratón
 	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón
 };

@@ -9,6 +9,7 @@ private:
 	Vector3D orientation;
 	Vector3D orientationSpeed;
 	Vector3D speed;
+
 	//agregado
 	bool isTransparent;
 	//agregado

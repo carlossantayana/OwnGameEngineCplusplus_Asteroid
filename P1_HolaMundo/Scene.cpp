@@ -1,8 +1,23 @@
 #include "Scene.h"
 #include "Cuboid.h"
 
-void Scene::ProcessKeyPressed(unsigned char key, int px, int py) {
+void Scene::ProcessKeyPressed(unsigned char key, unsigned char keyState[], int px, int py) {
+	//de momento no hacemos nada...
 	cout << "Tecla pulsada: " << key << endl;
+	/*if(key == 'w'){
+		gameObjects[4]->SetPos(Vector3D(gameObjects[4]->GetPos().GetCoordinateX(), gameObjects[4]->GetPos().GetCoordinateY() + 0.01, gameObjects[4]->GetPos().GetCoordinateZ()));
+	}else if (key == 'a') {
+		gameObjects[4]->SetPos(Vector3D(gameObjects[4]->GetPos().GetCoordinateX() - 0.01, gameObjects[4]->GetPos().GetCoordinateY(), gameObjects[4]->GetPos().GetCoordinateZ()));
+	}else if(key == 's'){
+		gameObjects[4]->SetPos(Vector3D(gameObjects[4]->GetPos().GetCoordinateX(), gameObjects[4]->GetPos().GetCoordinateY() - 0.01, gameObjects[4]->GetPos().GetCoordinateZ()));
+	}else if(key == 'd'){
+		gameObjects[4]->SetPos(Vector3D(gameObjects[4]->GetPos().GetCoordinateX() + 0.01, gameObjects[4]->GetPos().GetCoordinateY(), gameObjects[4]->GetPos().GetCoordinateZ()));
+	}*/
+}
+
+void Scene::ProcessKeyUp(unsigned char key, unsigned char keyState[], int px, int py) {
+	//de momento no hacemos nada...
+	cout << "Tecla soltada: " << key << endl;
 }
 
 void Scene::ProcessMouseMovement(int x, int y) {
@@ -29,7 +44,7 @@ void Scene::AddGameObject(Solid* gameObject) {
 void Scene::Init() {
 	camera = Camera(Vector3D(4.0, 3.0, 12.0));
 	
-	/*if (this->getDrawVertexes())
+	if (this->getDrawVertexes())
 	{
 		Cube* point1 = new Cube();
 		point1->SetColor(Color(0, 0, 1));
@@ -126,11 +141,12 @@ void Scene::Init() {
 		right->SetPos(Vector3D(this->getBoundary().GetCoordinateX(), this->getBoundary().GetCoordinateY() / 2, this->getBoundary().GetCoordinateZ() / 2));
 		right->SetIsTransparent(true);
 		this->gameObjects.push_back(right);
-	}*/
+	}
 }
 
 void Scene::Render() {
 	this->camera.Render();
+
 	for (int i = 0; i < gameObjects.size(); i++) {
 		gameObjects[i]->Render();
 	}
@@ -146,16 +162,30 @@ void Scene::Update(const float& time) {
 void Scene::CheckBoundary() {
 	for (int i = 0; i < gameObjects.size(); i++) {
 
-		if (gameObjects[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX() || gameObjects[i]->GetPos().GetCoordinateX() < 0) {
-			gameObjects[i]->SetSpeed(Vector3D(gameObjects[i]->GetSpeed().GetCoordinateX() * -1.0f, gameObjects[i]->GetSpeed().GetCoordinateY(), gameObjects[i]->GetSpeed().GetCoordinateZ()));
+		//if (gameObjects[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX() || gameObjects[i]->GetPos().GetCoordinateX() < 0) {
+		//	gameObjects[i]->SetSpeed(Vector3D(gameObjects[i]->GetSpeed().GetCoordinateX() * -1.0f, gameObjects[i]->GetSpeed().GetCoordinateY(), gameObjects[i]->GetSpeed().GetCoordinateZ()));
+		//}
+		if (gameObjects[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX()) {
+			gameObjects[i]->SetPos(Vector3D(0.01,gameObjects[i]->GetPos().GetCoordinateY(),gameObjects[i]->GetPos().GetCoordinateZ()));
+		}
+		if (gameObjects[i]->GetPos().GetCoordinateX() < 0) {
+			gameObjects[i]->SetPos(Vector3D(boundary.GetCoordinateX()-0.01,gameObjects[i]->GetPos().GetCoordinateY(),gameObjects[i]->GetPos().GetCoordinateZ()));
 		}
 
-		if (gameObjects[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY() || gameObjects[i]->GetPos().GetCoordinateY() < 0) {
-			gameObjects[i]->SetSpeed(Vector3D(gameObjects[i]->GetSpeed().GetCoordinateX(), gameObjects[i]->GetSpeed().GetCoordinateY() * -1.0f, gameObjects[i]->GetSpeed().GetCoordinateZ()));
+		//if (gameObjects[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY() || gameObjects[i]->GetPos().GetCoordinateY() < 0) {
+		//	gameObjects[i]->SetSpeed(Vector3D(gameObjects[i]->GetSpeed().GetCoordinateX(), gameObjects[i]->GetSpeed().GetCoordinateY() * -1.0f, gameObjects[i]->GetSpeed().GetCoordinateZ()));
+		//}
+
+		if (gameObjects[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY()) {
+			gameObjects[i]->SetPos(Vector3D(gameObjects[i]->GetPos().GetCoordinateX(),0.01,gameObjects[i]->GetPos().GetCoordinateZ()));
+		}
+		if (gameObjects[i]->GetPos().GetCoordinateY() < 0) {
+			gameObjects[i]->SetPos(Vector3D(gameObjects[i]->GetPos().GetCoordinateX(),boundary.GetCoordinateY()-0.01,gameObjects[i]->GetPos().GetCoordinateZ()));
 		}
 
-		if (gameObjects[i]->GetPos().GetCoordinateZ() > boundary.GetCoordinateZ() || gameObjects[i]->GetPos().GetCoordinateZ() < 0) {
-			gameObjects[i]->SetSpeed(Vector3D(gameObjects[i]->GetSpeed().GetCoordinateX(), gameObjects[i]->GetSpeed().GetCoordinateY(), gameObjects[i]->GetSpeed().GetCoordinateZ() * -1.0f));
-		}
+		//if (gameObjects[i]->GetPos().GetCoordinateZ() > boundary.GetCoordinateZ() || gameObjects[i]->GetPos().GetCoordinateZ() < 0) {
+		//	gameObjects[i]->SetSpeed(Vector3D(gameObjects[i]->GetSpeed().GetCoordinateX(), gameObjects[i]->GetSpeed().GetCoordinateY(), gameObjects[i]->GetSpeed().GetCoordinateZ() * -1.0f));
+		//}
+
 	}
 }

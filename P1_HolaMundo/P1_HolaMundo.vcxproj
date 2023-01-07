@@ -137,6 +137,7 @@
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Cuboid.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Solid.cpp" />
     <ClCompile Include="Sphere.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Cuboid.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="ModelLoader.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="Solid.h" />
     <ClInclude Include="Sphere.h" />
