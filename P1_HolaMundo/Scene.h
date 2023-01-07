@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "ModelLoader.h"
 #include "Model.h"
+//#include "Game.h"
 using namespace std;
 class Scene
 {
@@ -14,6 +15,8 @@ private:
 	vector <Solid*> gameObjects;
 	Vector3D boundary;
 
+	//Game* game;
+
 	//agregado
 	//bool drawVertexes;
 	//bool drawBox;
@@ -21,11 +24,11 @@ private:
 
 	void CheckBoundary();
 public:
-	Scene() : boundary(Vector3D(8.0, 6.0, 4.0)) /*, drawVertexes(false), drawBox(false)*/ {}
+	Scene(/*Game* gameArgument*/) : boundary(Vector3D(8.0, 6.0, 4.0))/*, game(gameArgument) /*, drawVertexes(false), drawBox(false)*/ {}
 
 	void Init();
 	void Render();
-	void Update();
+	void Update(const float& time);
 
 	void AddGameObject(Solid* gameObject);
 

@@ -27,7 +27,7 @@ void Game::Init() {
 	//agregado
 	
 	//CREACIÓN DE ESCENAS
-	Scene* titleScene = new(nothrow) Scene();
+	Scene* titleScene = new(nothrow) Scene(/*this*/);
 
 	//CREACIÓN DE OBJETOS
 	Teapot* teapot1 = new Teapot(Vector3D(3.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(180.0, 180.0, 90.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.001, 0.002, 0.003), 0.4);
@@ -70,5 +70,11 @@ void Game::Render() {
 }
 
 void Game::Update() {
-	this->activeScene->Update();
+	milliseconds currentTime = duration_cast<milliseconds>(system_clock::now().time_since_epoch());
+
+	if ((currentTime.count() - this->initialMilliseconds.count()) - this->lastUpdatedTime > UPDATE_PERIOD)
+	{
+		this->activeScene->Update(TIME_INCREMENT);
+		this->lastUpdatedTime = currentTime.count() - this->initialMilliseconds.count();
+	}
 }

@@ -136,9 +136,9 @@ void Scene::Render() {
 	}
 }
 
-void Scene::Update() {
+void Scene::Update(const float& time) {
 	for (int i = 0; i < gameObjects.size(); i++) {
-		gameObjects[i]->Update();
+		gameObjects[i]->Update(time);
 	}
 	CheckBoundary();
 }
