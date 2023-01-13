@@ -6,5 +6,6 @@ void Text::Render() {
 	glRasterPos3d(0, 0, 0);
 	for (char c : text)
 		glutBitmapCharacter(GLUT_BITMAP_TIMES_ROMAN_24, c);
+
 	glPopMatrix();
 }

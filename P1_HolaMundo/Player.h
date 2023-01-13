@@ -9,8 +9,12 @@ private:
 	float speed;
 	float rotationSpeed;
 
+	bool wPressed;
+	bool aPressed;
+	bool dPressed;
+
 public:
-	Player(Model* playerModelArgument, Vector3D orientationToSet) : playerModel(playerModelArgument), speed(0.1), rotationSpeed(10) , Orientation(orientationToSet) {}
+	Player(Model* playerModelArgument, Vector3D orientationToSet) : playerModel(playerModelArgument), speed(0.0), rotationSpeed(10.0) , Orientation(orientationToSet), wPressed(false), aPressed(false), dPressed(false) {}
 
 	//Getters
 	inline Model* GetPlayerModel() const {
@@ -22,10 +26,12 @@ public:
 		this->playerModel = playerModelToSet;
 	}
 
-	void ProcessKeyPressed(unsigned char key, unsigned char keyState[], int px, int py);
-	void ProcessKeyUp(unsigned char key, unsigned char keyState[], int px, int py);
+	void ProcessKeyPressed(unsigned char key, int px, int py);
+	void ProcessKeyUp(unsigned char key, int px, int py);
 	void ProcessMouseMovement(int x, int y);
 	void ProcessMouseClick(int button, int state, int x, int y);
+
 	Vector3D RotateVector(Vector3D vector, float angle);
+	void UpdatePlayer();
 };
 

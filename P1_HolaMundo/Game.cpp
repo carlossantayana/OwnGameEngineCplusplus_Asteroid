@@ -4,95 +4,135 @@
 #include "Vector3D.h"
 #include "Color.h"
 #include "Scene.h"
+#include "TitleScene.h"
+#include "GameOverScene.h"
+#include "GameScene.h"
 #include<time.h>
 #include "Text.h"
 #include "Player.h"
+#include "Asteroid.h"
+#include <stdlib.h>
 
 using namespace std;
 
-void Game::ProcessKeyPressed(unsigned char key, unsigned char keyState[], int px, int py) {
-	this->player->ProcessKeyPressed(key, keyState, px, py);
-	this->activeScene->ProcessKeyPressed(key, keyState, px, py);
+void Game::ProcessKeyPressed(unsigned char key, int px, int py) {
+	this->activeScene->ProcessKeyPressed(key, px, py);
 }
 
-void Game::ProcessKeyUp(unsigned char key, unsigned char keyState[], int px, int py){
-	this->player->ProcessKeyUp(key, keyState, px, py);
-	this->activeScene->ProcessKeyUp(key, keyState, px, py);
+void Game::ProcessKeyUp(unsigned char key, int px, int py){
+	this->activeScene->ProcessKeyUp(key, px, py);
 }
 
 void Game::ProcessMouseMovement(int x, int y) {
-	this->player->ProcessMouseMovement(x, y);
 	this->activeScene->ProcessMouseMovement(x, y);
 }
 
 void Game::ProcessMouseClick(int button, int state, int x, int y) {
-	this->player->ProcessMouseClick(button, state, x, y);
 	this->activeScene->ProcessMouseClick(button,state,x,y);
 }
 
 void Game::Init() {
-	//agregado
-	//this->mainScene.setDrawVertexes(false);
-	//this->mainScene.setDrawBox(true);
-	//agregado
-	
-	//CREACIÓN DE ESCENAS
-	Scene* titleScene = new(nothrow) Scene(/*this*/);
-
 	//CREACIÓN DE OBJETOS
-	Teapot* teapot1 = new Teapot(Vector3D(3.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(180.0, 180.0, 90.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.001, 0.002, 0.003), 0.4);
-	Teapot* teapot2 = new Teapot(Vector3D(2.5, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(90.0, 180.0, 90.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.005, 0.002, 0.001), 0.4);
-	Cube* cube = new Cube(Vector3D(4.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(45.0, 45.0, 45.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.005, 0.002, 0.002), 0.4);
-	Sphere* sphere = new Sphere(Vector3D(5.0, 2.5, 2.0), Color(1.0, 0.5, 0.6), Vector3D(0.0, 45.0, 0.0), Vector3D(0.0, 1.0, 0.0), Vector3D(0.008, 0.002, 0.001), 0.4, 20, 20);
-
 	ModelLoader* loader = new ModelLoader();
 
-	//Model* heart = new Model();
-
-	//loader->setScale(1.0);
-	//loader->loadModel("..\\Heart.obj");
-	//*heart = loader->getModel();
-
-	//heart->SetPos(Vector3D(2.0, 2.5, 2.0));
-	//heart->paintColor(Color(1.0, 0.5, 0.6));
-	//heart->SetOrientation(Vector3D(0.0, 0.0, 0.0));
-	//heart->SetOrientationSpeed(Vector3D(0.0, 1.0, 0.0));
-	//heart->SetSpeed(Vector3D(0.001, 0.002, 0.003));
-	//loader->clear();
-
-	Model* nave = new Model();
-
-	loader->setScale(1.0);
-	loader->loadModel("..\\Heart.obj");
-	*nave = loader->getModel();
-
-	nave->SetPos(Vector3D(0, 0, 1));
-	nave->paintColor(Color(0.8, 0.8, 0.9));
-	nave->SetOrientation(Vector3D(0, 0, 0));
-	nave->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
-	nave->SetSpeed(Vector3D(0.0, 0.0, 0.0));
-	loader->clear();
-
-	player = new Player(nave, Vector3D(1,0,0));
-
-	Text* texto = new Text(Vector3D(3.0, 2.5, 2.0), Color(1.0, 0.5, 0.6),"Un texto de ejemplo");
+	//Modelos Importados
+	Model* naveModel = new Model();
+	Model* asteroidModel1 = new Model();
+	Model* asteroidModel2 = new Model();
+	Model* asteroidModel3 = new Model();
 	
 
-	//INSERCIÓN DE OBJETOS EN LA ESCENA
-	titleScene->AddGameObject(teapot1);
-	titleScene->AddGameObject(teapot2);
-	titleScene->AddGameObject(cube);
-	titleScene->AddGameObject(sphere);
-	//titleScene->AddGameObject(heart);
-	titleScene->AddGameObject(nave);
+	//Configuracion Nave Espacial
+	loader->setScale(0.25);
+	loader->loadModel("..\\SpaceShip2.obj");
+	*naveModel = loader->getModel();
 
-	titleScene->AddGameObject(texto);
+	naveModel->SetPos(Vector3D(1.0, 1.0, 1));
+	naveModel->paintColor(Color(1.0, 0.5, 0.6));
+	naveModel->SetOrientation(Vector3D(0, 0, 0));
+	naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
+	naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+	loader->clear();
+
+	Player* player = new Player(naveModel, Vector3D(1, 0, 0));
+	
+	//Configuracion Texto
+	Text* textoPoints = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "0000");
+	Text* textoLevel = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "LEVEL 1");
+
+	//Configuracion Asteroides
+	loader->setScale(0.05);
+	loader->loadModel("..\\AsteroidModel1.obj");
+	*asteroidModel1 = loader->getModel();
+
+	asteroidModel1->SetPos(Vector3D(-3.0, -2.0, 1.0));
+	asteroidModel1->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel1->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel1->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
+	asteroidModel1->SetSpeed(Vector3D(0.01, 0.02, 0.0));
+	loader->clear();
+
+	Asteroid* asteroide1 = new Asteroid(asteroidModel1);
+
+	loader->setScale(0.05);
+	loader->loadModel("..\\AsteroidModel2.obj");
+	*asteroidModel2 = loader->getModel();
+
+	asteroidModel2->SetPos(Vector3D(15.0, 11.0, 1.0));
+	asteroidModel2->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel2->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel2->SetOrientationSpeed(Vector3D(0.1, 0.2, 0.15));
+	asteroidModel2->SetSpeed(Vector3D(0.02, 0.01, 0.0));
+	loader->clear();
+
+	Asteroid* asteroide2 = new Asteroid(asteroidModel2);
+
+	loader->setScale(0.05);
+	loader->loadModel("..\\AsteroidModel3.obj");
+	*asteroidModel3 = loader->getModel();
+
+	asteroidModel3->SetPos(Vector3D(2.0, 2.0, 1.0));
+	asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel3->SetOrientationSpeed(Vector3D( 0.2, 0.15, 0.1));
+	asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
+	loader->clear();
+
+	Asteroid* asteroide3 = new Asteroid(asteroidModel3);
+
+	loader->setScale(0.05);
+	loader->loadModel("..\\AsteroidModel3.obj");
+	*asteroidModel3 = loader->getModel();
+
+	asteroidModel3->SetPos(Vector3D(13, 2.0, 1.0));
+	asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
+	asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
+	loader->clear();
+
+	Asteroid* asteroide4 = new Asteroid(asteroidModel3);
+
+
+	//CREACIÓN DE ESCENAS
+	//Scene* titleScene = new(nothrow) TitleScene(/*this*/);
+	Scene* gameScene = new(nothrow) GameScene(player);
+
+	
+	//INSERCIÓN DE OBJETOS EN LA ESCENA
+	gameScene->AddGameObject(naveModel);
+
+	gameScene->AddGameObject(textoPoints);
+
+	gameScene->AddGameObject(asteroidModel1); 
+	gameScene->AddGameObject(asteroidModel2); 
+	gameScene->AddGameObject(asteroidModel3); 
 
 	//AÑADIR LA ESCENA AL JUEGO
-	this->scenes.push_back(titleScene);
+	this->scenes.push_back(gameScene);
 
 	//COLOCAR COMO ESCENA ACTIVA
-	this->activeScene = titleScene;
+	this->activeScene = gameScene;
 	activeScene->Init();
 }
 

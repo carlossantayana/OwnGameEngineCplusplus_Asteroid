@@ -63,10 +63,16 @@ public:
 		return r;
 	}
 
+	T distance2D(const Vector3Dx<T>& vector) {
+		Vector3Dx<T> direccion{ GetCoordinateX() - vector.GetCoordinateX(),GetCoordinateY() - vector.GetCoordinateY(), 0 };
+		return sqrt((direccion.GetCoordinateX() * direccion.GetCoordinateX()) + (direccion.GetCoordinateY() * direccion.GetCoordinateY()));
+	}
+
 	Vector3Dx<T> operator+(const Vector3Dx<T>& vector) { return this->Add(vector); }
 	Vector3Dx<T> operator-(const Vector3Dx<T>& vector) { return this->Substract(vector); }
 	Vector3Dx<T> operator*(const T& value) { return this->Product(value); }
 	Vector3Dx<T> operator/(const T& value) { return this->Division(value); }
 	T operator*(const Vector3Dx<T>& vector) { return this->DotProduct(vector); }
+	
 };
 

@@ -7,26 +7,21 @@ using namespace std;
 #include <string>
 #include <GL/glut.h>
 
-#define BUTTON_UP   0
-#define BUTTON_DOWN 1
-
-unsigned char keyState[255];
-
 //////////////////    USANDO GAME      ////////////////////////
 
 Game game = Game();
 
 ////////////////////////CONSTANTES///////////////////////////
 
-const int WINDOW_WIDTH = 800;
-const int WINDOW_HEIGHT = 600;
-const int WINDOW_POSITION_X = 300;
-const int WINDOW_POSITION_Y = 400;
-const char TITLE[] = "PARTE 1";
+const int WINDOW_WIDTH = 1920;
+const int WINDOW_HEIGHT = 1800;
+const int WINDOW_POSITION_X = 0;
+const int WINDOW_POSITION_Y = 0;
+const char TITLE[] = "ASTEROID";
 
-const GLclampf RED = 0.2;
-const GLclampf GREEN = 0.6;
-const GLclampf BLUE = 0.5;
+const GLclampf RED = 0.05;
+const GLclampf GREEN = 0.05;
+const GLclampf BLUE = 0.05;
 const GLclampf ALPHA = 1.0;
 
 bool fullScreenMode = false;
@@ -77,14 +72,12 @@ void idle() {
 }
 
 void keyPressed(unsigned char key, int px, int py) {
-    keyState[key] = BUTTON_DOWN;
-    game.ProcessKeyPressed(key, keyState, px, py);
+    game.ProcessKeyPressed(key, px, py);
     glutPostRedisplay();
 }
 
 void keyUp(unsigned char key, int px, int py){
-	keyState[key] = BUTTON_UP;
-    game.ProcessKeyUp(key, keyState, px, py);
+    game.ProcessKeyUp(key, px, py);
     glutPostRedisplay();
 }
 

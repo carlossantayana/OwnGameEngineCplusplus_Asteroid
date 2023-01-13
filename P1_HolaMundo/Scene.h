@@ -7,8 +7,6 @@
 #include "ModelLoader.h"
 #include "Model.h"
 
-
-
 using namespace std;
 class Scene
 {
@@ -19,32 +17,28 @@ private:
 
 	//Game* game;
 
-	//agregado
-	bool drawVertexes;
-	bool drawBox;
-	//agregado
-
+protected:
 	void CheckBoundary();
-public:
-	Scene(/*Game* gameArgument*/) : boundary(Vector3D(8.0, 6.0, 4.0))/*, game(gameArgument) /*, drawVertexes(false), drawBox(false)*/ {}
 
-	void Init();
+public:
+	Scene(/*Game* gameArgument*/) : boundary(Vector3D(19.0, 13.0, 4.0))/*, game(gameArgument)*/ {}
+
+    void Init();
 	void Render();
-	void Update(const float& time);
+	virtual void Update(const float& time);
+	
+	virtual void ProcessKeyPressed(unsigned char key, int px, int py) = 0; //Recoger info de pulsación de teclas
+	virtual void ProcessKeyUp(unsigned char key, int px, int py) = 0;
+	virtual void ProcessMouseMovement(int x, int y) = 0; //Recoger info de movimiento del ratón
+	virtual void ProcessMouseClick(int button, int state, int x, int y)= 0; //Recoger info de pulsación del ratón
 
 	void AddGameObject(Solid* gameObject);
 
 	inline Vector3D getBoundary() const { return this->boundary; }
+	inline Camera getCamera() const { return this->camera; }
+	inline vector<Solid*> getGameObjects() { return this->gameObjects; }
+
 	inline void setBoundary(const Vector3D& boundaryToSet) { this->boundary = boundaryToSet; }
-
-	inline bool getDrawVertexes() const { return this->drawVertexes; }
-	inline void setDrawVertexes(const bool& drawVertexesToSet) { this->drawVertexes = drawVertexesToSet; }
-	inline bool getDrawBox() const { return this->drawBox; }
-	inline void setDrawBox(const bool& drawBoxToSet) { this->drawBox = drawBoxToSet; }
-	
-	void ProcessKeyPressed(unsigned char key, unsigned char keyState[], int px, int py); //Recoger info de pulsación de teclas
-	void ProcessKeyUp(unsigned char key, unsigned char keyState[], int px, int py);
-	void ProcessMouseMovement(int x, int y); //Recoger info de movimiento del ratón
-	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón
+	inline void setCamera(const Camera& cameraToSet) { this->camera = cameraToSet; }
+	inline void setGameObjects(const vector<Solid*>& gameObjectsToSet) { this->gameObjects = gameObjectsToSet; }
 };
-

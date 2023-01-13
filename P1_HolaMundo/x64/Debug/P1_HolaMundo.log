@@ -1,5 +1,137 @@
 ﻿C:\Program Files\Microsoft Visual Studio\2022\Community\MSBuild\Microsoft\VC\v170\Microsoft.CppBuild.targets(534,5): warning MSB8028: El directorio intermedio (x64\Debug\) contiene archivos compartidos de otro proyecto (P1_HolaMundo.vcxproj). Esto puede dar lugar a un comportamiento incorrecto de limpieza y recompilación.
-  Player.cpp
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Player.h(13,8): warning C4305: 'inicializando': truncamiento de 'double' a 'float'
-C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Player.cpp(56,17): warning C4244: 'inicializando': conversión de 'double' a 'float'; posible pérdida de datos
+  Game.cpp
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Solid.h(34,60): warning C4227: se ha utilizado un anacronismo: se omiten los calificadores de la referencia
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(15,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(16,9): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(22,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(23,10): warning C4244: 'inicializando': conversión de 'float' a 'int'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(28,46): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(29,46): warning C4244: 'return': conversión de 'const int' a 'float'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(33,67): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Sphere.h(34,67): warning C4244: '=': conversión de 'const float' a 'int'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(51,43): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(60,54): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(61,53): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(64,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(69,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(70,62): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(70,54): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(70,46): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(71,61): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(72,51): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(77,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(82,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(83,62): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(83,54): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(83,46): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(84,61): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(85,51): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(90,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(95,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(96,62): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(96,54): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(96,46): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(97,62): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(98,51): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(103,23): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(108,48): warning C4305: 'argumento': truncamiento de 'double' a 'float'
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(109,62): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(109,54): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(109,46): warning C4244: 'argumento': conversión de 'int' a 'T'; posible pérdida de datos
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(110,61): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(111,51): warning C4305: 'argumento': truncamiento de 'double' a 'T'
+          with
+          [
+              T=float
+          ]
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(148,29): warning C4244: 'argumento': conversión de 'const double' a 'const float'; posible pérdida de datos
+C:\Users\claul\OneDrive\Escritorio\PA_Practicas\P1_HolaMundo\Game.cpp(149,47): warning C4244: '=': conversión de '_Rep' a 'long'; posible pérdida de datos
+          with
+          [
+              _Rep=__int64
+          ]
   P1_HolaMundo.vcxproj -> C:\Users\claul\OneDrive\Escritorio\PA_Practicas\x64\Debug\P3_Game.exe

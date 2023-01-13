@@ -21,14 +21,11 @@ private:
 	Scene* activeScene;
 	vector<Scene*> scenes;
 
-	Player* player;
-
 	const double TIME_INCREMENT = 10; //ms en tiempo de juego
 	const long UPDATE_PERIOD = 16; //ms en tiempo real
 
 	milliseconds initialMilliseconds;
 	long lastUpdatedTime;
-
 
 public: //El método constructor así como el resto de métodos serán públicos
 
@@ -37,8 +34,9 @@ public: //El método constructor así como el resto de métodos serán públicos
 	void Init(); //Método de inicialización
 	void Render(); //Método de dibujado
 	void Update(); //Método de actualización
-	void ProcessKeyPressed(unsigned char key, unsigned char keyState[], int px, int py); //Recoger info de pulsación de teclas
-	void ProcessKeyUp(unsigned char key, unsigned char keyState[], int px, int py);
+
+	void ProcessKeyPressed(unsigned char key, int px, int py); //Recoger info de pulsación de teclas
+	void ProcessKeyUp(unsigned char key, int px, int py);
 	void ProcessMouseMovement(int x, int y); //Recoger info de movimiento del ratón
 	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón
 };
