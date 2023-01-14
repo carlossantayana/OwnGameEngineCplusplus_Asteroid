@@ -7,6 +7,7 @@
 #include "TitleScene.h"
 #include "GameOverScene.h"
 #include "GameScene.h"
+#include "InterGameScene.h"
 #include<time.h>
 #include "Text.h"
 #include "Player.h"
@@ -31,17 +32,13 @@ void Game::ProcessMouseClick(int button, int state, int x, int y) {
 	this->activeScene->ProcessMouseClick(button,state,x,y);
 }
 
-void Game::Init() {
+void Game::CreatePlayer() 
+{
 	//CREACIÓN DE OBJETOS
 	ModelLoader* loader = new ModelLoader();
 
 	//Modelos Importados
 	Model* naveModel = new Model();
-	Model* asteroidModel1 = new Model();
-	Model* asteroidModel2 = new Model();
-	Model* asteroidModel3 = new Model();
-	
-
 	//Configuracion Nave Espacial
 	loader->setScale(0.25);
 	loader->loadModel("..\\SpaceShip2.obj");
@@ -53,87 +50,40 @@ void Game::Init() {
 	naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
 	naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
 	loader->clear();
+	delete loader;
 
-	Player* player = new Player(naveModel, Vector3D(1, 0, 0));
-	
-	//Configuracion Texto
-	Text* textoPoints = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "0000");
-	Text* textoLevel = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "LEVEL 1");
+	this->player = new Player(naveModel, Vector3D(1, 0, 0));
+}
 
-	//Configuracion Asteroides
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel1.obj");
-	*asteroidModel1 = loader->getModel();
 
-	asteroidModel1->SetPos(Vector3D(-3.0, -2.0, 1.0));
-	asteroidModel1->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel1->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel1->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
-	asteroidModel1->SetSpeed(Vector3D(0.01, 0.02, 0.0));
-	loader->clear();
 
-	Asteroid* asteroide1 = new Asteroid(asteroidModel1);
-
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel2.obj");
-	*asteroidModel2 = loader->getModel();
-
-	asteroidModel2->SetPos(Vector3D(15.0, 11.0, 1.0));
-	asteroidModel2->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel2->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel2->SetOrientationSpeed(Vector3D(0.1, 0.2, 0.15));
-	asteroidModel2->SetSpeed(Vector3D(0.02, 0.01, 0.0));
-	loader->clear();
-
-	Asteroid* asteroide2 = new Asteroid(asteroidModel2);
-
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel3.obj");
-	*asteroidModel3 = loader->getModel();
-
-	asteroidModel3->SetPos(Vector3D(2.0, 2.0, 1.0));
-	asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel3->SetOrientationSpeed(Vector3D( 0.2, 0.15, 0.1));
-	asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
-	loader->clear();
-
-	Asteroid* asteroide3 = new Asteroid(asteroidModel3);
-
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel3.obj");
-	*asteroidModel3 = loader->getModel();
-
-	asteroidModel3->SetPos(Vector3D(13, 2.0, 1.0));
-	asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
-	asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
-	loader->clear();
-
-	Asteroid* asteroide4 = new Asteroid(asteroidModel3);
+void Game::Init() {
+	CreatePlayer();
 
 
 	//CREACIÓN DE ESCENAS
-	//Scene* titleScene = new(nothrow) TitleScene(/*this*/);
-	Scene* gameScene = new(nothrow) GameScene(player);
+	this->titleScene = new(nothrow) TitleScene(this);
+	this->gameOverScene = new(nothrow) GameOverScene(this);
 
-	
-	//INSERCIÓN DE OBJETOS EN LA ESCENA
-	gameScene->AddGameObject(naveModel);
+	//TODO: Hacer la EndGame
+	this->endGameScene = new(nothrow) GameOverScene(this);
 
-	gameScene->AddGameObject(textoPoints);
+	//Scene* kk = new(nothrow) InterGameScene(this, this->player, 1);
+	//this->activeScene = kk;
+	//activeScene->Init();
 
-	gameScene->AddGameObject(asteroidModel1); 
-	gameScene->AddGameObject(asteroidModel2); 
-	gameScene->AddGameObject(asteroidModel3); 
 
-	//AÑADIR LA ESCENA AL JUEGO
-	this->scenes.push_back(gameScene);
+	for (int lv = 1;lv < 5;lv++) 
+	{
+		Scene* preGameScene1 = new(nothrow) InterGameScene(this, this->player, lv);
+		Scene* gameScene1 = new(nothrow) GameScene(this, this->player, lv);
 
-	//COLOCAR COMO ESCENA ACTIVA
-	this->activeScene = gameScene;
-	activeScene->Init();
+		//AÑADIR LAS ESCENAS AL JUEGO
+		this->scenes.push_back(preGameScene1);
+		this->scenes.push_back(gameScene1);
+	}
+
+	SetTitleScene();
 }
 
 void Game::Render() {
@@ -148,4 +98,36 @@ void Game::Update() {
 		this->activeScene->Update(TIME_INCREMENT);
 		this->lastUpdatedTime = currentTime.count() - this->initialMilliseconds.count();
 	}
+}
+
+void Game::SetTitleScene() 
+{
+	//Inicializamos jugador
+	this->player->InicializarDatosPartida();
+
+	//Inicializamos la primera Scena
+	this->initialScene = -1;
+	this->activeScene = titleScene;
+	activeScene->Init();
+}
+
+void Game::SetGameOverScene() 
+{
+	this->activeScene = gameOverScene;
+	activeScene->Init();
+}
+
+void Game::SetNextScene() 
+{
+	this->initialScene++;
+	if (this->initialScene == this->scenes.size())
+	{
+		//Fin del Juego
+		this->activeScene = this->endGameScene;
+		this->activeScene->Init();
+		return;
+	}
+	
+	this->activeScene = this->scenes[this->initialScene];
+	this->activeScene->Init();
 }

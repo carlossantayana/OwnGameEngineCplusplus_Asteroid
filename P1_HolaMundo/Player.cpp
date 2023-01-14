@@ -2,6 +2,15 @@
 #include <cmath>
 #define M_PI 3.14159
 
+void Player::InicializarDatosPartida() 
+{
+	//TODO: ¿Coordenadas Iniciales?
+
+	this->puntuacion = 0;
+	this->vidas = 3;
+}
+
+
 void Player::ProcessKeyPressed(unsigned char key, int px, int py) {
 	if (key == 'w') {
 		wPressed = true;
@@ -55,7 +64,15 @@ Vector3D Player::RotateVector(Vector3D vector, float angle)
 }
 
 void Player::UpdatePlayer(){
-	this->playerModel->SetPos(Vector3D(this->playerModel->GetPos().GetCoordinateX() + RotateVector(Vector3D(0,1,0),this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateX()*this->speed, this->playerModel->GetPos().GetCoordinateY() +RotateVector(Vector3D(0,1,0),this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateY()*this->speed, this->playerModel->GetPos().GetCoordinateZ()));
+
+
+	float x = this->playerModel->GetPos().GetCoordinateX();
+	float incX = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateX() * this->speed;
+
+	float y = this->playerModel->GetPos().GetCoordinateY();
+	float incY = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateY() * this->speed;
+
+	this->playerModel->SetPos(Vector3D(x + incX, y + incY, this->playerModel->GetPos().GetCoordinateZ()));
 	if(wPressed){
 		if(speed<0.1)
 		{

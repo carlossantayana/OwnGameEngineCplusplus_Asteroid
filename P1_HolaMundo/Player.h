@@ -33,5 +33,12 @@ public:
 
 	Vector3D RotateVector(Vector3D vector, float angle);
 	void UpdatePlayer();
+
+
+	//Datos de partida
+	void InicializarDatosPartida();
+	int puntuacion;
+	int vidas;
+
 };
 

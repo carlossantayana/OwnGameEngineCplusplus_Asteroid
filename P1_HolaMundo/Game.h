@@ -10,15 +10,23 @@
 #include <chrono>
 #include <vector>
 #include "Model.h"
-#include "Player.h" 
+#include "Player.h"
 
 using namespace chrono;
 using namespace std;
 
-class Game
+class Game : public SceneManager
 {
 private: 
+	Player* player;
+	
 	Scene* activeScene;
+
+	Scene* titleScene;
+	Scene* gameOverScene;
+	Scene* endGameScene;
+
+	int initialScene = 0;
 	vector<Scene*> scenes;
 
 	const double TIME_INCREMENT = 10; //ms en tiempo de juego
@@ -27,7 +35,15 @@ private:
 	milliseconds initialMilliseconds;
 	long lastUpdatedTime;
 
+	void CreatePlayer();
+
 public: //El método constructor así como el resto de métodos serán públicos
+
+#pragma region SceneManager
+	void SetTitleScene();
+	void SetGameOverScene();
+	void SetNextScene();
+#pragma endregion
 
 	Game() : activeScene(nullptr), initialMilliseconds(duration_cast<milliseconds>(system_clock::now().time_since_epoch())), lastUpdatedTime(0) {}
 	
