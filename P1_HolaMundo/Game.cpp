@@ -8,6 +8,8 @@
 #include "GameOverScene.h"
 #include "GameScene.h"
 #include "InterGameScene.h"
+#include "PauseScene.h"
+#include "EndGameScene.h"
 #include<time.h>
 #include "Text.h"
 #include "Player.h"
@@ -21,6 +23,7 @@ void Game::ProcessKeyPressed(unsigned char key, int px, int py) {
 }
 
 void Game::ProcessKeyUp(unsigned char key, int px, int py){
+
 	this->activeScene->ProcessKeyUp(key, px, py);
 }
 
@@ -65,8 +68,9 @@ void Game::Init() {
 	this->titleScene = new(nothrow) TitleScene(this);
 	this->gameOverScene = new(nothrow) GameOverScene(this);
 
-	//TODO: Hacer la EndGame
-	this->endGameScene = new(nothrow) GameOverScene(this);
+	this->endGameScene = new(nothrow) EndGameScene(this);
+
+	this->pauseScene = new(nothrow) PauseScene(this);
 
 	//Scene* kk = new(nothrow) InterGameScene(this, this->player, 1);
 	//this->activeScene = kk;
@@ -100,13 +104,26 @@ void Game::Update() {
 	}
 }
 
+void Game::SetPause()
+{
+	this->prePauseScene = this->activeScene;
+	this->activeScene = this->pauseScene;
+	this->activeScene->Init();
+}
+
+void Game::SetNoPause()
+{
+	this->activeScene = this->prePauseScene;
+	this->prePauseScene = NULL;
+}
+
 void Game::SetTitleScene() 
 {
 	//Inicializamos jugador
 	this->player->InicializarDatosPartida();
 
 	//Inicializamos la primera Scena
-	this->initialScene = -1;
+	this->indexScene = -1;
 	this->activeScene = titleScene;
 	activeScene->Init();
 }
@@ -119,8 +136,8 @@ void Game::SetGameOverScene()
 
 void Game::SetNextScene() 
 {
-	this->initialScene++;
-	if (this->initialScene == this->scenes.size())
+	this->indexScene++;
+	if (this->indexScene == this->scenes.size())
 	{
 		//Fin del Juego
 		this->activeScene = this->endGameScene;
@@ -128,6 +145,6 @@ void Game::SetNextScene()
 		return;
 	}
 	
-	this->activeScene = this->scenes[this->initialScene];
+	this->activeScene = this->scenes[this->indexScene];
 	this->activeScene->Init();
 }

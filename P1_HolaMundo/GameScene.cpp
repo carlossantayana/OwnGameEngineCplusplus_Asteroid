@@ -120,7 +120,23 @@ void GameScene::ProcessKeyPressed(unsigned char key, int px, int py) {
 }
 
 void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
-    this->player->ProcessKeyUp(key, px, py);
+
+	if (key == 0x1B)
+	{
+		//ESCAPE
+		sceneManager->SetPause();
+		return;
+	}
+
+	if (key == 'o') {
+		sceneManager->SetNextScene();
+	}
+	if (key == 'p') {
+		sceneManager->SetGameOverScene();
+	}
+
+	
+	this->player->ProcessKeyUp(key, px, py);
 	cout << "Tecla soltada: " << key << endl;
 }
 

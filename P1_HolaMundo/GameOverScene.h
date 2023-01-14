@@ -8,5 +8,5 @@ protected:
 	void Finalizar();
 #pragma endregion
 public:
-	GameOverScene(SceneManager* scMgr) :TextScene(scMgr, "Fin de Partida") {}
+	GameOverScene(SceneManager* scMgr) :TextScene(scMgr, "Estas Muerto") {}
 };

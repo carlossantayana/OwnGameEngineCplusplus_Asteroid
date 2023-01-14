@@ -6,7 +6,7 @@ class TextScene : public Scene
 {
 private:
 	string text;
-	Text* textoLevel;;
+	Text* textoLevel;
 protected:
 	virtual void Finalizar() = 0;
 	void setText(const string& textToSet) { text = textToSet; }

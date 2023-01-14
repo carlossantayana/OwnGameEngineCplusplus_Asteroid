@@ -1,10 +1,15 @@
 #pragma once
 #include "Scene.h"
+#include "Text.h"
 
 class TitleScene : public Scene 
 {
 protected:
-	bool pulsado = FALSE;
+	//TODO: Mirar si poner en un Vector
+	Text* opcion1;
+	Text* opcion2;
+
+
 public:
 	TitleScene(SceneManager* scMgr) :Scene(scMgr) {}
 #pragma region Scene

@@ -120,6 +120,12 @@
     <ClCompile Include="InterGameScene.cpp">
       <Filter>Archivos de origen\Core</Filter>
     </ClCompile>
+    <ClCompile Include="EndGameScene.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
+    <ClCompile Include="PauseScene.cpp">
+      <Filter>Archivos de origen\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -195,6 +201,12 @@
       <Filter>Archivos de encabezado\Core</Filter>
     </ClInclude>
     <ClInclude Include="InterGameScene.h">
+      <Filter>Archivos de encabezado\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="EndGameScene.h">
+      <Filter>Archivos de encabezado\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="PauseScene.h">
       <Filter>Archivos de encabezado\Core</Filter>
     </ClInclude>
   </ItemGroup>
