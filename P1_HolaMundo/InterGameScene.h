@@ -18,6 +18,7 @@ public:
 	//INICIALIZACIÓN Y ACTUALIZACIÓN DE LA ESCENA
 	void Init();
 	void Update(const float& time);
+	void Clean();
 
 	//PROCESAMIENTO DE TECLAS
 	void ProcessKeyUp(unsigned char key, int px, int py);
