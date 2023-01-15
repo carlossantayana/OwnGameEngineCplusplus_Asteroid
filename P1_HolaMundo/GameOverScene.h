@@ -8,7 +8,7 @@ private:
 	//Atributos de la clase GameOverScene
 	Player* player;
 
-	//MÉTODO PRIVADO QUE GESTIONA LA ESCENA PERDER EL JUEGO
+	//MÉTODO PRIVADO QUE GESTIONA EL FINAL DE LA ESCENA PERDER EL JUEGO
 	void Finalizar();
 
 public:
@@ -18,6 +18,7 @@ public:
 	//MÉTODOS DE GESTIÓN DE LA INICIALIZACIÓN Y ACTUALIZACIÓN DE LA ESCENA
 	void Init();
 	void Update(const float& time);
+	void Clean();
 
 	//MÉTODOS DE PROCESAMIENTO DE TECLAS
 	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón

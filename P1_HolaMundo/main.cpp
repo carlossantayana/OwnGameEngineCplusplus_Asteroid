@@ -12,7 +12,7 @@ Game game = Game();
 ////////////////////////CONSTANTES///////////////////////////
 
 const int WINDOW_WIDTH = 1920;
-const int WINDOW_HEIGHT = 1800;
+const int WINDOW_HEIGHT = 1080;
 const int WINDOW_POSITION_X = 0;
 const int WINDOW_POSITION_Y = 0;
 const char TITLE[] = "ASTEROID";
@@ -130,5 +130,7 @@ int main(int argc, char** argv)
 
     writeLine("Iniciando bucle infinito...");
     writeLine("Pulse F11 para activar/desactivar el modo de pantalla completa.");
+
+    glutFullScreen();
     glutMainLoop();
 }
