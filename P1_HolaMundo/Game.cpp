@@ -35,6 +35,25 @@ void Game::ProcessMouseClick(int button, int state, int x, int y) {
 	this->activeScene->ProcessMouseClick(button,state,x,y);
 }
 
+void Game::CreatePlayer() 
+{
+	ModelLoader* loader = new ModelLoader();
+
+	Model* naveModel = new Model();
+	//Configuracion Nave Espacial
+	loader->setScale(0.1);
+	loader->loadModel("..\\SpaceShip2.obj");
+	*naveModel = loader->getModel();
+
+	naveModel->paintColor(Color(1.0, 0.5, 0.6));
+	naveModel->SetOrientation(Vector3D(0, 0, 0));
+	naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
+	naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+
+	loader->clear();
+	this->player = new Player(naveModel, Vector3D(1, 0, 0));
+}
+
 void Game::Init() {
 	//CREACIÓN DE ESCENAS
 	this->titleScene = new(nothrow) TitleScene(this);
@@ -45,6 +64,10 @@ void Game::Init() {
 
 	this->pauseScene = new(nothrow) PauseScene(this, "Has pausado el juego Paco");
 
+	ModelLoader* loader = new ModelLoader();
+
+	CreatePlayer();
+
 	//Scene* kk = new(nothrow) InterGameScene(this, this->player, 1);
 	//this->activeScene = kk;
 	//activeScene->Init();
@@ -53,13 +76,15 @@ void Game::Init() {
 	for (int lv = 1;lv < 5;lv++) 
 	{
 		Scene* preGameScene1 = new(nothrow) InterGameScene(this, lv,"nivel");
-		Scene* gameScene1 = new(nothrow) GameScene(this, lv);
+		Scene* gameScene1 = new(nothrow) GameScene(this, player, lv);
 
 		//AÑADIR LAS ESCENAS AL JUEGO
 		this->scenes.push_back(preGameScene1);
 		this->scenes.push_back(gameScene1);
 	}
 
+	//Temporal
+	//SetNextScene();
 	SetTitleScene();
 }
 
@@ -95,6 +120,8 @@ void Game::SetTitleScene()
 	//Inicializamos la primera Scena
 	this->indexScene = -1;
 	this->activeScene = titleScene;
+	this->player->SetLifesNum(30);
+	this->player->SetScore(0);
 	activeScene->Init();
 }
 

@@ -1,12 +1,22 @@
 #pragma once
 #include "Scene.h"
 #include "Player.h"
+#include "Bullet.h"
+#include "Asteroid.h"
 #include "Text.h"
 
 class GameScene : public Scene
 {
 private:
+	bool kk=false;
+
+
+
 	Player* player;
+	vector <Bullet*> bullets;
+	vector <Asteroid*> asteroids;
+	
+
 	Vector3D boundary;
 	int gameLevel;
 
@@ -14,11 +24,27 @@ private:
 	Text* textLifes;
 
 
-	void Create();
+	void CreateAsteroids();
 	void CheckBoundary();
+	
+	//Chequeamos la intersección de las bullets con los enemigos
+	void CheckBulletsCollisions();
+	bool CheckBulletCollision(Bullet*, Asteroid*);
+
+	//Chequeamos la intersección del juagador con los enemigos
+	void CheckPlayerCollisions();
+	bool CheckPlayerCollision(Asteroid* asteroid);
+
+
+	Model* AsteroidModel1(ModelLoader* loader);
+	Model* AsteroidModel2(ModelLoader* loader);
+	Model* AsteroidModel3(ModelLoader* loader);
+
+	void DecLifePlayer();
+	void IncScorePlayer(int inc);
 
 public:
-	GameScene(SceneManager* scMgr, int level) :boundary(Vector3D(19.0, 13.0, 4.0)), gameLevel(level), player(player), Scene(scMgr) {}
+	GameScene(SceneManager* scMgr, Player* player, int level) :boundary(Vector3D(20, 10, 10)), gameLevel(level), player(player), Scene(scMgr) {}
 
 #pragma region Scene
 	void Update(const float& time);
@@ -38,6 +64,6 @@ public:
 	inline void setBoundary(const Vector3D& boundaryToSet) { this->boundary = boundaryToSet; }
 
 	bool Collisions();
-	void deleteObject(Solid* object);
+	void CleanScene();
 };
 

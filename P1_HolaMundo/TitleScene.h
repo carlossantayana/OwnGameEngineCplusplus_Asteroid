@@ -5,7 +5,7 @@
 class TitleScene : public Scene 
 {
 protected:
-	//TODO: Mirar si poner en un Vector
+	//TODO: Mirar si poner en un Vector o en GameObject
 	Text* opcion1;
 	Text* opcion2;
 

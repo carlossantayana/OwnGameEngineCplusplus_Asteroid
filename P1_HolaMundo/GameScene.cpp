@@ -1,105 +1,220 @@
 #include "GameScene.h"
 #include "Text.h"
 #include "Asteroid.h"
+#include <math.h>
 #include <string>
 
-void GameScene::Create() 
+# define M_PI           3.14159265358979323846
+
+Model* GameScene::AsteroidModel1(ModelLoader* loader)
 {
-	//switch (gameLevel) {
-		//case 1:
-			//CREACIÓN DE OBJETOS
-			ModelLoader* loader = new ModelLoader();
+	Model* asteroidModel = new Model();
+	loader->setScale(0.02);
+	loader->loadModel("..\\AsteroidModel1.obj");
+	*asteroidModel = loader->getModel();
+	loader->clear();
 
-			//Modelos Importados
-			Model* naveModel = new Model();
-			Model* asteroidModel1 = new Model();
-			Model* asteroidModel2 = new Model();
-			Model* asteroidModel3 = new Model();
+	double x = rand();
+	x /= RAND_MAX;
+	x *= boundary.GetCoordinateX();
+	double y = rand();
+	y /= RAND_MAX;
+	y *= boundary.GetCoordinateY();
 
-			Text* textLevel = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "LEVEL 1");
+	asteroidModel->SetPos(Vector3D(x, y, 1.0));
+	asteroidModel->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
 
-			//Configuracion Texto
-			this->textScore = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "----");
-			this->textLifes = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "----");
+	float radio = 0.2;
+	asteroidModel->SetHitBoxRadius(radio);
 
-			//Configuracion Nave Espacial
-			loader->setScale(0.25);
-			loader->loadModel("..\\SpaceShip2.obj");
-			*naveModel = loader->getModel();
+	double ang = rand();
+	ang /= RAND_MAX;
 
-			naveModel->SetPos(Vector3D(1.0, 1.0, 1));
-			naveModel->paintColor(Color(1.0, 0.5, 0.6));
-			naveModel->SetOrientation(Vector3D(0, 0, 0));
-			naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
-			naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
-			loader->clear();
+	ang *= 2 * M_PI;
+	//ang = 0;
+	double v = 0.005;
+	double vx = v * cos(ang);
+	double vy = v * sin(ang);
+	asteroidModel->SetSpeed(Vector3D(vx, vy, 0.0));
 
-			this->player = new Player(naveModel, Vector3D(1, 0, 0));
+	return asteroidModel;
+}
+Model* GameScene::AsteroidModel2(ModelLoader* loader)
+{
+	Model* asteroidModel = new Model();
+	loader->setScale(0.01);
+	loader->loadModel("..\\AsteroidModel2.obj");
+	*asteroidModel = loader->getModel();
+	loader->clear();
 
-			//Configuracion Asteroides
-			loader->setScale(0.05);
-			loader->loadModel("..\\AsteroidModel1.obj");
-			*asteroidModel1 = loader->getModel();
+	float radio = 0.1;
+	asteroidModel->SetHitBoxRadius(radio);
 
-			asteroidModel1->SetPos(Vector3D(-3.0, -2.0, 1.0));
-			asteroidModel1->paintColor(Color(0.8, 0.8, 0.9));
-			asteroidModel1->SetOrientation(Vector3D(rand(), rand(), rand()));
-			asteroidModel1->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
-			asteroidModel1->SetSpeed(Vector3D(0.01, 0.02, 0.0));
-			loader->clear();
+	double x = rand();
+	x /= RAND_MAX;
+	x *= boundary.GetCoordinateX();
+	double y = rand();
+	y /= RAND_MAX;
+	y *= boundary.GetCoordinateY();
 
-			Asteroid* asteroide1 = new Asteroid(asteroidModel1);
+	asteroidModel->SetPos(Vector3D(x, y, 1.0));
+	asteroidModel->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel->SetOrientationSpeed(Vector3D(0.05, 0.18, 0.22));
 
-			loader->setScale(0.05);
-			loader->loadModel("..\\AsteroidModel2.obj");
-			*asteroidModel2 = loader->getModel();
+	double ang = rand();
+	ang /= RAND_MAX;
 
-			asteroidModel2->SetPos(Vector3D(15.0, 11.0, 1.0));
-			asteroidModel2->paintColor(Color(0.8, 0.8, 0.9));
-			asteroidModel2->SetOrientation(Vector3D(rand(), rand(), rand()));
-			asteroidModel2->SetOrientationSpeed(Vector3D(0.1, 0.2, 0.15));
-			asteroidModel2->SetSpeed(Vector3D(0.02, 0.01, 0.0));
-			loader->clear();
+	ang *= 2 * M_PI;
+	//ang = 0;
+	double v = 0.006;
+	double vx = v * cos(ang);
+	double vy = v * sin(ang);
+	asteroidModel->SetSpeed(Vector3D(vx, vy, 0.0));
 
-			Asteroid* asteroide2 = new Asteroid(asteroidModel2);
+	return asteroidModel;
+}
+Model* GameScene::AsteroidModel3(ModelLoader* loader)
+{
+	Model* asteroidModel = new Model();
+	loader->setScale(0.02);
+	loader->loadModel("..\\AsteroidModel3.obj");
+	*asteroidModel = loader->getModel();
+	loader->clear();
 
-			loader->setScale(0.05);
-			loader->loadModel("..\\AsteroidModel3.obj");
-			*asteroidModel3 = loader->getModel();
+	double x = rand();
+	x /= RAND_MAX;
+	x *= boundary.GetCoordinateX();
+	double y = rand();
+	y /= RAND_MAX;
+	y *= boundary.GetCoordinateY();
 
-			asteroidModel3->SetPos(Vector3D(2.0, 2.0, 1.0));
-			asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
-			asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
-			asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
-			asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
-			loader->clear();
+	asteroidModel->SetPos(Vector3D(x, y, 1.0));
+	asteroidModel->paintColor(Color(0.8, 0.8, 0.9));
+	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
+	asteroidModel->SetOrientationSpeed(Vector3D(0.02, 0.11, 0.1));
 
-			Asteroid* asteroide3 = new Asteroid(asteroidModel3);
+	float radio = 0.2;
+	asteroidModel->SetHitBoxRadius(radio);
 
-			loader->setScale(0.05);
-			loader->loadModel("..\\AsteroidModel3.obj");
-			*asteroidModel3 = loader->getModel();
+	double ang = rand();
+	ang /= RAND_MAX;
 
-			asteroidModel3->SetPos(Vector3D(13, 2.0, 1.0));
-			asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
-			asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
-			asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
-			asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
-			loader->clear();
+	ang *= 2 * M_PI;
+	//ang = 0;
+	double v = 0.004;
+	double vx = v * cos(ang);
+	double vy = v * sin(ang);
+	asteroidModel->SetSpeed(Vector3D(vx, vy, 0.0));
 
-			Asteroid* asteroide4 = new Asteroid(asteroidModel3);
+	return asteroidModel;
+}
 
-			//INSERCIÓN DE OBJETOS EN LA ESCENA
-			AddGameObject(this->player->GetPlayerModel());
 
-			AddGameObject(this->textLifes);
-			AddGameObject(this->textScore);
-			AddGameObject(textLevel);
+void GameScene::CreateAsteroids()
+{
+	//Inicializamos números aleatorios
+	std::srand(std::time(nullptr));
 
-			AddGameObject(asteroidModel1);
-			AddGameObject(asteroidModel2);
-			AddGameObject(asteroidModel3);
-	//}
+
+
+	ModelLoader* loader = new ModelLoader();
+	for (int i = 0;i < 2* gameLevel;i++)
+	{
+		Model* asteroidModel = AsteroidModel1(loader);
+		Asteroid* asteroide = new Asteroid(asteroidModel, 10);
+		asteroids.push_back(asteroide);
+		AddGameObject(asteroidModel);
+	}	
+	
+	for (int i = 0;i < 2* gameLevel;i++)
+	{
+		Model* asteroidModel = AsteroidModel2(loader);
+		Asteroid* asteroide = new Asteroid(asteroidModel, 15);
+		asteroids.push_back(asteroide);
+		AddGameObject(asteroidModel);
+	}	
+	
+	for (int i = 0;i < 2* gameLevel;i++)
+	{
+		Model* asteroidModel = AsteroidModel3(loader);
+		Asteroid* asteroide = new Asteroid(asteroidModel, 20);
+		asteroids.push_back(asteroide);
+		AddGameObject(asteroidModel);
+	}
+
+	delete loader;
+}
+
+void GameScene::CheckPlayerCollisions() 
+{
+	for (int a = 0; a < asteroids.size(); a++)
+	{
+		Asteroid* asteroid = asteroids[a];
+		if (CheckPlayerCollision(asteroid))
+		{
+			//Eliminamos asteroid
+			//Quitamos del vector de visualización
+			DeleteGameObject(asteroid->getModel());
+			//Quitamos del vector de asteroids  
+			asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
+			//ELiminamos el objeto
+			delete asteroid;
+
+			DecLifePlayer();
+
+			break;
+		}
+	}
+}
+bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
+{
+	//TODO: Falta realizar la verificación
+	if (kk)
+	{
+		kk = false;
+		return true;
+	}
+	return false;
+}
+
+
+bool GameScene::CheckBulletCollision(Bullet* bullet, Asteroid* asteroid)
+{
+	//TODO: Falta realizar la verificación, poner a tru para simular que siempre le damos a un asteriode
+	return false;
+}
+
+
+void GameScene::CheckBulletsCollisions() 
+{
+	for (int b = 0; b < bullets.size(); b++) 
+	{
+		Bullet* bullet = bullets[b];
+		
+		for (int a = 0; a < asteroids.size(); a++) 
+		{
+			Asteroid* asteroid = asteroids[a];
+			if (CheckBulletCollision(bullet, asteroid)) 
+			{
+				IncScorePlayer(asteroid->getScore());
+				//Eliminamos bullet
+				bullet->Destruir();
+
+				//Eliminamos asteroid
+				//Quitamos del vector de visualización
+				DeleteGameObject(asteroid->getModel());
+				//Quitamos del vector de asteroids  
+				asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
+				//ELiminamos el objeto
+				delete asteroid;
+				break;
+			}
+		}
+	}
+
 }
 
 
@@ -107,18 +222,18 @@ void GameScene::CheckBoundary() {
 	for (int i = 0; i < getGameObjects().size(); i++) {
 		//SI SE PASA EN LA X POR LA DERECHA
 		if (getGameObjects()[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX()) {
-			getGameObjects()[i]->SetPos(Vector3D(-11.0, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
+			getGameObjects()[i]->SetPos(Vector3D(0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 		//SI SE PASA EN LA X POR LA IZQUIERDA
-		if (getGameObjects()[i]->GetPos().GetCoordinateX() < -11.0) {
+		if (getGameObjects()[i]->GetPos().GetCoordinateX() < 0) {
 			getGameObjects()[i]->SetPos(Vector3D(boundary.GetCoordinateX() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 		//SI SE PASA EN LA Y POR ARRIBA
 		if (getGameObjects()[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY()) {
-			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), -6.5, getGameObjects()[i]->GetPos().GetCoordinateZ()));
+			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 		//SI SE PASA EN LA Y POR ABAJO
-		if (getGameObjects()[i]->GetPos().GetCoordinateY() < -6.5) {
+		if (getGameObjects()[i]->GetPos().GetCoordinateY() < 0) {
 			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), boundary.GetCoordinateY() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 	}
@@ -127,6 +242,14 @@ void GameScene::CheckBoundary() {
 void GameScene::ProcessKeyPressed(unsigned char key, int px, int py) {
 	this->player->ProcessKeyPressed(key, px, py);
 	cout << "Tecla pulsada: " << key << endl;
+}
+
+void GameScene::CleanScene() 
+{
+	//Quitamos primero el jugador antes de limpiar el vector de objetos, ya que es compartido con todos las escenas
+	DeleteGameObject(this->player->GetPlayerModel());
+
+	RestoreScene();
 }
 
 void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
@@ -140,24 +263,60 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 
 	if (key == 'o') {
 		//como si hubiese ganado
-		this->restoreScene();
+		CleanScene();
 		sceneManager->SetNextScene();
 	}
 	if (key == 'p') {
 
 		//como si hubiese perdido
-		this->restoreScene();
+		CleanScene();
 		sceneManager->SetGameOverScene();
 	}
 
-	if (key == '4') {
-		player->Shoot();
-		AddGameObject(player->GetBullet());
+	if (key == '5') {
+		Bullet* bullet = player->Shoot();
+		//Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		bullets.push_back(bullet);
+
+		//Añadimos a la lista de Objetos para su pintado
+		AddGameObject(bullet);
 	}
 
+	//Simulamos Puntuación
+	if (key == '7') {
+		IncScorePlayer(1);
+	}
+
+	//Simulamos perdida de vida
+	if (key == '9') {
+		//DecLifePlayer();
+		kk = true;
+	}
 	
 	this->player->ProcessKeyUp(key, px, py);
 	cout << "Tecla soltada: " << key << endl;
+}
+
+void GameScene::IncScorePlayer(int inc) 
+{
+	player->SetScore(player->GetScore() + inc);
+	this->textScore->setText(to_string((this->player->GetScore())));
+}
+
+void GameScene::DecLifePlayer()
+{
+	int vidas = player->GetLifesNum();
+	vidas--;
+	if (vidas == -1)
+	{
+		CleanScene();
+		sceneManager->SetGameOverScene();
+	}
+	else
+	{
+		player->SetLifesNum(vidas);
+		this->textLifes->setText("VIDAS: " + to_string(this->player->GetLifesNum()));
+	}
 }
 
 void GameScene::ProcessMouseMovement(int x, int y) {
@@ -172,27 +331,90 @@ void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
 
 void GameScene::Update(const float& time) {
     player->UpdatePlayer();
-	player->UpdateBullet();
-
-	if (player->GetDeleteBullet()) {
-		deleteObject(player->GetBullet());
-	}
-
-	this->textScore->setText(to_string((this->player->GetScore())));
 
 	for (int i = 0; i < getGameObjects().size(); i++) {
 		getGameObjects()[i]->Update(time);
 		Collisions();
 	}
+
+	//Eliminamos las balas por tiempo
+	for (int i = 0; i < bullets.size(); i++) {
+		Bullet* bullet = bullets[i];
+		if (bullets[i]->EstaEliminado())
+		{
+			DeleteGameObject(bullets[i]);
+			bullets.erase(std::remove(bullets.begin(), bullets.end(), bullet), bullets.end());
+			//sólo borramos una cada vez
+			break;
+		}
+	}
+
 	CheckBoundary();
+
+	CheckBulletsCollisions();
+	if (asteroids.size() == 0)
+	{
+		//Hemos destruido todos los asteroids
+		player->SetLifesNum(player->GetLifesNum() + 1);
+		CleanScene();
+		sceneManager->SetNextScene();
+	}
+	else 
+	{
+		CheckPlayerCollisions();
+	}
+
 }
 
 void GameScene::Init() {
-	setCamera(Camera(Vector3D(4.0, 3.0, 12.0)));
-	Create();
 
-	//TODO: Actualizar los datos iniciales del player ... coordenadas
-	//TODO: arreglar la creación devarios asteroides. 
+	//Inicializamos el player
+	player->GetPlayerModel()->SetPos(Vector3D(boundary.GetCoordinateX() / 2, boundary.GetCoordinateY() / 2, 1));
+	player->GetPlayerModel()->SetOrientation(Vector3D(0, 0, 0));
+	player->GetPlayerModel()->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
+	player->GetPlayerModel()->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+	AddGameObject(player->GetPlayerModel());
+
+
+	//setCamera(Camera(Vector3D(0, 0, 12.0)));
+
+	//setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.8));
+	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2.0, this->boundary.GetCoordinateY() / 2.0, this->boundary.GetCoordinateZ()));
+
+	//Creamos los textos
+	Text* textLevel = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1, 2.0), Color(255.0, 255.0, 255.0), "LEVEL");
+	textLevel->setText("LEVEL " + to_string(gameLevel));
+	this->textScore = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1.5, 2.0), Color(255.0, 255.0, 255.0), to_string((this->player->GetScore())));
+	this->textLifes = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 2, 2.0), Color(255.0, 255.0, 255.0), "VIDAS: " + to_string((this->player->GetLifesNum())));
+	AddGameObject(this->textLifes);
+	AddGameObject(this->textScore);
+	AddGameObject(textLevel);
+
+	CreateAsteroids();
+
+	Cube* point1 = new Cube();
+	point1->SetColor(Color(0, 0, 1));
+	point1->SetPos(Vector3D(0, 0, 1));
+	point1->SetSize(0.2);
+	this->AddGameObject(point1);
+
+	Cube* point2 = new Cube();
+	point2->SetColor(Color(0, 0, 1));
+	point2->SetPos(Vector3D(this->boundary.GetCoordinateX(), 0, 1));
+	point2->SetSize(0.2);
+	this->AddGameObject(point2);
+
+	Cube* point3 = new Cube();
+	point3->SetColor(Color(0, 0, 1));
+	point3->SetPos(Vector3D(this->boundary.GetCoordinateX(), this->boundary.GetCoordinateY(), 1));
+	point3->SetSize(0.2);
+	this->AddGameObject(point3);
+
+	Cube* point4 = new Cube();
+	point4->SetColor(Color(0, 0, 1));
+	point4->SetPos(Vector3D(0, this->boundary.GetCoordinateY(), 1));
+	point4->SetSize(0.2);
+	this->AddGameObject(point4);
 }
 
 void GameScene::Render() {
@@ -237,18 +459,3 @@ bool GameScene::Collisions() {
 	}
 }
 
-void GameScene::deleteObject(Solid* object) {
-	player->SetDeleteBullet(false);
-	//it se igualara con el puntero que coincida con el buscado
-	vector<Solid*>::iterator it = find(this->getGameObjects().begin(), this->getGameObjects().end(), object);
-	//elimina de la lista el objeto encontrado
-	if (it != getGameObjects().end()) {
-		getGameObjects().erase(it);
-		//elimina el puntero;
-		delete* it;
-	}
-	else {
-		cout << "No se puede eliminar el objeto." << endl;
-	}
-
-}

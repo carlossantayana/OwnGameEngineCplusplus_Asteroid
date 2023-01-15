@@ -4,15 +4,15 @@
 
 class Asteroid {
 private:
-
 	Model* model;
-	//float radio;
-	bool separado;
-
+	int score;
 public:
 
-	Asteroid(Model* model) : model(model) {}
+	Asteroid(Model* model, int score) : model(model), score(score){}
 	void setModel(Model* modelToSet) { model = modelToSet; }
+
+	inline int getScore() const { return this->score; }
+	inline Model* getModel() const { return this->model; }
 
 };
 

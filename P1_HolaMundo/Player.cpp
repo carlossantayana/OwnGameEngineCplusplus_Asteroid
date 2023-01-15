@@ -3,43 +3,43 @@
 #define M_PI 3.14159
 
 void Player::ProcessKeyPressed(unsigned char key, int px, int py) {
-	if (key == 'w') {
+	if (key == 'w'|| key == '8') {
 		wPressed = true;
 	}
 
-	if (key == 'a') {
+	if (key == 'a'|| key == '4') {
 		aPressed = true;
 	}
 	
-	if (key == 'd') {
+	if (key == 'd'|| key == '6') {
 		dPressed = true;
 	}
 
-	cout << "Tecla pulsada: " << key << endl;
+	//cout << "Tecla pulsada: " << key << endl;
 }
 
 void Player::ProcessKeyUp(unsigned char key, int px, int py) {
-	if (key == 'w') {
+	if (key == 'w' || key == '8') {
 		wPressed = false;
 	}
 
-	if (key == 'a') {
+	if (key == 'a' || key == '4') {
 		aPressed = false;
 	}
 	
-	if (key == 'd') {
+	if (key == 'd' || key == '6') {
 		dPressed = false;
 	}
 
-	cout << "Tecla soltada: " << key << endl;
+	//cout << "Tecla soltada: " << key << endl;
 }
 
 void Player::ProcessMouseMovement(int x, int y) {
-	cout << "Movimiento del mouse: " << x << ", " << y << endl;
+	//cout << "Movimiento del mouse: " << x << ", " << y << endl;
 }
 
 void Player::ProcessMouseClick(int button, int state, int x, int y) {
-	cout << "Click" << endl;
+	//cout << "Click" << endl;
 }
 
 Vector3D Player::RotateVector(Vector3D vector, float angle)
@@ -89,50 +89,26 @@ void Player::UpdatePlayer(){
 		this->playerModel->SetOrientationSpeed(Vector3D(0, 0, 1));
 		this->playerModel->SetOrientation(this->playerModel->GetOrientation() + this->playerModel->GetOrientationSpeed() * this->rotationSpeed);
 		this->playerModel->SetOrientationSpeed(Vector3D(0, 0, 0));
-		cout << "Angulo rotado en X: " << this->playerModel->GetOrientation().GetCoordinateX() << " Angulo rotado en Y: " << this->playerModel->GetOrientation().GetCoordinateY() << " Angulo rotado en Z: " << this->playerModel->GetOrientation().GetCoordinateZ() << endl;
+		//cout << "Angulo rotado en X: " << this->playerModel->GetOrientation().GetCoordinateX() << " Angulo rotado en Y: " << this->playerModel->GetOrientation().GetCoordinateY() << " Angulo rotado en Z: " << this->playerModel->GetOrientation().GetCoordinateZ() << endl;
 	}
 
 	if(dPressed){
 		this->playerModel->SetOrientationSpeed(Vector3D(0, 0, -1));
 		this->playerModel->SetOrientation(this->playerModel->GetOrientation() + this->playerModel->GetOrientationSpeed() * this->rotationSpeed);
 		this->playerModel->SetOrientationSpeed(Vector3D(0, 0, 0));
-		cout << "Angulo rotado en X: " << this->playerModel->GetOrientation().GetCoordinateX() << " Angulo rotado en Y: " << this->playerModel->GetOrientation().GetCoordinateY() << " Angulo rotado en Z: " << this->playerModel->GetOrientation().GetCoordinateZ() << endl;
+		//cout << "Angulo rotado en X: " << this->playerModel->GetOrientation().GetCoordinateX() << " Angulo rotado en Y: " << this->playerModel->GetOrientation().GetCoordinateY() << " Angulo rotado en Z: " << this->playerModel->GetOrientation().GetCoordinateZ() << endl;
 	}
 }
 
-void Player::UpdateBullet() {
-	if (shooting) {
-		float x = this->playerModel->GetPos().GetCoordinateX();
-		float incX = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateX() * 0.25;
-		bulletOrientationX = incX;
-		
 
-		float y = this->playerModel->GetPos().GetCoordinateY();
-		float incY = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateY() * 0.25;
-		bulletOrientationY = incY;
 
-		this->bullet->SetPos(Vector3D(x + incX, y + incY, this->playerModel->GetPos().GetCoordinateZ()));
-		shooting = false;
-	}
-	else if (activeBullets > 0) {
-		this->bullet->SetPos(Vector3D(bullet->GetPos().GetCoordinateX() + bulletOrientationX, bullet->GetPos().GetCoordinateY() + bulletOrientationY, this->playerModel->GetPos().GetCoordinateZ()));
-		if (bullet->GetPos().GetCoordinateX() > 18) {
-			deleteBullet = true;
-		}
-	}
-}
+Bullet* Player::Shoot() {
 
-void Player::Shoot() {
-	bullet = new Sphere();
-	bullet->SetColor(Color(255.0, 255.0, 255.0));
-	bullet->SetOrientation(Vector3D(0.0, 0.0, 0.0));
-	bullet->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
-	bullet->SetRadius(0.05);
-	bullet->SetSlacks(12.0);
-	bullet->SetSlices(12.0);
-	bullet->SetSpeed(Vector3D(0.0, 0.0, 0.0));
-	shooting = true;
-	activeBullets++;
+	Bullet* bullet = new Bullet();
+	bullet->SetPos(Vector3D(this->playerModel->GetPos().GetCoordinateX(), this->playerModel->GetPos().GetCoordinateY(), this->playerModel->GetPos().GetCoordinateZ()));
 
-	bullet->SetPos(playerModel->GetPos());
+	Vector3D v = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ());
+	v = v * 0.02;
+	bullet->SetSpeed(v);
+	return bullet;
 }
