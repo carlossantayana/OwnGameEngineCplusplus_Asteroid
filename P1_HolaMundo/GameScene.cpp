@@ -282,17 +282,17 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 	}
 
 	if (key == '5') {
-		//Bullet* bullet = player->Shoot();
+		Bullet* bullet = player->Shoot();
 		////A�adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
-		//bullets.push_back(bullet);
+		bullets.push_back(bullet);
 
 		//A�adimos a la lista de Objetos para su pintado
 		AddGameObject(bullet);
 
-		string file = "..\\Disparo.wav";
+		//string file = "..\\Disparo.wav";
 
-		std::wstring stemp = std::wstring(file.begin(), file.end());
-		LPCWSTR sw = stemp.c_str();
+		//std::wstring stemp = std::wstring(file.begin(), file.end());
+		//LPCWSTR sw = stemp.c_str();
 
 		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
 	}
