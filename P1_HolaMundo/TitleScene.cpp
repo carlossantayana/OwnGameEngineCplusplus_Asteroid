@@ -14,10 +14,6 @@ void TitleScene::Init() {
 	AddGameObject(opcion3);
 	AddGameObject(opcion4);
 
-	//string file = "..\\MenuInicio.wav";
-	//std::wstring stemp = std::wstring(file.begin(), file.end());
-	//LPCWSTR sw = stemp.c_str();
-	//sndPlaySound(sw, SND_ASYNC | SND_FILENAME | SND_LOOP);
 }
 
 void TitleScene::Update(const float& time) {
@@ -27,9 +23,6 @@ void TitleScene::Update(const float& time) {
 /////////ESTE METODO REALIZA EL CAMBIO DE ESCENA PARA PASAR A LA SIGUIENTE ESCENA DE LA LISTA O SALIR DEL JUEGO////
 void TitleScene::ProcessKeyUp(unsigned char key, int px, int py) {
 	if (key == 'p') {
-
-		//Paramos el sonido
-		//sndPlaySound(NULL, SND_FILENAME);
 
 		sceneManager->SetNextScene();
 	}

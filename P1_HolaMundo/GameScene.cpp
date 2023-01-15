@@ -252,21 +252,10 @@ void GameScene::DecLifePlayer()
 	vidas--;
 	if (vidas == 0)
 	{
-
-		//string file = "..\\muerte.wav";
-		//std::wstring stemp = std::wstring(file.begin(), file.end());
-		//LPCWSTR sw = stemp.c_str();
-		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
-
 		sceneManager->SetGameOverScene();
 	}
 	else
 	{
-		//string file = "..\\vida.wav";
-		//std::wstring stemp = std::wstring(file.begin(), file.end());
-		//LPCWSTR sw = stemp.c_str();
-		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
-
 		player->SetLifesNum(vidas);
 		this->textLifes->setText("VIDAS: " + to_string(this->player->GetLifesNum()));
 	}
@@ -289,7 +278,7 @@ void GameScene::Init() {
 	player->GetPlayerModel()->SetSpeed(Vector3D(0.0, 0.0, 0.0));
 	AddGameObject(player->GetPlayerModel());
 
-	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.05));
+	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.2));
 
 	//Creamos los textos
 	Text* textLevel = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1, 2.0), Color(255.0, 255.0, 255.0), "NIVEL");
@@ -302,29 +291,29 @@ void GameScene::Init() {
 
 	CreateAsteroids();
 
-	//Cube* point1 = new Cube();
-	//point1->SetColor(Color(0, 0, 1));
-	//point1->SetPos(Vector3D(0, 0, 1));
-	//point1->SetSize(0.2);
-	//this->AddGameObject(point1);
+	Cube* point1 = new Cube();
+	point1->SetColor(Color(0, 0, 1));
+	point1->SetPos(Vector3D(0, 0, 1));
+	point1->SetSize(0.2);
+	this->AddGameObject(point1);
 
-	//Cube* point2 = new Cube();
-	//point2->SetColor(Color(0, 0, 1));
-	//point2->SetPos(Vector3D(this->boundary.GetCoordinateX(), 0, 1));
-	//point2->SetSize(0.2);
-	//this->AddGameObject(point2);
+	Cube* point2 = new Cube();
+	point2->SetColor(Color(0, 0, 1));
+	point2->SetPos(Vector3D(this->boundary.GetCoordinateX(), 0, 1));
+	point2->SetSize(0.2);
+	this->AddGameObject(point2);
 
-	//Cube* point3 = new Cube();
-	//point3->SetColor(Color(0, 0, 1));
-	//point3->SetPos(Vector3D(this->boundary.GetCoordinateX(), this->boundary.GetCoordinateY(), 1));
-	//point3->SetSize(0.2);
-	//this->AddGameObject(point3);
+	Cube* point3 = new Cube();
+	point3->SetColor(Color(0, 0, 1));
+	point3->SetPos(Vector3D(this->boundary.GetCoordinateX(), this->boundary.GetCoordinateY(), 1));
+	point3->SetSize(0.2);
+	this->AddGameObject(point3);
 
-	//Cube* point4 = new Cube();
-	//point4->SetColor(Color(0, 0, 1));
-	//point4->SetPos(Vector3D(0, this->boundary.GetCoordinateY(), 1));
-	//point4->SetSize(0.2);
-	//this->AddGameObject(point4);
+	Cube* point4 = new Cube();
+	point4->SetColor(Color(0, 0, 1));
+	point4->SetPos(Vector3D(0, this->boundary.GetCoordinateY(), 1));
+	point4->SetSize(0.2);
+	this->AddGameObject(point4);
 }
 
 /////////////////////////////////////////ACTUALIZACIÓN DE LA ESCENA//////////////////////////////////////////////////
@@ -342,7 +331,7 @@ void GameScene::Update(const float& time) {
 		{
 			DeleteGameObject(bullets[i]);
 			bullets.erase(std::remove(bullets.begin(), bullets.end(), bullet), bullets.end());
-			//sólo borramos una cada vez
+			//s�lo borramos una cada vez
 			break;
 		}
 	}
@@ -355,6 +344,7 @@ void GameScene::Update(const float& time) {
 	{
 		//Hemos destruido todos los asteroids
 		player->SetLifesNum(player->GetLifesNum() + 1);
+		//CleanScene();
 		sceneManager->SetNextScene();
 	}
 	else
@@ -370,10 +360,6 @@ void GameScene::Clean()
 	//Quitamos primero el jugador antes de limpiar el vector de objetos, ya que es compartido con todos las escenas
 	DeleteGameObject(this->player->GetPlayerModel());
 
-	//Limpiamos la lista de Asteriodes y Bullets
-	asteroids.clear();
-	bullets.clear();
-
 	RestoreScene();
 }
 
@@ -381,7 +367,7 @@ void GameScene::Clean()
 void GameScene::ProcessKeyPressed(unsigned char key, int px, int py) {
 	this->player->ProcessKeyPressed(key, px, py);
 
-	//cout << "Tecla pulsada: " << key << endl;
+	cout << "Tecla pulsada: " << key << endl;
 }
 
 void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
@@ -393,25 +379,14 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 		return;
 	}
 
-	if (key == '0')
-	{
-		Bullet* bullet = player->Shoot();
-		//Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
-		bullets.push_back(bullet);
-
-		//Añadimos a la lista de Objetos para su pintado
-		AddGameObject(bullet);
-		return;
-	}
-
 	this->player->ProcessKeyUp(key, px, py);
 
-	//cout << "Tecla soltada: " << key << endl;
+	cout << "Tecla soltada: " << key << endl;
 }
 
 void GameScene::ProcessMouseMovement(int x, int y) {
 	this->player->ProcessMouseMovement(x, y);
-	//cout << "Movimiento del mouse: " << x << ", " << y << endl;
+	cout << "Movimiento del mouse: " << x << ", " << y << endl;
 }
 
 void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
@@ -419,11 +394,11 @@ void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
 
 	if (state == 0) {
 		Bullet* bullet = player->Shoot();
-		//Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		//A�adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
 		bullets.push_back(bullet);
 
-		//Añadimos a la lista de Objetos para su pintado
+		//A�adimos a la lista de Objetos para su pintado
 		AddGameObject(bullet);
-		//cout << "Click" << endl;
+		cout << "Click" << endl;
 	}
 }
