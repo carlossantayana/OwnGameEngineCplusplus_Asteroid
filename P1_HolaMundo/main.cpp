@@ -24,7 +24,7 @@ const GLclampf GREEN = 0.05;
 const GLclampf BLUE = 0.05;
 const GLclampf ALPHA = 1.0;
 
-bool fullScreenMode = false;
+bool fullScreenMode = true;
 
 ////////////////////FUNCIONES AUXILIARES////////////////////////
 

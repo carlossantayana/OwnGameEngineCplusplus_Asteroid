@@ -63,7 +63,7 @@ public:
 	inline Vector3D getBoundary() const { return this->boundary; }
 	inline void setBoundary(const Vector3D& boundaryToSet) { this->boundary = boundaryToSet; }
 
-	bool Collisions();
+	void Collisions();
 	void CleanScene();
 };
 

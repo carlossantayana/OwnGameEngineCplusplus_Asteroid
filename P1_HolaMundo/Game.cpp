@@ -49,6 +49,7 @@ void Game::CreatePlayer()
 	naveModel->SetOrientation(Vector3D(0, 0, 0));
 	naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
 	naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+	naveModel->SetHitBoxRadius(0.4);
 
 	loader->clear();
 	this->player = new Player(naveModel, Vector3D(1, 0, 0));
@@ -58,11 +59,11 @@ void Game::Init() {
 	//CREACIÓN DE ESCENAS
 	this->titleScene = new(nothrow) TitleScene(this);
 
-	this->gameOverScene = new(nothrow) GameOverScene(this, "Perdiste");
+	this->gameOverScene = new(nothrow) GameOverScene(this, "¡Perdiste!");
 
-	this->endGameScene = new(nothrow) EndGameScene(this, "Ganaste Paco");
+	this->endGameScene = new(nothrow) EndGameScene(this, "¡Has Ganado!");
 
-	this->pauseScene = new(nothrow) PauseScene(this, "Has pausado el juego Paco");
+	this->pauseScene = new(nothrow) PauseScene(this, "Menu de Pausa.");
 
 	ModelLoader* loader = new ModelLoader();
 
@@ -120,19 +121,27 @@ void Game::SetTitleScene()
 	//Inicializamos la primera Scena
 	this->indexScene = -1;
 	this->activeScene = titleScene;
-	this->player->SetLifesNum(30);
+	this->player->SetLifesNum(3);
 	this->player->SetScore(0);
 	activeScene->Init();
 }
 
 void Game::SetGameOverScene() 
 {
+	this->player->SetSpeed(0);
+	this->player->SetWPressed(false);
+	this->player->SetAPressed(false);
+	this->player->SetDPressed(false);
 	this->activeScene = gameOverScene;
 	activeScene->Init();
 }
 
 void Game::SetNextScene() 
 {
+	this->player->SetSpeed(0);
+	this->player->SetWPressed(false);
+	this->player->SetAPressed(false);
+	this->player->SetDPressed(false);
 	this->indexScene++;
 	if (this->indexScene == this->scenes.size())
 	{

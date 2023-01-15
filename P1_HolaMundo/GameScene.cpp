@@ -26,7 +26,7 @@ Model* GameScene::AsteroidModel1(ModelLoader* loader)
 	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
 	asteroidModel->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
 
-	float radio = 0.2;
+	float radio = 0.4;
 	asteroidModel->SetHitBoxRadius(radio);
 
 	double ang = rand();
@@ -49,7 +49,7 @@ Model* GameScene::AsteroidModel2(ModelLoader* loader)
 	*asteroidModel = loader->getModel();
 	loader->clear();
 
-	float radio = 0.1;
+	float radio = 0.3;
 	asteroidModel->SetHitBoxRadius(radio);
 
 	double x = rand();
@@ -96,7 +96,7 @@ Model* GameScene::AsteroidModel3(ModelLoader* loader)
 	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
 	asteroidModel->SetOrientationSpeed(Vector3D(0.02, 0.11, 0.1));
 
-	float radio = 0.2;
+	float radio = 0.4;
 	asteroidModel->SetHitBoxRadius(radio);
 
 	double ang = rand();
@@ -172,9 +172,10 @@ void GameScene::CheckPlayerCollisions()
 bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
 {
 	//TODO: Falta realizar la verificación
-	if (kk)
+	float sumaRadios = this->player->GetPlayerModel()->GetHitBoxRadius() + asteroid->getModel()->GetHitBoxRadius();
+	float distancia = this->player->GetPlayerModel()->GetPos().distance2D(asteroid->getModel()->GetPos());
+	if (distancia < sumaRadios)
 	{
-		kk = false;
 		return true;
 	}
 	return false;
@@ -184,6 +185,12 @@ bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
 bool GameScene::CheckBulletCollision(Bullet* bullet, Asteroid* asteroid)
 {
 	//TODO: Falta realizar la verificación, poner a tru para simular que siempre le damos a un asteriode
+	float distancia = bullet->GetPos().distance2D(asteroid->getModel()->GetPos());
+	if(distancia<asteroid->getModel()->GetHitBoxRadius())
+	{
+		return true;
+	}
+
 	return false;
 }
 
@@ -274,12 +281,12 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 	}
 
 	if (key == '5') {
-		Bullet* bullet = player->Shoot();
-		//Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
-		bullets.push_back(bullet);
+		//Bullet* bullet = player->Shoot();
+		////Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		//bullets.push_back(bullet);
 
-		//Añadimos a la lista de Objetos para su pintado
-		AddGameObject(bullet);
+		////Añadimos a la lista de Objetos para su pintado
+		//AddGameObject(bullet);
 	}
 
 	//Simulamos Puntuación
@@ -307,7 +314,7 @@ void GameScene::DecLifePlayer()
 {
 	int vidas = player->GetLifesNum();
 	vidas--;
-	if (vidas == -1)
+	if (vidas == 0)
 	{
 		CleanScene();
 		sceneManager->SetGameOverScene();
@@ -326,7 +333,16 @@ void GameScene::ProcessMouseMovement(int x, int y) {
 
 void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
 	this->player->ProcessMouseClick(button, state, x, y);
-	cout << "Click" << endl;
+
+	if (state == 0) {
+		Bullet* bullet = player->Shoot();
+		//Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		bullets.push_back(bullet);
+
+		//Añadimos a la lista de Objetos para su pintado
+		AddGameObject(bullet);
+		cout << "Click" << endl;
+	}
 }
 
 void GameScene::Update(const float& time) {
@@ -352,6 +368,7 @@ void GameScene::Update(const float& time) {
 	CheckBoundary();
 
 	CheckBulletsCollisions();
+
 	if (asteroids.size() == 0)
 	{
 		//Hemos destruido todos los asteroids
@@ -376,9 +393,6 @@ void GameScene::Init() {
 	AddGameObject(player->GetPlayerModel());
 
 
-	//setCamera(Camera(Vector3D(0, 0, 12.0)));
-
-	//setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.8));
 	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2.0, this->boundary.GetCoordinateY() / 2.0, this->boundary.GetCoordinateZ()));
 
 	//Creamos los textos
@@ -426,7 +440,7 @@ void GameScene::Render() {
 }
 
 
-bool GameScene::Collisions() {
+void GameScene::Collisions() {
 	float distancia;
 	float sumaRadios;
 
@@ -450,12 +464,12 @@ bool GameScene::Collisions() {
 
 	//Nave objeto 0 y asteroide el 2
 
-	sumaRadios = 1.43; //ejemplo
-	distancia = getGameObjects()[0]->GetPos().distance2D(getGameObjects()[2]->GetPos());
-	cout << "DISTANCIA ACTUAL:" << distancia << endl;
-	if (distancia < sumaRadios) {
-		cout << "Colision" << endl;
-		return true;
-	}
+	//sumaRadios = 1.43; //ejemplo
+	//distancia = getGameObjects()[0]->GetPos().distance2D(getGameObjects()[2]->GetPos());
+	//cout << "DISTANCIA ACTUAL:" << distancia << endl;
+	//if (distancia < sumaRadios) {
+	//	cout << "Colision" << endl;
+	//	return true;
+	//}
 }
 

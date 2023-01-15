@@ -46,6 +46,18 @@ public:
 	inline void SetLifesNum(int lifesNumToSet) {
 		this->lifesNum = lifesNumToSet;
 	}
+	inline void SetAPressed(bool boolArgument) {
+		this->aPressed = boolArgument;
+	}
+	inline void SetDPressed(bool boolArgument) {
+		this->dPressed = boolArgument;
+	}
+	inline void SetWPressed(bool boolArgument) {
+		this->wPressed = boolArgument;
+	}
+	inline void SetSpeed(float speedArgument) {
+		this->speed = speedArgument;
+	}
 
 	void ProcessKeyPressed(unsigned char key, int px, int py);
 	void ProcessKeyUp(unsigned char key, int px, int py);
