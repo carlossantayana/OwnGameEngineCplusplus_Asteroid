@@ -55,27 +55,22 @@ void Game::CreatePlayer()
 }
 
 void Game::Init() {
-	//CREACIÓN DE ESCENAS
-	this->titleScene = new(nothrow) TitleScene(this);
-
-	this->gameOverScene = new(nothrow) GameOverScene(this, "Perdiste");
-
-	this->endGameScene = new(nothrow) EndGameScene(this, "Ganaste Paco");
-
-	this->pauseScene = new(nothrow) PauseScene(this, "Has pausado el juego Paco");
-
 	ModelLoader* loader = new ModelLoader();
-
 	CreatePlayer();
 
-	//Scene* kk = new(nothrow) InterGameScene(this, this->player, 1);
-	//this->activeScene = kk;
-	//activeScene->Init();
 
+	//CREACIÓN DE ESCENAS COMUNES
+	this->titleScene = new(nothrow) TitleScene(this);
+
+	this->gameOverScene = new(nothrow) GameOverScene(this, player);
+
+	this->endGameScene = new(nothrow) EndGameScene(this, player);
+
+	this->pauseScene = new(nothrow) PauseScene(this);
 
 	for (int lv = 1;lv < 5;lv++) 
 	{
-		Scene* preGameScene1 = new(nothrow) InterGameScene(this, lv,"nivel");
+		Scene* preGameScene1 = new(nothrow) InterGameScene(this, lv, player);
 		Scene* gameScene1 = new(nothrow) GameScene(this, player, lv);
 
 		//AÑADIR LAS ESCENAS AL JUEGO
@@ -83,8 +78,6 @@ void Game::Init() {
 		this->scenes.push_back(gameScene1);
 	}
 
-	//Temporal
-	//SetNextScene();
 	SetTitleScene();
 }
 
@@ -117,6 +110,11 @@ void Game::SetNoPause()
 
 void Game::SetTitleScene() 
 {
+	if (activeScene != NULL)
+	{
+		activeScene->Clean();
+	}
+
 	//Inicializamos la primera Scena
 	this->indexScene = -1;
 	this->activeScene = titleScene;
@@ -127,12 +125,22 @@ void Game::SetTitleScene()
 
 void Game::SetGameOverScene() 
 {
+	if (activeScene != NULL)
+	{
+		activeScene->Clean();
+	}
+
 	this->activeScene = gameOverScene;
 	activeScene->Init();
 }
 
 void Game::SetNextScene() 
 {
+	if (activeScene != NULL)
+	{
+		activeScene->Clean();
+	}
+
 	this->indexScene++;
 	if (this->indexScene == this->scenes.size())
 	{

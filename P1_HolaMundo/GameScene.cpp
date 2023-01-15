@@ -3,6 +3,7 @@
 #include "Asteroid.h"
 #include <math.h>
 #include <string>
+#include <mmsystem.h>
 
 # define M_PI           3.14159265358979323846
 
@@ -244,7 +245,7 @@ void GameScene::ProcessKeyPressed(unsigned char key, int px, int py) {
 	cout << "Tecla pulsada: " << key << endl;
 }
 
-void GameScene::CleanScene() 
+void GameScene::Clean() 
 {
 	//Quitamos primero el jugador antes de limpiar el vector de objetos, ya que es compartido con todos las escenas
 	DeleteGameObject(this->player->GetPlayerModel());
@@ -263,13 +264,13 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 
 	if (key == 'o') {
 		//como si hubiese ganado
-		CleanScene();
+		//CleanScene();
 		sceneManager->SetNextScene();
 	}
 	if (key == 'p') {
 
 		//como si hubiese perdido
-		CleanScene();
+		//CleanScene();
 		sceneManager->SetGameOverScene();
 	}
 
@@ -280,6 +281,13 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 
 		//Añadimos a la lista de Objetos para su pintado
 		AddGameObject(bullet);
+
+		string file = "..\\Disparo.wav";
+
+		std::wstring stemp = std::wstring(file.begin(), file.end());
+		LPCWSTR sw = stemp.c_str();
+
+		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
 	}
 
 	//Simulamos Puntuación
@@ -309,7 +317,7 @@ void GameScene::DecLifePlayer()
 	vidas--;
 	if (vidas == -1)
 	{
-		CleanScene();
+		//CleanScene();
 		sceneManager->SetGameOverScene();
 	}
 	else
@@ -356,7 +364,7 @@ void GameScene::Update(const float& time) {
 	{
 		//Hemos destruido todos los asteroids
 		player->SetLifesNum(player->GetLifesNum() + 1);
-		CleanScene();
+		//CleanScene();
 		sceneManager->SetNextScene();
 	}
 	else 
@@ -378,12 +386,12 @@ void GameScene::Init() {
 
 	//setCamera(Camera(Vector3D(0, 0, 12.0)));
 
-	//setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.8));
-	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2.0, this->boundary.GetCoordinateY() / 2.0, this->boundary.GetCoordinateZ()));
+	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.2));
+	//setCamera(Vector3D(this->boundary.GetCoordinateX() / 2.0, this->boundary.GetCoordinateY() / 2.0, this->boundary.GetCoordinateZ()));
 
 	//Creamos los textos
-	Text* textLevel = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1, 2.0), Color(255.0, 255.0, 255.0), "LEVEL");
-	textLevel->setText("LEVEL " + to_string(gameLevel));
+	Text* textLevel = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1, 2.0), Color(255.0, 255.0, 255.0), "NIVEL");
+	textLevel->setText("NIVEL " + to_string(gameLevel));
 	this->textScore = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1.5, 2.0), Color(255.0, 255.0, 255.0), to_string((this->player->GetScore())));
 	this->textLifes = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 2, 2.0), Color(255.0, 255.0, 255.0), "VIDAS: " + to_string((this->player->GetLifesNum())));
 	AddGameObject(this->textLifes);
@@ -417,13 +425,13 @@ void GameScene::Init() {
 	this->AddGameObject(point4);
 }
 
-void GameScene::Render() {
-	Scene::Render();
-	
-	for (int i = 0; i < getGameObjects().size(); i++) {
-		this->getGameObjects()[i]->Render();
-	}
-}
+//void GameScene::Render() {
+//	Scene::Render();
+//	
+//	for (int i = 0; i < getGameObjects().size(); i++) {
+//		this->getGameObjects()[i]->Render();
+//	}
+//}
 
 
 bool GameScene::Collisions() {

@@ -26,10 +26,13 @@ public:
 	virtual void Render();
 	virtual void Update(const float& time) = 0;
 	
-	virtual void ProcessKeyPressed(unsigned char key, int px, int py) = 0; //Recoger info de pulsación de teclas
-	virtual void ProcessKeyUp(unsigned char key, int px, int py) = 0;
-	virtual void ProcessMouseMovement(int x, int y) = 0; //Recoger info de movimiento del ratón
-	virtual void ProcessMouseClick(int button, int state, int x, int y)= 0; //Recoger info de pulsación del ratón
+	//Nuevo método para permitir a las escenas limmpiar objetos
+	virtual void Clean() {};
+	
+	virtual void ProcessKeyPressed(unsigned char key, int px, int py) {} //Recoger info de pulsación de teclas
+	virtual void ProcessKeyUp(unsigned char key, int px, int py) {};
+	virtual void ProcessMouseMovement(int x, int y) {}; //Recoger info de movimiento del ratón
+	virtual void ProcessMouseClick(int button, int state, int x, int y) {}; //Recoger info de pulsación del ratón
 
 	void AddGameObject(Solid* gameObject);
 	void DeleteGameObject(Solid* object);

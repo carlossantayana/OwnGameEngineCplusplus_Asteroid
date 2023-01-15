@@ -49,7 +49,7 @@ public:
 #pragma region Scene
 	void Update(const float& time);
 	void Init();
-	void Render();
+	void Clean();
 
 	void ProcessKeyPressed(unsigned char key, int px, int py); //Recoger info de pulsación de teclas
 	void ProcessKeyUp(unsigned char key, int px, int py);
@@ -64,6 +64,6 @@ public:
 	inline void setBoundary(const Vector3D& boundaryToSet) { this->boundary = boundaryToSet; }
 
 	bool Collisions();
-	void CleanScene();
+	//void CleanScene();
 };
 

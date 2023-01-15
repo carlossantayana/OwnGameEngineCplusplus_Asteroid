@@ -2,6 +2,10 @@
 
 void Scene::Render() {
 	this->camera.Render();
+
+	for (int i = 0; i < getGameObjects().size(); i++) {
+		this->getGameObjects()[i]->Render();
+	}
 }
 
 void Scene::AddGameObject(Solid* gameObject) {
