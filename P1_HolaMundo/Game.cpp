@@ -49,6 +49,7 @@ void Game::CreatePlayer()
 	naveModel->SetOrientation(Vector3D(0, 0, 0));
 	naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
 	naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+	naveModel->SetHitBoxRadius(0.4);
 
 	loader->clear();
 	this->player = new Player(naveModel, Vector3D(1, 0, 0));
@@ -59,7 +60,7 @@ void Game::Init() {
 	CreatePlayer();
 
 
-	//CREACIÓN DE ESCENAS COMUNES
+	//CREACIï¿½N DE ESCENAS COMUNES
 	this->titleScene = new(nothrow) TitleScene(this);
 
 	this->gameOverScene = new(nothrow) GameOverScene(this, player);
@@ -73,7 +74,7 @@ void Game::Init() {
 		Scene* preGameScene1 = new(nothrow) InterGameScene(this, lv, player);
 		Scene* gameScene1 = new(nothrow) GameScene(this, player, lv);
 
-		//AÑADIR LAS ESCENAS AL JUEGO
+		//Aï¿½ADIR LAS ESCENAS AL JUEGO
 		this->scenes.push_back(preGameScene1);
 		this->scenes.push_back(gameScene1);
 	}
@@ -118,7 +119,7 @@ void Game::SetTitleScene()
 	//Inicializamos la primera Scena
 	this->indexScene = -1;
 	this->activeScene = titleScene;
-	this->player->SetLifesNum(30);
+	this->player->SetLifesNum(3);
 	this->player->SetScore(0);
 	activeScene->Init();
 }
@@ -130,6 +131,10 @@ void Game::SetGameOverScene()
 		activeScene->Clean();
 	}
 
+	this->player->SetSpeed(0);
+	this->player->SetWPressed(false);
+	this->player->SetAPressed(false);
+	this->player->SetDPressed(false);
 	this->activeScene = gameOverScene;
 	activeScene->Init();
 }
@@ -141,6 +146,10 @@ void Game::SetNextScene()
 		activeScene->Clean();
 	}
 
+	this->player->SetSpeed(0);
+	this->player->SetWPressed(false);
+	this->player->SetAPressed(false);
+	this->player->SetDPressed(false);
 	this->indexScene++;
 	if (this->indexScene == this->scenes.size())
 	{

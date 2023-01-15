@@ -16,7 +16,7 @@ private:
 	//agregado
 
 public:
-	Solid(Vector3D posArgument = Vector3D(),/*float hitBoxRadiusArgument = 0.0,*/ Color colorArgument = Color(), Vector3D orientationArgument = Vector3D(), Vector3D orientationSpeedArgument = Vector3D(), Vector3D speedArgument = Vector3D()) :pos(posArgument), color(colorArgument), orientation(orientationArgument), orientationSpeed(orientationSpeedArgument), speed(speedArgument) { this->isTransparent = false; };
+	Solid(Vector3D posArgument = Vector3D(), Color colorArgument = Color(), Vector3D orientationArgument = Vector3D(), Vector3D orientationSpeedArgument = Vector3D(), Vector3D speedArgument = Vector3D()) :pos(posArgument), color(colorArgument), orientation(orientationArgument), orientationSpeed(orientationSpeedArgument), speed(speedArgument) { hitBoxRadius = 0.0; };
 
 	//Getters
 	inline Vector3D GetPos() const { return this->pos; }
@@ -31,7 +31,7 @@ public:
 	
 	//Setters
 	inline void SetPos(const Vector3D& posToSet) { this->pos = posToSet; }
-	inline void SetHitBoxRadius(float& const hitBoxRadiusToSet) { hitBoxRadius = hitBoxRadiusToSet; }
+	inline void SetHitBoxRadius(const float& hitBoxRadiusToSet) { hitBoxRadius = hitBoxRadiusToSet; }
 	inline void SetColor(const Color& colorToSet) { this->color = colorToSet; }
 	inline void SetOrientation(const Vector3D& orientationToSet) { this->orientation = orientationToSet; }
 	inline void SetOrientationSpeed(const Vector3D& orientationSpeedToSet) { this->orientationSpeed = orientationSpeedToSet; }

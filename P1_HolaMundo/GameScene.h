@@ -27,11 +27,11 @@ private:
 	void CreateAsteroids();
 	void CheckBoundary();
 	
-	//Chequeamos la intersección de las bullets con los enemigos
+	//Chequeamos la intersecciï¿½n de las bullets con los enemigos
 	void CheckBulletsCollisions();
 	bool CheckBulletCollision(Bullet*, Asteroid*);
 
-	//Chequeamos la intersección del juagador con los enemigos
+	//Chequeamos la intersecciï¿½n del juagador con los enemigos
 	void CheckPlayerCollisions();
 	bool CheckPlayerCollision(Asteroid* asteroid);
 
@@ -51,10 +51,10 @@ public:
 	void Init();
 	void Clean();
 
-	void ProcessKeyPressed(unsigned char key, int px, int py); //Recoger info de pulsación de teclas
+	void ProcessKeyPressed(unsigned char key, int px, int py); //Recoger info de pulsaciï¿½n de teclas
 	void ProcessKeyUp(unsigned char key, int px, int py);
-	void ProcessMouseMovement(int x, int y); //Recoger info de movimiento del ratón
-	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón
+	void ProcessMouseMovement(int x, int y); //Recoger info de movimiento del ratï¿½n
+	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsaciï¿½n del ratï¿½n
 #pragma endregion
 
 

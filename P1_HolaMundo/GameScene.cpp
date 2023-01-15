@@ -27,7 +27,7 @@ Model* GameScene::AsteroidModel1(ModelLoader* loader)
 	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
 	asteroidModel->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
 
-	float radio = 0.2;
+	float radio = 0.4;
 	asteroidModel->SetHitBoxRadius(radio);
 
 	double ang = rand();
@@ -50,7 +50,7 @@ Model* GameScene::AsteroidModel2(ModelLoader* loader)
 	*asteroidModel = loader->getModel();
 	loader->clear();
 
-	float radio = 0.1;
+	float radio = 0.3;
 	asteroidModel->SetHitBoxRadius(radio);
 
 	double x = rand();
@@ -97,7 +97,7 @@ Model* GameScene::AsteroidModel3(ModelLoader* loader)
 	asteroidModel->SetOrientation(Vector3D(rand(), rand(), rand()));
 	asteroidModel->SetOrientationSpeed(Vector3D(0.02, 0.11, 0.1));
 
-	float radio = 0.2;
+	float radio = 0.4;
 	asteroidModel->SetHitBoxRadius(radio);
 
 	double ang = rand();
@@ -116,7 +116,7 @@ Model* GameScene::AsteroidModel3(ModelLoader* loader)
 
 void GameScene::CreateAsteroids()
 {
-	//Inicializamos números aleatorios
+	//Inicializamos nï¿½meros aleatorios
 	std::srand(std::time(nullptr));
 
 
@@ -157,7 +157,7 @@ void GameScene::CheckPlayerCollisions()
 		if (CheckPlayerCollision(asteroid))
 		{
 			//Eliminamos asteroid
-			//Quitamos del vector de visualización
+			//Quitamos del vector de visualizaciï¿½n
 			DeleteGameObject(asteroid->getModel());
 			//Quitamos del vector de asteroids  
 			asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
@@ -172,10 +172,11 @@ void GameScene::CheckPlayerCollisions()
 }
 bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
 {
-	//TODO: Falta realizar la verificación
-	if (kk)
+	//TODO: Falta realizar la verificaciï¿½n
+	float sumaRadios = this->player->GetPlayerModel()->GetHitBoxRadius() + asteroid->getModel()->GetHitBoxRadius();
+	float distancia = this->player->GetPlayerModel()->GetPos().distance2D(asteroid->getModel()->GetPos());
+	if (distancia < sumaRadios)
 	{
-		kk = false;
 		return true;
 	}
 	return false;
@@ -184,7 +185,13 @@ bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
 
 bool GameScene::CheckBulletCollision(Bullet* bullet, Asteroid* asteroid)
 {
-	//TODO: Falta realizar la verificación, poner a tru para simular que siempre le damos a un asteriode
+	//TODO: Falta realizar la verificaciï¿½n, poner a tru para simular que siempre le damos a un asteriode
+	float distancia = bullet->GetPos().distance2D(asteroid->getModel()->GetPos());
+	if(distancia<asteroid->getModel()->GetHitBoxRadius())
+	{
+		return true;
+	}
+
 	return false;
 }
 
@@ -205,7 +212,7 @@ void GameScene::CheckBulletsCollisions()
 				bullet->Destruir();
 
 				//Eliminamos asteroid
-				//Quitamos del vector de visualización
+				//Quitamos del vector de visualizaciï¿½n
 				DeleteGameObject(asteroid->getModel());
 				//Quitamos del vector de asteroids  
 				asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
@@ -275,11 +282,11 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 	}
 
 	if (key == '5') {
-		Bullet* bullet = player->Shoot();
-		//Añadimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
-		bullets.push_back(bullet);
+		//Bullet* bullet = player->Shoot();
+		////Aï¿½adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		//bullets.push_back(bullet);
 
-		//Añadimos a la lista de Objetos para su pintado
+		//Aï¿½adimos a la lista de Objetos para su pintado
 		AddGameObject(bullet);
 
 		string file = "..\\Disparo.wav";
@@ -290,7 +297,7 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
 	}
 
-	//Simulamos Puntuación
+	//Simulamos Puntuaciï¿½n
 	if (key == '7') {
 		IncScorePlayer(1);
 	}
@@ -315,7 +322,7 @@ void GameScene::DecLifePlayer()
 {
 	int vidas = player->GetLifesNum();
 	vidas--;
-	if (vidas == -1)
+	if (vidas == 0)
 	{
 		//CleanScene();
 		sceneManager->SetGameOverScene();
@@ -334,7 +341,16 @@ void GameScene::ProcessMouseMovement(int x, int y) {
 
 void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
 	this->player->ProcessMouseClick(button, state, x, y);
-	cout << "Click" << endl;
+
+	if (state == 0) {
+		Bullet* bullet = player->Shoot();
+		//Aï¿½adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		bullets.push_back(bullet);
+
+		//Aï¿½adimos a la lista de Objetos para su pintado
+		AddGameObject(bullet);
+		cout << "Click" << endl;
+	}
 }
 
 void GameScene::Update(const float& time) {
@@ -352,7 +368,7 @@ void GameScene::Update(const float& time) {
 		{
 			DeleteGameObject(bullets[i]);
 			bullets.erase(std::remove(bullets.begin(), bullets.end(), bullet), bullets.end());
-			//sólo borramos una cada vez
+			//sï¿½lo borramos una cada vez
 			break;
 		}
 	}
@@ -360,6 +376,7 @@ void GameScene::Update(const float& time) {
 	CheckBoundary();
 
 	CheckBulletsCollisions();
+
 	if (asteroids.size() == 0)
 	{
 		//Hemos destruido todos los asteroids
@@ -434,7 +451,7 @@ void GameScene::Init() {
 //}
 
 
-bool GameScene::Collisions() {
+void GameScene::Collisions() {
 	float distancia;
 	float sumaRadios;
 
@@ -458,12 +475,12 @@ bool GameScene::Collisions() {
 
 	//Nave objeto 0 y asteroide el 2
 
-	sumaRadios = 1.43; //ejemplo
-	distancia = getGameObjects()[0]->GetPos().distance2D(getGameObjects()[2]->GetPos());
-	cout << "DISTANCIA ACTUAL:" << distancia << endl;
-	if (distancia < sumaRadios) {
-		cout << "Colision" << endl;
-		return true;
-	}
+	//sumaRadios = 1.43; //ejemplo
+	//distancia = getGameObjects()[0]->GetPos().distance2D(getGameObjects()[2]->GetPos());
+	//cout << "DISTANCIA ACTUAL:" << distancia << endl;
+	//if (distancia < sumaRadios) {
+	//	cout << "Colision" << endl;
+	//	return true;
+	//}
 }
 
