@@ -6,26 +6,34 @@
 class Triangle
 {
 private:
-	//Atributos
+	//Atributos de un triángulo
+	//3 vértices
 	Vector3D vertex1;
 	Vector3D vertex2;
 	Vector3D vertex3;
 
+	//Una normal por vértice
 	Vector3D normal1;
 	Vector3D normal2;
 	Vector3D normal3;
 
+	//Un color por vértice
 	Color color1;
 	Color color2;
 	Color color3;
 
 public:
+	//Constructor de triángulos
 	Triangle(Vector3D vertex1 = Vector3D(), Vector3D vertex2 = Vector3D(), Vector3D vertex3 = Vector3D(), 
 		Vector3D normal1 = Vector3D(),  Vector3D normal2 = Vector3D(), 
 		Vector3D normal3 = Vector3D(), Color color1 = Color(), Color color2 = Color(), Color color3 = Color()) :
 	    vertex1(vertex1), vertex2(vertex2), vertex3(vertex3), 
 		normal1(normal1), normal2(normal2), normal3(normal3), 
-		color1(color1), color2(color2), color3(color3) {}
+		color1(color1), color2(color2), color3(color3) 
+	{}
+
+	//Método de renderizado de triángulos
+	void Render();
 
 	//Getters
 	inline Vector3D getVertex1() { return vertex1; }
@@ -52,7 +60,5 @@ public:
 	inline void setColor1(Color color1ToSet) { color1 = color1ToSet; }
 	inline void setColor2(Color color2ToSet) { color2 = color2ToSet; }
 	inline void setColor3(Color color3ToSet) { color3 = color3ToSet; }
-
-	void Render();
 };
 

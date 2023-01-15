@@ -1,19 +1,12 @@
 #include "InterGameScene.h"
 
+//ESTE METODO REALIZA EL CAMBIO DE ESCENA PARA PASAR A LA SIGUIENTE ESCENA DE LA LISTA
 void InterGameScene::Finalizar() 
 {
-	//el primer game
 	sceneManager->SetNextScene();
 }
 
-void InterGameScene::ProcessKeyUp(unsigned char key, int px, int py) {
-	Finalizar();
-}
-
-void InterGameScene::ProcessMouseClick(int button, int state, int x, int y) {
-	Finalizar();
-}
-
+////////////////////////////////////INICIALIZA LA ESCENA Y LOS OBJETOS QUE TENDRÁ///////////////////////////////////////////////
 void InterGameScene::Init() {
 	setCamera(Camera(Vector3D(0, 0, 12.0)));
 
@@ -29,3 +22,13 @@ void InterGameScene::Init() {
 void InterGameScene::Update(const float& time) {
 }
 
+//////////////////////GESTIÓN DE EVENTOS DE TECLADO Y RATÓN PARA LAS ESCENAS ENTRE NIVELES////////////////////////////////
+//METODO QUE PROCESA EL TECLADO PARA LLAMAR AL CAMBIO DE ESCENA
+void InterGameScene::ProcessKeyUp(unsigned char key, int px, int py) {
+	Finalizar();
+}
+
+//METODO QUE PROCESA EL MOUSE PARA LLAMAR AL CAMBIO DE ESCENA
+void InterGameScene::ProcessMouseClick(int button, int state, int x, int y) {
+	Finalizar();
+}

@@ -5,16 +5,21 @@
 
 class GameOverScene : public Scene {
 private:
+	//Atributos de la clase GameOverScene
 	Player* player;
+
+	//MÉTODO PRIVADO QUE GESTIONA LA ESCENA PERDER EL JUEGO
 	void Finalizar();
 
 public:
+	//Constructor de la clase GameOverScene
 	GameOverScene(SceneManager* scMgr, Player* player):Scene(scMgr), player(player){};
 
-#pragma region Scene
+	//MÉTODOS DE GESTIÓN DE LA INICIALIZACIÓN Y ACTUALIZACIÓN DE LA ESCENA
 	void Init();
-	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón
 	void Update(const float& time);
+
+	//MÉTODOS DE PROCESAMIENTO DE TECLAS
+	void ProcessMouseClick(int button, int state, int x, int y); //Recoger info de pulsación del ratón
 	void ProcessKeyUp(unsigned char key, int px, int py); //Recoger info de pulsación de teclas
-#pragma endregion
 };

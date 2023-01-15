@@ -4,10 +4,13 @@
 class Color
 {
 private:
+	//Atributos del color
 	float redComponent;
 	float greenComponent;
 	float blueComponent;
+
 public:
+	//Constructores
 	Color() : redComponent(0.0), greenComponent(0.0), blueComponent(0.0) {} //Constructor por defecto
 	Color(float r, float g, float b) : redComponent(r), greenComponent(g), blueComponent(b) {} //Constructor
 

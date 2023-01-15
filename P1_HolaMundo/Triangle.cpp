@@ -1,5 +1,6 @@
 #include "Triangle.h"
 
+//Implementación de renderizado de triángulos
 void Triangle::Render() {
 	glBegin(GL_TRIANGLES);
 	//vértice 1

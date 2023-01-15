@@ -4,6 +4,7 @@
 class Solid
 {
 private:
+	//ATRIBUTOS DE UN CUERPO SOLIDO
 	Vector3D pos;
 	Color color;
 	Vector3D orientation;
@@ -11,11 +12,11 @@ private:
 	Vector3D speed;
 	float hitBoxRadius;
 
-	//agregado
+	//quitar más tarde
 	bool isTransparent;
-	//agregado
 
 public:
+	//Constructor de sólidos
 	Solid(Vector3D posArgument = Vector3D(), Color colorArgument = Color(), Vector3D orientationArgument = Vector3D(), Vector3D orientationSpeedArgument = Vector3D(), Vector3D speedArgument = Vector3D()) :pos(posArgument), color(colorArgument), orientation(orientationArgument), orientationSpeed(orientationSpeedArgument), speed(speedArgument) { hitBoxRadius = 0.0; };
 
 	//Getters
@@ -25,9 +26,9 @@ public:
 	inline Vector3D GetOrientation() const { return this->orientation; }
 	inline Vector3D GetOrientationSpeed() const { return this->orientationSpeed; }
 	inline Vector3D GetSpeed() const { return this->speed; }
-	//agregado
+
+	//quitar más tarde
 	inline bool GetIsTransparent() const { return this->isTransparent; }
-	//agregado
 	
 	//Setters
 	inline void SetPos(const Vector3D& posToSet) { this->pos = posToSet; }
@@ -36,11 +37,11 @@ public:
 	inline void SetOrientation(const Vector3D& orientationToSet) { this->orientation = orientationToSet; }
 	inline void SetOrientationSpeed(const Vector3D& orientationSpeedToSet) { this->orientationSpeed = orientationSpeedToSet; }
 	inline void SetSpeed(const Vector3D speedArgument) { this->speed = speedArgument; }
-	//agregado
-	inline void SetIsTransparent(const bool& isTransparentToSet) { this->isTransparent = isTransparentToSet; }
-	//agregado
 
-	//Metodos
+	//quitar más tarde
+	inline void SetIsTransparent(const bool& isTransparentToSet) { this->isTransparent = isTransparentToSet; }
+
+	//Métodos de renderizado y actualización de sólidos
 	virtual void Render() = 0;
 	virtual void Update(const float& time);
 };

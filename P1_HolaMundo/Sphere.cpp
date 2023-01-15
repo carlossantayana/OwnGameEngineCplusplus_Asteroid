@@ -1,5 +1,6 @@
 #include "Sphere.h"
 
+//Implementación del método de renderizado de la esfera
 void Sphere::Render() {
 	glPushMatrix();
 	glTranslatef(this->GetPos().GetCoordinateX(), this->GetPos().GetCoordinateY(), this->GetPos().GetCoordinateZ());

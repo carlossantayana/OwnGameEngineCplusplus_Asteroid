@@ -133,7 +133,6 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="Cube.cpp" />
-    <ClCompile Include="Cylinder.cpp" />
     <ClCompile Include="EndGameScene.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameOverScene.cpp" />
@@ -142,17 +141,14 @@
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="ModelLoader.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Cuboid.cpp" />
     <ClCompile Include="PauseScene.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Solid.cpp" />
     <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="Teapot.cpp" />
     <ClCompile Include="Text.cpp" />
     <ClCompile Include="TitleScene.cpp" />
-    <ClCompile Include="Torus.cpp" />
     <ClCompile Include="Triangle.cpp" />
     <ClCompile Include="Vector3D.cpp" />
   </ItemGroup>
@@ -165,10 +161,8 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="Color.h" />
     <ClInclude Include="Cube.h" />
-    <ClInclude Include="Cylinder.h" />
     <ClInclude Include="EndGameScene.h" />
     <ClInclude Include="Game.h" />
-    <ClInclude Include="Cuboid.h" />
     <ClInclude Include="GameOverScene.h" />
     <ClInclude Include="GameScene.h" />
     <ClInclude Include="InterGameScene.h" />
@@ -180,10 +174,8 @@
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Solid.h" />
     <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Teapot.h" />
     <ClInclude Include="Text.h" />
     <ClInclude Include="TitleScene.h" />
-    <ClInclude Include="Torus.h" />
     <ClInclude Include="Triangle.h" />
     <ClInclude Include="Vector3D.h" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 #include "Camera.h"
 #include <GL/glut.h>
 
+//Implementación del renderizado de la cámara
 void Camera::Render() 
 {
 	glTranslatef(-1 * this->GetPos().GetCoordinateX(), -1 * this->GetPos().GetCoordinateY(), -1 * this->GetPos().GetCoordinateZ());

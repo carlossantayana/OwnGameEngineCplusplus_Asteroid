@@ -8,7 +8,7 @@ using namespace std;
 
 class ModelLoader{
 private:
-	//Atributos
+	//Atributos para llevar a cabo la carga de un modelo 3D desde un archivo.obj
 	float scale;
 
 	Model model;

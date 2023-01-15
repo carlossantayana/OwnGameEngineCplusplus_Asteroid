@@ -5,8 +5,106 @@
 #include <string>
 #include <mmsystem.h>
 
-# define M_PI           3.14159265358979323846
+# define M_PI 3.14159265358979323846
 
+///////////////////////////////////CONTROL DE LÍMITES DEL ESCENARIO DEL JUEGO////////////////////////////////////////////////////
+void GameScene::CheckBoundary() {
+	for (int i = 0; i < getGameObjects().size(); i++) {
+		//SI SE PASA EN LA X POR LA DERECHA
+		if (getGameObjects()[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX()) {
+			getGameObjects()[i]->SetPos(Vector3D(0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
+		}
+		//SI SE PASA EN LA X POR LA IZQUIERDA
+		if (getGameObjects()[i]->GetPos().GetCoordinateX() < 0) {
+			getGameObjects()[i]->SetPos(Vector3D(boundary.GetCoordinateX() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
+		}
+		//SI SE PASA EN LA Y POR ARRIBA
+		if (getGameObjects()[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY()) {
+			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
+		}
+		//SI SE PASA EN LA Y POR ABAJO
+		if (getGameObjects()[i]->GetPos().GetCoordinateY() < 0) {
+			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), boundary.GetCoordinateY() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
+		}
+	}
+}
+
+///////////////////////////////////CONTROL DE COLISIONES BALA - ASTEROIDE////////////////////////////////////////////////////
+void GameScene::CheckBulletsCollisions()
+{
+	for (int b = 0; b < bullets.size(); b++)
+	{
+		Bullet* bullet = bullets[b];
+
+		for (int a = 0; a < asteroids.size(); a++)
+		{
+			Asteroid* asteroid = asteroids[a];
+			if (CheckBulletCollision(bullet, asteroid))
+			{
+				IncScorePlayer(asteroid->getScore());
+				//Eliminamos bullet
+				bullet->Destruir();
+
+				//Eliminamos asteroid
+				//Quitamos del vector de visualizaci�n
+				DeleteGameObject(asteroid->getModel());
+				//Quitamos del vector de asteroids  
+				asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
+				//ELiminamos el objeto
+				delete asteroid;
+				break;
+			}
+		}
+	}
+
+}
+
+bool GameScene::CheckBulletCollision(Bullet* bullet, Asteroid* asteroid)
+{
+	float distancia = bullet->GetPos().distance2D(asteroid->getModel()->GetPos());
+	if (distancia < asteroid->getModel()->GetHitBoxRadius())
+	{
+		return true;
+	}
+
+	return false;
+}
+
+///////////////////////////////////CONTROL DE COLISIONES JUGADOR - ASTEROIDE////////////////////////////////////////////////////
+void GameScene::CheckPlayerCollisions()
+{
+	for (int a = 0; a < asteroids.size(); a++)
+	{
+		Asteroid* asteroid = asteroids[a];
+		if (CheckPlayerCollision(asteroid))
+		{
+			//Eliminamos asteroid
+			//Quitamos del vector de visualizaci�n
+			DeleteGameObject(asteroid->getModel());
+			//Quitamos del vector de asteroids  
+			asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
+			//ELiminamos el objeto
+			delete asteroid;
+
+			DecLifePlayer();
+
+			break;
+		}
+	}
+}
+bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
+{
+	float sumaRadios = this->player->GetPlayerModel()->GetHitBoxRadius() + asteroid->getModel()->GetHitBoxRadius();
+	float distancia = this->player->GetPlayerModel()->GetPos().distance2D(asteroid->getModel()->GetPos());
+	if (distancia < sumaRadios)
+	{
+		return true;
+	}
+	return false;
+}
+
+///////////////////////////////MÉTODOS DE CREACIÓN DE 3 TIPOS DE MODELOS DISTINTOS DE ASTEROIDES///////////////////////////////
+////////////////////////////////////VARIACIONES DE TAMAÑO/RADIO DE COLISIÓN, ETC./////////////////////////////////////////////
 Model* GameScene::AsteroidModel1(ModelLoader* loader)
 {
 	Model* asteroidModel = new Model();
@@ -69,7 +167,6 @@ Model* GameScene::AsteroidModel2(ModelLoader* loader)
 	ang /= RAND_MAX;
 
 	ang *= 2 * M_PI;
-	//ang = 0;
 	double v = 0.006;
 	double vx = v * cos(ang);
 	double vy = v * sin(ang);
@@ -104,7 +201,6 @@ Model* GameScene::AsteroidModel3(ModelLoader* loader)
 	ang /= RAND_MAX;
 
 	ang *= 2 * M_PI;
-	//ang = 0;
 	double v = 0.004;
 	double vx = v * cos(ang);
 	double vy = v * sin(ang);
@@ -113,7 +209,7 @@ Model* GameScene::AsteroidModel3(ModelLoader* loader)
 	return asteroidModel;
 }
 
-
+//////////////////CREACIÓN DE ASTEROIDES EN LA ESCENA DEL JUEGO EN FUNCIÓN DEL NIVEL USANDO LOS 3 TIPOS DISTINTOS///////////////////
 void GameScene::CreateAsteroids()
 {
 	//Inicializamos n�meros aleatorios
@@ -149,182 +245,13 @@ void GameScene::CreateAsteroids()
 	delete loader;
 }
 
-void GameScene::CheckPlayerCollisions() 
-{
-	for (int a = 0; a < asteroids.size(); a++)
-	{
-		Asteroid* asteroid = asteroids[a];
-		if (CheckPlayerCollision(asteroid))
-		{
-			//Eliminamos asteroid
-			//Quitamos del vector de visualizaci�n
-			DeleteGameObject(asteroid->getModel());
-			//Quitamos del vector de asteroids  
-			asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
-			//ELiminamos el objeto
-			delete asteroid;
-
-			DecLifePlayer();
-
-			break;
-		}
-	}
-}
-bool GameScene::CheckPlayerCollision(Asteroid* asteroid)
-{
-	//TODO: Falta realizar la verificaci�n
-	float sumaRadios = this->player->GetPlayerModel()->GetHitBoxRadius() + asteroid->getModel()->GetHitBoxRadius();
-	float distancia = this->player->GetPlayerModel()->GetPos().distance2D(asteroid->getModel()->GetPos());
-	if (distancia < sumaRadios)
-	{
-		return true;
-	}
-	return false;
-}
-
-
-bool GameScene::CheckBulletCollision(Bullet* bullet, Asteroid* asteroid)
-{
-	//TODO: Falta realizar la verificaci�n, poner a tru para simular que siempre le damos a un asteriode
-	float distancia = bullet->GetPos().distance2D(asteroid->getModel()->GetPos());
-	if(distancia<asteroid->getModel()->GetHitBoxRadius())
-	{
-		return true;
-	}
-
-	return false;
-}
-
-
-void GameScene::CheckBulletsCollisions() 
-{
-	for (int b = 0; b < bullets.size(); b++) 
-	{
-		Bullet* bullet = bullets[b];
-		
-		for (int a = 0; a < asteroids.size(); a++) 
-		{
-			Asteroid* asteroid = asteroids[a];
-			if (CheckBulletCollision(bullet, asteroid)) 
-			{
-				IncScorePlayer(asteroid->getScore());
-				//Eliminamos bullet
-				bullet->Destruir();
-
-				//Eliminamos asteroid
-				//Quitamos del vector de visualizaci�n
-				DeleteGameObject(asteroid->getModel());
-				//Quitamos del vector de asteroids  
-				asteroids.erase(std::remove(asteroids.begin(), asteroids.end(), asteroid), asteroids.end());
-				//ELiminamos el objeto
-				delete asteroid;
-				break;
-			}
-		}
-	}
-
-}
-
-
-void GameScene::CheckBoundary() {
-	for (int i = 0; i < getGameObjects().size(); i++) {
-		//SI SE PASA EN LA X POR LA DERECHA
-		if (getGameObjects()[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX()) {
-			getGameObjects()[i]->SetPos(Vector3D(0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
-		}
-		//SI SE PASA EN LA X POR LA IZQUIERDA
-		if (getGameObjects()[i]->GetPos().GetCoordinateX() < 0) {
-			getGameObjects()[i]->SetPos(Vector3D(boundary.GetCoordinateX() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
-		}
-		//SI SE PASA EN LA Y POR ARRIBA
-		if (getGameObjects()[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY()) {
-			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
-		}
-		//SI SE PASA EN LA Y POR ABAJO
-		if (getGameObjects()[i]->GetPos().GetCoordinateY() < 0) {
-			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), boundary.GetCoordinateY() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
-		}
-	}
-}
-
-void GameScene::ProcessKeyPressed(unsigned char key, int px, int py) {
-	this->player->ProcessKeyPressed(key, px, py);
-	cout << "Tecla pulsada: " << key << endl;
-}
-
-void GameScene::Clean() 
-{
-	//Quitamos primero el jugador antes de limpiar el vector de objetos, ya que es compartido con todos las escenas
-	DeleteGameObject(this->player->GetPlayerModel());
-
-	RestoreScene();
-}
-
-void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
-
-	if (key == 0x1B)
-	{
-		//ESCAPE
-		sceneManager->SetPause();
-		return;
-	}
-
-	if (key == 'o') {
-		//como si hubiese ganado
-		//CleanScene();
-		sceneManager->SetNextScene();
-	}
-	if (key == 'p') {
-
-		//como si hubiese perdido
-		//CleanScene();
-		sceneManager->SetGameOverScene();
-	}
-
-	if (key == '5') {
-		Bullet* bullet = player->Shoot();
-		////A�adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
-		bullets.push_back(bullet);
-
-		//A�adimos a la lista de Objetos para su pintado
-		AddGameObject(bullet);
-
-		//string file = "..\\Disparo.wav";
-
-		//std::wstring stemp = std::wstring(file.begin(), file.end());
-		//LPCWSTR sw = stemp.c_str();
-
-		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
-	}
-
-	//Simulamos Puntuaci�n
-	if (key == '7') {
-		IncScorePlayer(1);
-	}
-
-	//Simulamos perdida de vida
-	if (key == '9') {
-		//DecLifePlayer();
-		kk = true;
-	}
-	
-	this->player->ProcessKeyUp(key, px, py);
-	cout << "Tecla soltada: " << key << endl;
-}
-
-void GameScene::IncScorePlayer(int inc) 
-{
-	player->SetScore(player->GetScore() + inc);
-	this->textScore->setText(to_string((this->player->GetScore())));
-}
-
+////////////////////////////////DECREMENTA LAS VIDAS DEL JUGADOR////////////////////////////////////////////////////////
 void GameScene::DecLifePlayer()
 {
 	int vidas = player->GetLifesNum();
 	vidas--;
 	if (vidas == 0)
 	{
-		//CleanScene();
 		sceneManager->SetGameOverScene();
 	}
 	else
@@ -334,63 +261,14 @@ void GameScene::DecLifePlayer()
 	}
 }
 
-void GameScene::ProcessMouseMovement(int x, int y) {
-	this->player->ProcessMouseMovement(x, y);
-	cout << "Movimiento del mouse: " << x << ", " << y << endl;
+///////////////////////////////////INCREMENTA LA PUNTUACIÓN DEL JUGADOR///////////////////////////////////////////////////
+void GameScene::IncScorePlayer(int inc)
+{
+	player->SetScore(player->GetScore() + inc);
+	this->textScore->setText(to_string((this->player->GetScore())));
 }
 
-void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
-	this->player->ProcessMouseClick(button, state, x, y);
-
-	if (state == 0) {
-		Bullet* bullet = player->Shoot();
-		//A�adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
-		bullets.push_back(bullet);
-
-		//A�adimos a la lista de Objetos para su pintado
-		AddGameObject(bullet);
-		cout << "Click" << endl;
-	}
-}
-
-void GameScene::Update(const float& time) {
-    player->UpdatePlayer();
-
-	for (int i = 0; i < getGameObjects().size(); i++) {
-		getGameObjects()[i]->Update(time);
-		Collisions();
-	}
-
-	//Eliminamos las balas por tiempo
-	for (int i = 0; i < bullets.size(); i++) {
-		Bullet* bullet = bullets[i];
-		if (bullets[i]->EstaEliminado())
-		{
-			DeleteGameObject(bullets[i]);
-			bullets.erase(std::remove(bullets.begin(), bullets.end(), bullet), bullets.end());
-			//s�lo borramos una cada vez
-			break;
-		}
-	}
-
-	CheckBoundary();
-
-	CheckBulletsCollisions();
-
-	if (asteroids.size() == 0)
-	{
-		//Hemos destruido todos los asteroids
-		player->SetLifesNum(player->GetLifesNum() + 1);
-		//CleanScene();
-		sceneManager->SetNextScene();
-	}
-	else 
-	{
-		CheckPlayerCollisions();
-	}
-
-}
-
+////////////////////////////////////INICIALIZA LA ESCENA Y LOS OBJETOS QUE TENDRÁ///////////////////////////////////////////////
 void GameScene::Init() {
 
 	//Inicializamos el player
@@ -400,11 +278,7 @@ void GameScene::Init() {
 	player->GetPlayerModel()->SetSpeed(Vector3D(0.0, 0.0, 0.0));
 	AddGameObject(player->GetPlayerModel());
 
-
-	//setCamera(Camera(Vector3D(0, 0, 12.0)));
-
 	setCamera(Vector3D(this->boundary.GetCoordinateX() / 2, this->boundary.GetCoordinateY() / 2, this->boundary.GetCoordinateZ() * 1.2));
-	//setCamera(Vector3D(this->boundary.GetCoordinateX() / 2.0, this->boundary.GetCoordinateY() / 2.0, this->boundary.GetCoordinateZ()));
 
 	//Creamos los textos
 	Text* textLevel = new Text(Vector3D(1.5, boundary.GetCoordinateY() - 1, 2.0), Color(255.0, 255.0, 255.0), "NIVEL");
@@ -442,45 +316,89 @@ void GameScene::Init() {
 	this->AddGameObject(point4);
 }
 
-//void GameScene::Render() {
-//	Scene::Render();
-//	
-//	for (int i = 0; i < getGameObjects().size(); i++) {
-//		this->getGameObjects()[i]->Render();
-//	}
-//}
+/////////////////////////////////////////ACTUALIZACIÓN DE LA ESCENA//////////////////////////////////////////////////
+void GameScene::Update(const float& time) {
+	player->UpdatePlayer();
 
+	for (int i = 0; i < getGameObjects().size(); i++) {
+		getGameObjects()[i]->Update(time);
+	}
 
-void GameScene::Collisions() {
-	float distancia;
-	float sumaRadios;
+	//Eliminamos las balas por tiempo
+	for (int i = 0; i < bullets.size(); i++) {
+		Bullet* bullet = bullets[i];
+		if (bullets[i]->EstaEliminado())
+		{
+			DeleteGameObject(bullets[i]);
+			bullets.erase(std::remove(bullets.begin(), bullets.end(), bullet), bullets.end());
+			//s�lo borramos una cada vez
+			break;
+		}
+	}
 
-	////Compruebo la colision de los objetos  
-	//for (Solid* p : gameObjects) {
-	//	for (Solid* p2 : gameObjects) {
-	//		//Calculo la suma de sus radios
-	//		sumaRadios = 0.5; //ejemplo
+	CheckBoundary();
 
-	//		//Calculo la distancia entre los centros.
-	//		distancia = p->GetPos().distance2D(p2->GetPos());
+	CheckBulletsCollisions();
 
-	//		if (distancia < sumaRadios) {
-	//			cout << "Colision" << endl;
-	//			return true;
-	//		}
-	//	}
-	//}
+	if (asteroids.size() == 0)
+	{
+		//Hemos destruido todos los asteroids
+		player->SetLifesNum(player->GetLifesNum() + 1);
+		//CleanScene();
+		sceneManager->SetNextScene();
+	}
+	else
+	{
+		CheckPlayerCollisions();
+	}
 
-	//return false;
-
-	//Nave objeto 0 y asteroide el 2
-
-	//sumaRadios = 1.43; //ejemplo
-	//distancia = getGameObjects()[0]->GetPos().distance2D(getGameObjects()[2]->GetPos());
-	//cout << "DISTANCIA ACTUAL:" << distancia << endl;
-	//if (distancia < sumaRadios) {
-	//	cout << "Colision" << endl;
-	//	return true;
-	//}
 }
 
+//////////////////////////////////LIMPIADO DE LA ESCENA//////////////////////////////////////////////////////////////
+void GameScene::Clean()
+{
+	//Quitamos primero el jugador antes de limpiar el vector de objetos, ya que es compartido con todos las escenas
+	DeleteGameObject(this->player->GetPlayerModel());
+
+	RestoreScene();
+}
+
+//////////////////////GESTIÓN DE EVENTOS DE TECLADO Y RATÓN PARA LOS DISTINTOS NIVELES DEL JUEGO////////////////////////////////
+void GameScene::ProcessKeyPressed(unsigned char key, int px, int py) {
+	this->player->ProcessKeyPressed(key, px, py);
+
+	cout << "Tecla pulsada: " << key << endl;
+}
+
+void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
+
+	if (key == 0x1B)
+	{
+		//ESCAPE
+		sceneManager->SetPause();
+		return;
+	}
+
+	this->player->ProcessKeyUp(key, px, py);
+
+	cout << "Tecla soltada: " << key << endl;
+}
+
+void GameScene::ProcessMouseMovement(int x, int y) {
+	this->player->ProcessMouseMovement(x, y);
+	cout << "Movimiento del mouse: " << x << ", " << y << endl;
+}
+
+void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
+	this->player->ProcessMouseClick(button, state, x, y);
+
+	if (state == 0) {
+		Bullet* bullet = player->Shoot();
+		//A�adimos a la lista de bullets para el control de las intersecciones de los disparos con los enemigos
+		bullets.push_back(bullet);
+
+		//A�adimos a la lista de Objetos para su pintado
+		AddGameObject(bullet);
+		cout << "Click" << endl;
+	}
+}

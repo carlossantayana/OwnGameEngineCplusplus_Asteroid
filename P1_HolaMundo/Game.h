@@ -1,10 +1,6 @@
 #pragma once
-#include "Teapot.h"
 #include "Cube.h"
 #include "Sphere.h"
-#include "Cuboid.h"
-#include "Torus.h"
-#include "Cylinder.h"
 #include "Solid.h"
 #include "Scene.h"
 #include <chrono>
@@ -18,7 +14,6 @@ using namespace std;
 class Game : public SceneManager
 {
 private: 
-
 	//Instancia del jugador, que se compartirá entre todas las escenas del juego
 	Player* player;
 	
@@ -52,24 +47,26 @@ private:
 	milliseconds initialMilliseconds;
 	long lastUpdatedTime;
 
+	//Método privado del juego que se encarga de crear al jugador
 	void CreatePlayer();
 
-public: //El método constructor así como el resto de métodos serán públicos
-
-#pragma region SceneManager
+public:
+	//Métodos de la interfaz SceneManager
 	void SetTitleScene();
 	void SetGameOverScene();
 	void SetNextScene();
 	void SetPause();
 	void SetNoPause();
-#pragma endregion
 
+	//Constructor de la clase Game
 	Game() : activeScene(nullptr), initialMilliseconds(duration_cast<milliseconds>(system_clock::now().time_since_epoch())), lastUpdatedTime(0) {}
 
+	//Gestión de inicializado, renderizado y actualización del juego
 	void Init(); //Método de inicialización
 	void Render(); //Método de dibujado
 	void Update(); //Método de actualización
 
+	//Procesamiento de teclas
 	void ProcessKeyPressed(unsigned char key, int px, int py); //Recoger info de pulsación de teclas
 	void ProcessKeyUp(unsigned char key, int px, int py);
 	void ProcessMouseMovement(int x, int y); //Recoger info de movimiento del ratón

@@ -5,10 +5,13 @@
 class Sphere : public Solid
 {
 private:
+	//Atributos de una esfera
 	float radius;
 	int slices;
 	int slacks;
+
 public:
+	//Constructores de esferas
 	Sphere(Vector3D posArgument, Color colorArgument, Vector3D orientationArgument, Vector3D orientationSpeedArgument, Vector3D speedArgument, float radius, float slices, float slacks) : //Constructor
 		Solid(posArgument, colorArgument, orientationArgument, orientationSpeedArgument, speedArgument),
 		radius(radius),
@@ -33,7 +36,7 @@ public:
 	inline void SetSlices(const float& slicesToSet) { this->slices = slicesToSet; }
 	inline void SetSlacks(const float& slacksToSet) { this->slacks = slacksToSet; }
 
-	//Metodos
+	//Método de renderizado de una esfera
 	void Render();
 };
 

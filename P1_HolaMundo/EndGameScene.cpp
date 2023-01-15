@@ -1,18 +1,12 @@
 #include "EndGameScene.h"
 
+//ESTE METODO REALIZA EL CAMBIO DE ESCENA PARA VOLVER A LA PANTALLA DE TITULO
 void EndGameScene::Finalizar()
 {
 	sceneManager->SetTitleScene();
 }
 
-void EndGameScene::ProcessKeyUp(unsigned char key, int px, int py) {
-	Finalizar();
-}
-
-void EndGameScene::ProcessMouseClick(int button, int state, int x, int y) {
-	Finalizar();
-}
-
+////////////////////////////////////INICIALIZA LA ESCENA Y LOS OBJETOS QUE TENDRÁ///////////////////////////////////////////////
 void EndGameScene::Init() {
 	setCamera(Camera(Vector3D(0, 0, 12.0)));
 
@@ -25,4 +19,15 @@ void EndGameScene::Init() {
 }
 
 void EndGameScene::Update(const float& time) {
+}
+
+//////////////////////GESTIÓN DE EVENTOS DE TECLADO Y RATÓN PARA LA ESCENA FIN DEL JUEGO////////////////////////////////
+//METODO QUE PROCESA EL TECLADO PARA LLAMAR AL CAMBIO DE ESCENA
+void EndGameScene::ProcessKeyUp(unsigned char key, int px, int py) {
+	Finalizar();
+}
+
+//METODO QUE PROCESA EL MOUSE PARA LLAMAR AL CAMBIO DE ESCENA
+void EndGameScene::ProcessMouseClick(int button, int state, int x, int y) {
+	Finalizar();
 }

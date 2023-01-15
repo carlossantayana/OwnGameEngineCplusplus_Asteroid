@@ -1,9 +1,11 @@
 #include "Model.h"
 
+//Implementación para añadir triángulos al modelo
 void Model::addTriangle(Triangle triangle) {
 	triangles.push_back(triangle);
 }
 
+//Implementación para pintar los triángulos de un modelo
 void Model::paintColor(Color color) {
 	for (Triangle& triangle : this->triangles) {
 		triangle.setColor1(color);
@@ -12,10 +14,12 @@ void Model::paintColor(Color color) {
 	}
 }
 
+//Limpia el vector de triángulos de un modelo
 void Model::clear() {
 	triangles.clear();
 }
 
+//Renderizado de modelos 3D
 void Model::Render() {
 	glPushMatrix();
 	glTranslatef(this->GetPos().GetCoordinateX(), this->GetPos().GetCoordinateY(), this->GetPos().GetCoordinateZ());
@@ -26,5 +30,4 @@ void Model::Render() {
 	
 	for(Triangle t : triangles) t.Render();
 	glPopMatrix();
-
 }

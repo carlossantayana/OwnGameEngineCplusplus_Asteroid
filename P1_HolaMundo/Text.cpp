@@ -1,4 +1,6 @@
 #include "Text.h"
+
+//Renderizado de texto
 void Text::Render() {
 	glPushMatrix();
 	glColor3f(this->GetColor().GetRedComponent(), this->GetColor().GetGreenComponent(), this->GetColor().GetBlueComponent());
