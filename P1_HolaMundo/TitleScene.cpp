@@ -4,6 +4,7 @@ void TitleScene::ProcessKeyPressed(unsigned char key, int px, int py) {
 }
 
 void TitleScene::ProcessKeyUp(unsigned char key, int px, int py) {
+	//primera pre escena
 	if (key == 'p') {
 		sceneManager->SetNextScene();
 	}

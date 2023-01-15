@@ -35,42 +35,15 @@ void Game::ProcessMouseClick(int button, int state, int x, int y) {
 	this->activeScene->ProcessMouseClick(button,state,x,y);
 }
 
-void Game::CreatePlayer() 
-{
-	//CREACIÓN DE OBJETOS
-	ModelLoader* loader = new ModelLoader();
-
-	//Modelos Importados
-	Model* naveModel = new Model();
-	//Configuracion Nave Espacial
-	loader->setScale(0.25);
-	loader->loadModel("..\\SpaceShip2.obj");
-	*naveModel = loader->getModel();
-
-	naveModel->SetPos(Vector3D(1.0, 1.0, 1));
-	naveModel->paintColor(Color(1.0, 0.5, 0.6));
-	naveModel->SetOrientation(Vector3D(0, 0, 0));
-	naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
-	naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
-	loader->clear();
-	delete loader;
-
-	this->player = new Player(naveModel, Vector3D(1, 0, 0));
-}
-
-
-
 void Game::Init() {
-	CreatePlayer();
-
-
 	//CREACIÓN DE ESCENAS
 	this->titleScene = new(nothrow) TitleScene(this);
-	this->gameOverScene = new(nothrow) GameOverScene(this);
 
-	this->endGameScene = new(nothrow) EndGameScene(this);
+	this->gameOverScene = new(nothrow) GameOverScene(this, "Perdiste");
 
-	this->pauseScene = new(nothrow) PauseScene(this);
+	this->endGameScene = new(nothrow) EndGameScene(this, "Ganaste Paco");
+
+	this->pauseScene = new(nothrow) PauseScene(this, "Has pausado el juego Paco");
 
 	//Scene* kk = new(nothrow) InterGameScene(this, this->player, 1);
 	//this->activeScene = kk;
@@ -79,8 +52,8 @@ void Game::Init() {
 
 	for (int lv = 1;lv < 5;lv++) 
 	{
-		Scene* preGameScene1 = new(nothrow) InterGameScene(this, this->player, lv);
-		Scene* gameScene1 = new(nothrow) GameScene(this, this->player, lv);
+		Scene* preGameScene1 = new(nothrow) InterGameScene(this, lv,"nivel");
+		Scene* gameScene1 = new(nothrow) GameScene(this, lv);
 
 		//AÑADIR LAS ESCENAS AL JUEGO
 		this->scenes.push_back(preGameScene1);
@@ -119,9 +92,6 @@ void Game::SetNoPause()
 
 void Game::SetTitleScene() 
 {
-	//Inicializamos jugador
-	this->player->InicializarDatosPartida();
-
 	//Inicializamos la primera Scena
 	this->indexScene = -1;
 	this->activeScene = titleScene;

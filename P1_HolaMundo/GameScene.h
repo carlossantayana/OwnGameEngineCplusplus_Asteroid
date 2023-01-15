@@ -7,21 +7,18 @@ class GameScene : public Scene
 {
 private:
 	Player* player;
-	vector <Solid*> gameObjects;
 	Vector3D boundary;
-	int levelGame;
+	int gameLevel;
 
-	Text* textoPoints;
-	Text* textoVidas;
+	Text* textScore;
+	Text* textLifes;
 
 
 	void Create();
-	void AddGameObject(Solid* gameObject);
-	inline void setGameObjects(const vector<Solid*>& gameObjectsToSet) { this->gameObjects = gameObjectsToSet; }
 	void CheckBoundary();
 
 public:
-	GameScene(SceneManager* scMgr, Player* player, int level) :boundary(Vector3D(19.0, 13.0, 4.0)), levelGame(level), player(player), Scene(scMgr) {}
+	GameScene(SceneManager* scMgr, int level) :boundary(Vector3D(19.0, 13.0, 4.0)), gameLevel(level), player(player), Scene(scMgr) {}
 
 #pragma region Scene
 	void Update(const float& time);
@@ -37,10 +34,10 @@ public:
 
 	inline Player* getPlayer() { return player; }
 	inline void setPlayer(Player* playerArgument) { player = playerArgument; }
-	inline vector<Solid*> getGameObjects() { return this->gameObjects; }
 	inline Vector3D getBoundary() const { return this->boundary; }
 	inline void setBoundary(const Vector3D& boundaryToSet) { this->boundary = boundaryToSet; }
 
 	bool Collisions();
+	void deleteObject(Solid* object);
 };
 

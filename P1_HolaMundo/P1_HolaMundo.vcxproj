@@ -150,7 +150,6 @@
     <ClCompile Include="Sphere.cpp" />
     <ClCompile Include="Teapot.cpp" />
     <ClCompile Include="Text.cpp" />
-    <ClCompile Include="TextScene.cpp" />
     <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Torus.cpp" />
     <ClCompile Include="Triangle.cpp" />
@@ -181,7 +180,6 @@
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Teapot.h" />
     <ClInclude Include="Text.h" />
-    <ClInclude Include="TextScene.h" />
     <ClInclude Include="TitleScene.h" />
     <ClInclude Include="Torus.h" />
     <ClInclude Include="Triangle.h" />

@@ -114,9 +114,6 @@
     <ClCompile Include="SceneManager.cpp">
       <Filter>Archivos de origen\Core</Filter>
     </ClCompile>
-    <ClCompile Include="TextScene.cpp">
-      <Filter>Archivos de origen\Core</Filter>
-    </ClCompile>
     <ClCompile Include="InterGameScene.cpp">
       <Filter>Archivos de origen\Core</Filter>
     </ClCompile>
@@ -195,9 +192,6 @@
       <Filter>Archivos de encabezado\Core</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>Archivos de encabezado\Core</Filter>
-    </ClInclude>
-    <ClInclude Include="TextScene.h">
       <Filter>Archivos de encabezado\Core</Filter>
     </ClInclude>
     <ClInclude Include="InterGameScene.h">

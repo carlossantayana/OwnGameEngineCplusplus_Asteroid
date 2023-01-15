@@ -1,115 +1,125 @@
 #include "GameScene.h"
 #include "Text.h"
 #include "Asteroid.h"
+#include <string>
 
 void GameScene::Create() 
 {
-	//TODO: Tendriamos que crear los datos del juego en función del nivel
+	//switch (gameLevel) {
+		//case 1:
+			//CREACIÓN DE OBJETOS
+			ModelLoader* loader = new ModelLoader();
 
-	//CREACIÓN DE OBJETOS
-	ModelLoader* loader = new ModelLoader();
+			//Modelos Importados
+			Model* naveModel = new Model();
+			Model* asteroidModel1 = new Model();
+			Model* asteroidModel2 = new Model();
+			Model* asteroidModel3 = new Model();
 
-	//Modelos Importados
-	Model* asteroidModel1 = new Model();
-	Model* asteroidModel2 = new Model();
-	Model* asteroidModel3 = new Model();
+			Text* textLevel = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "LEVEL 1");
 
-	//TODO:
-	//Text textoLevel = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "LEVEL " + levelGame);
-	Text *textoLevel = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "LEVEL 1");
+			//Configuracion Texto
+			this->textScore = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "----");
+			this->textLifes = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "----");
 
-	//Configuracion Texto
-	this->textoPoints = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "----");
-	this->textoVidas = new Text(Vector3D(-6.0, 8.4, 2.0), Color(255.0, 255.0, 255.0), "----");
+			//Configuracion Nave Espacial
+			loader->setScale(0.25);
+			loader->loadModel("..\\SpaceShip2.obj");
+			*naveModel = loader->getModel();
 
-	//Configuracion Asteroides
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel1.obj");
-	*asteroidModel1 = loader->getModel();
+			naveModel->SetPos(Vector3D(1.0, 1.0, 1));
+			naveModel->paintColor(Color(1.0, 0.5, 0.6));
+			naveModel->SetOrientation(Vector3D(0, 0, 0));
+			naveModel->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
+			naveModel->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+			loader->clear();
 
-	asteroidModel1->SetPos(Vector3D(-3.0, -2.0, 1.0));
-	asteroidModel1->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel1->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel1->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
-	asteroidModel1->SetSpeed(Vector3D(0.01, 0.02, 0.0));
-	loader->clear();
+			this->player = new Player(naveModel, Vector3D(1, 0, 0));
 
-	Asteroid* asteroide1 = new Asteroid(asteroidModel1);
+			//Configuracion Asteroides
+			loader->setScale(0.05);
+			loader->loadModel("..\\AsteroidModel1.obj");
+			*asteroidModel1 = loader->getModel();
 
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel2.obj");
-	*asteroidModel2 = loader->getModel();
+			asteroidModel1->SetPos(Vector3D(-3.0, -2.0, 1.0));
+			asteroidModel1->paintColor(Color(0.8, 0.8, 0.9));
+			asteroidModel1->SetOrientation(Vector3D(rand(), rand(), rand()));
+			asteroidModel1->SetOrientationSpeed(Vector3D(0.1, 0.15, 0.2));
+			asteroidModel1->SetSpeed(Vector3D(0.01, 0.02, 0.0));
+			loader->clear();
 
-	asteroidModel2->SetPos(Vector3D(15.0, 11.0, 1.0));
-	asteroidModel2->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel2->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel2->SetOrientationSpeed(Vector3D(0.1, 0.2, 0.15));
-	asteroidModel2->SetSpeed(Vector3D(0.02, 0.01, 0.0));
-	loader->clear();
+			Asteroid* asteroide1 = new Asteroid(asteroidModel1);
 
-	Asteroid* asteroide2 = new Asteroid(asteroidModel2);
+			loader->setScale(0.05);
+			loader->loadModel("..\\AsteroidModel2.obj");
+			*asteroidModel2 = loader->getModel();
 
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel3.obj");
-	*asteroidModel3 = loader->getModel();
+			asteroidModel2->SetPos(Vector3D(15.0, 11.0, 1.0));
+			asteroidModel2->paintColor(Color(0.8, 0.8, 0.9));
+			asteroidModel2->SetOrientation(Vector3D(rand(), rand(), rand()));
+			asteroidModel2->SetOrientationSpeed(Vector3D(0.1, 0.2, 0.15));
+			asteroidModel2->SetSpeed(Vector3D(0.02, 0.01, 0.0));
+			loader->clear();
 
-	asteroidModel3->SetPos(Vector3D(2.0, 2.0, 1.0));
-	asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
-	asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
-	loader->clear();
+			Asteroid* asteroide2 = new Asteroid(asteroidModel2);
 
-	Asteroid* asteroide3 = new Asteroid(asteroidModel3);
+			loader->setScale(0.05);
+			loader->loadModel("..\\AsteroidModel3.obj");
+			*asteroidModel3 = loader->getModel();
 
-	loader->setScale(0.05);
-	loader->loadModel("..\\AsteroidModel3.obj");
-	*asteroidModel3 = loader->getModel();
+			asteroidModel3->SetPos(Vector3D(2.0, 2.0, 1.0));
+			asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
+			asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
+			asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
+			asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
+			loader->clear();
 
-	asteroidModel3->SetPos(Vector3D(13, 2.0, 1.0));
-	asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
-	asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
-	asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
-	asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
-	loader->clear();
+			Asteroid* asteroide3 = new Asteroid(asteroidModel3);
 
-	Asteroid* asteroide4 = new Asteroid(asteroidModel3);
+			loader->setScale(0.05);
+			loader->loadModel("..\\AsteroidModel3.obj");
+			*asteroidModel3 = loader->getModel();
 
-	//INSERCIÓN DE OBJETOS EN LA ESCENA
-	AddGameObject(player->GetPlayerModel());
+			asteroidModel3->SetPos(Vector3D(13, 2.0, 1.0));
+			asteroidModel3->paintColor(Color(0.8, 0.8, 0.9));
+			asteroidModel3->SetOrientation(Vector3D(rand(), rand(), rand()));
+			asteroidModel3->SetOrientationSpeed(Vector3D(0.2, 0.15, 0.1));
+			asteroidModel3->SetSpeed(Vector3D(0.01, 0.01, 0.0));
+			loader->clear();
 
-	AddGameObject(this->textoVidas);
-	AddGameObject(this->textoPoints);
-	AddGameObject(textoLevel);
+			Asteroid* asteroide4 = new Asteroid(asteroidModel3);
 
-	AddGameObject(asteroidModel1);
-	AddGameObject(asteroidModel2);
-	AddGameObject(asteroidModel3);
+			//INSERCIÓN DE OBJETOS EN LA ESCENA
+			AddGameObject(this->player->GetPlayerModel());
 
-	delete loader;
+			AddGameObject(this->textLifes);
+			AddGameObject(this->textScore);
+			AddGameObject(textLevel);
+
+			AddGameObject(asteroidModel1);
+			AddGameObject(asteroidModel2);
+			AddGameObject(asteroidModel3);
+	//}
 }
 
-void GameScene::AddGameObject(Solid* gameObject) {
-	this->gameObjects.push_back(gameObject);
-}
 
 void GameScene::CheckBoundary() {
-	for (int i = 0; i < gameObjects.size(); i++) {
+	for (int i = 0; i < getGameObjects().size(); i++) {
 		//SI SE PASA EN LA X POR LA DERECHA
-		if (gameObjects[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX()) {
-			gameObjects[i]->SetPos(Vector3D(-11.0, gameObjects[i]->GetPos().GetCoordinateY(), gameObjects[i]->GetPos().GetCoordinateZ()));
+		if (getGameObjects()[i]->GetPos().GetCoordinateX() > boundary.GetCoordinateX()) {
+			getGameObjects()[i]->SetPos(Vector3D(-11.0, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 		//SI SE PASA EN LA X POR LA IZQUIERDA
-		if (gameObjects[i]->GetPos().GetCoordinateX() < -11.0) {
-			gameObjects[i]->SetPos(Vector3D(boundary.GetCoordinateX() - 0.01, gameObjects[i]->GetPos().GetCoordinateY(), gameObjects[i]->GetPos().GetCoordinateZ()));
+		if (getGameObjects()[i]->GetPos().GetCoordinateX() < -11.0) {
+			getGameObjects()[i]->SetPos(Vector3D(boundary.GetCoordinateX() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateY(), getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 		//SI SE PASA EN LA Y POR ARRIBA
-		if (gameObjects[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY()) {
-			gameObjects[i]->SetPos(Vector3D(gameObjects[i]->GetPos().GetCoordinateX(), -6.5, gameObjects[i]->GetPos().GetCoordinateZ()));
+		if (getGameObjects()[i]->GetPos().GetCoordinateY() > boundary.GetCoordinateY()) {
+			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), -6.5, getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 		//SI SE PASA EN LA Y POR ABAJO
-		if (gameObjects[i]->GetPos().GetCoordinateY() < -6.5) {
-			gameObjects[i]->SetPos(Vector3D(gameObjects[i]->GetPos().GetCoordinateX(), boundary.GetCoordinateY() - 0.01, gameObjects[i]->GetPos().GetCoordinateZ()));
+		if (getGameObjects()[i]->GetPos().GetCoordinateY() < -6.5) {
+			getGameObjects()[i]->SetPos(Vector3D(getGameObjects()[i]->GetPos().GetCoordinateX(), boundary.GetCoordinateY() - 0.01, getGameObjects()[i]->GetPos().GetCoordinateZ()));
 		}
 	}
 }
@@ -129,10 +139,20 @@ void GameScene::ProcessKeyUp(unsigned char key, int px, int py) {
 	}
 
 	if (key == 'o') {
+		//como si hubiese ganado
+		this->restoreScene();
 		sceneManager->SetNextScene();
 	}
 	if (key == 'p') {
+
+		//como si hubiese perdido
+		this->restoreScene();
 		sceneManager->SetGameOverScene();
+	}
+
+	if (key == '4') {
+		player->Shoot();
+		AddGameObject(player->GetBullet());
 	}
 
 	
@@ -152,9 +172,13 @@ void GameScene::ProcessMouseClick(int button, int state, int x, int y) {
 
 void GameScene::Update(const float& time) {
     player->UpdatePlayer();
+	player->UpdateBullet();
 
-	//Actualizas puntuación
-	//TODO: this->textoPoints->setText(this->player->puntuacion);
+	if (player->GetDeleteBullet()) {
+		deleteObject(player->GetBullet());
+	}
+
+	this->textScore->setText(to_string((this->player->GetScore())));
 
 	for (int i = 0; i < getGameObjects().size(); i++) {
 		getGameObjects()[i]->Update(time);
@@ -168,15 +192,14 @@ void GameScene::Init() {
 	Create();
 
 	//TODO: Actualizar los datos iniciales del player ... coordenadas
+	//TODO: arreglar la creación devarios asteroides. 
 }
 
 void GameScene::Render() {
-
 	Scene::Render();
-	//this->camera.Render();
-
+	
 	for (int i = 0; i < getGameObjects().size(); i++) {
-		gameObjects[i]->Render();
+		this->getGameObjects()[i]->Render();
 	}
 }
 
@@ -203,7 +226,7 @@ bool GameScene::Collisions() {
 
 	//return false;
 
-	//Nave objeto 4 y asteroide el 6
+	//Nave objeto 0 y asteroide el 2
 
 	sumaRadios = 1.43; //ejemplo
 	distancia = getGameObjects()[0]->GetPos().distance2D(getGameObjects()[2]->GetPos());
@@ -212,4 +235,20 @@ bool GameScene::Collisions() {
 		cout << "Colision" << endl;
 		return true;
 	}
+}
+
+void GameScene::deleteObject(Solid* object) {
+	player->SetDeleteBullet(false);
+	//it se igualara con el puntero que coincida con el buscado
+	vector<Solid*>::iterator it = find(this->getGameObjects().begin(), this->getGameObjects().end(), object);
+	//elimina de la lista el objeto encontrado
+	if (it != getGameObjects().end()) {
+		getGameObjects().erase(it);
+		//elimina el puntero;
+		delete* it;
+	}
+	else {
+		cout << "No se puede eliminar el objeto." << endl;
+	}
+
 }

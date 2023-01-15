@@ -27,9 +27,9 @@ private:
 
 	//Escena de Pausa, se asignará cuando se invoque el método SceneManager::SetPause()
 	Scene* pauseScene;
+
 	//Escena anterior a activar Pausa, se asignará para poder recuperarla al terminar la pausa
 	Scene* prePauseScene = NULL;
-
 
 	//Escena De Título, se asignará cuando se invoque el método SceneManager::SetTitleScene()
 	Scene* titleScene;
@@ -42,6 +42,7 @@ private:
 
 	//Indice para recorrer las escenas del juego almacenadas en "scenes"
 	int indexScene = 0;
+
 	//Vector que almacena en orden las distintas escenas que componen el juego (quedan excluidas las excepcionales como Menú, Fin de Juego, Pausa, ...)
 	vector<Scene*> scenes;
 
@@ -64,7 +65,7 @@ public: //El método constructor así como el resto de métodos serán públicos
 #pragma endregion
 
 	Game() : activeScene(nullptr), initialMilliseconds(duration_cast<milliseconds>(system_clock::now().time_since_epoch())), lastUpdatedTime(0) {}
-	
+
 	void Init(); //Método de inicialización
 	void Render(); //Método de dibujado
 	void Update(); //Método de actualización

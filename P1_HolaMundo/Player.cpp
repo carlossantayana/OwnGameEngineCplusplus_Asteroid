@@ -2,15 +2,6 @@
 #include <cmath>
 #define M_PI 3.14159
 
-void Player::InicializarDatosPartida() 
-{
-	//TODO: ¿Coordenadas Iniciales?
-
-	this->puntuacion = 0;
-	this->vidas = 3;
-}
-
-
 void Player::ProcessKeyPressed(unsigned char key, int px, int py) {
 	if (key == 'w') {
 		wPressed = true;
@@ -65,7 +56,6 @@ Vector3D Player::RotateVector(Vector3D vector, float angle)
 
 void Player::UpdatePlayer(){
 
-
 	float x = this->playerModel->GetPos().GetCoordinateX();
 	float incX = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateX() * this->speed;
 
@@ -73,6 +63,7 @@ void Player::UpdatePlayer(){
 	float incY = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateY() * this->speed;
 
 	this->playerModel->SetPos(Vector3D(x + incX, y + incY, this->playerModel->GetPos().GetCoordinateZ()));
+
 	if(wPressed){
 		if(speed<0.1)
 		{
@@ -107,4 +98,41 @@ void Player::UpdatePlayer(){
 		this->playerModel->SetOrientationSpeed(Vector3D(0, 0, 0));
 		cout << "Angulo rotado en X: " << this->playerModel->GetOrientation().GetCoordinateX() << " Angulo rotado en Y: " << this->playerModel->GetOrientation().GetCoordinateY() << " Angulo rotado en Z: " << this->playerModel->GetOrientation().GetCoordinateZ() << endl;
 	}
+}
+
+void Player::UpdateBullet() {
+	if (shooting) {
+		float x = this->playerModel->GetPos().GetCoordinateX();
+		float incX = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateX() * 0.25;
+		bulletOrientationX = incX;
+		
+
+		float y = this->playerModel->GetPos().GetCoordinateY();
+		float incY = RotateVector(Vector3D(0, 1, 0), this->playerModel->GetOrientation().GetCoordinateZ()).GetCoordinateY() * 0.25;
+		bulletOrientationY = incY;
+
+		this->bullet->SetPos(Vector3D(x + incX, y + incY, this->playerModel->GetPos().GetCoordinateZ()));
+		shooting = false;
+	}
+	else if (activeBullets > 0) {
+		this->bullet->SetPos(Vector3D(bullet->GetPos().GetCoordinateX() + bulletOrientationX, bullet->GetPos().GetCoordinateY() + bulletOrientationY, this->playerModel->GetPos().GetCoordinateZ()));
+		if (bullet->GetPos().GetCoordinateX() > 18) {
+			deleteBullet = true;
+		}
+	}
+}
+
+void Player::Shoot() {
+	bullet = new Sphere();
+	bullet->SetColor(Color(255.0, 255.0, 255.0));
+	bullet->SetOrientation(Vector3D(0.0, 0.0, 0.0));
+	bullet->SetOrientationSpeed(Vector3D(0.0, 0.0, 0.0));
+	bullet->SetRadius(0.05);
+	bullet->SetSlacks(12.0);
+	bullet->SetSlices(12.0);
+	bullet->SetSpeed(Vector3D(0.0, 0.0, 0.0));
+	shooting = true;
+	activeBullets++;
+
+	bullet->SetPos(playerModel->GetPos());
 }
