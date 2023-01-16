@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="Asteroid">
+    <Position X="31.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAIAAAAAAAAAAAAAIAAAAAAAAAACBAAAAAAAIAAA=</HashCode>
+      <FileName>Asteroid.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Bullet">
+    <Position X="22.75" Y="20.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>EBQAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>Bullet.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Player">
+    <Position X="17.25" Y="1.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAEggAAQAADCQAAAIKABChAAAAQQAQAAhAgQEIAAA=</HashCode>
+      <FileName>Player.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Solid">
+    <Position X="22" Y="9.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AIQBAgAAAAAAIAAAAAACAJgIIAESAQGIABgIgCAAAAA=</HashCode>
+      <FileName>Solid.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Sphere">
+    <Position X="22.75" Y="16.25" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAiAAAAACAACIAAAAAQAAAAAAAAAAAAAApAAAAiAAAA=</HashCode>
+      <FileName>Sphere.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Model">
+    <Position X="19.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAAAAAAAAAAAAAAAAAAQAAAAAAACAAAFgAAAAAAAA=</HashCode>
+      <FileName>Model.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ModelLoader">
+    <Position X="25.75" Y="1.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>QHgAAIAAAAAGAAgABAAAIAACAAAgRAAiAAAAAHAIAAA=</HashCode>
+      <FileName>ModelLoader.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Triangle">
+    <Position X="20" Y="1.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAADgAAAANAAPAAAAAAAANAAAAACAAPBAgwAIAAA=</HashCode>
+      <FileName>Triangle.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="EndGameScene">
+    <Position X="10.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAAABAAAAAAAhAAACBAAAQAA=</HashCode>
+      <FileName>EndGameScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Game">
+    <Position X="15.25" Y="12.75" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgQAQgEAIAAAAAQAAAAAIIQDBUgEEACFABCDAAAQAAA=</HashCode>
+      <FileName>Game.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameOverScene">
+    <Position X="0.5" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAAABAAAAAAEhAAACAAAAQAA=</HashCode>
+      <FileName>GameOverScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="GameScene">
+    <Position X="3" Y="6" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAQEAoAAEMAAAQUAAAAQAgABCoAABQABJEACAYAAQAQ=</HashCode>
+      <FileName>GameScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="InterGameScene">
+    <Position X="8.25" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAgAAAAAAAAAABAAAAAAAhAEACAAAAQAA=</HashCode>
+      <FileName>InterGameScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PauseScene">
+    <Position X="13.25" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAAABAAAAAAAAABACAAAAAAA=</HashCode>
+      <FileName>PauseScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Scene">
+    <Position X="6.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>CARAAgAAAgAABAYggAAAAAAhAAAAAAAAABQCRAAAQAA=</HashCode>
+      <FileName>Scene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="SceneManager">
+    <Position X="15.25" Y="10.25" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAIAAAAAAAAAAAAAQCAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>SceneManager.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="TitleScene">
+    <Position X="5.75" Y="6" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAAABAAAAAIAAAAACAAAAAAA=</HashCode>
+      <FileName>TitleScene.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Camera">
+    <Position X="21" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>Camera.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Color">
+    <Position X="28.75" Y="1.75" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAIAABAACAAAAAAYAACBAggIAAAAA=</HashCode>
+      <FileName>Color.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Text">
+    <Position X="25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAAAAAAAIABAACAAAAAA=</HashCode>
+      <FileName>Text.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Vector3Dx&lt;T&gt;">
+    <Position X="22.25" Y="1.75" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>gAICQAAAAAAACAAAQAEAAABAABQAAQAAAGigAAAAAAA=</HashCode>
+      <FileName>Vector3D.h</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

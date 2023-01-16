@@ -252,20 +252,21 @@ void GameScene::DecLifePlayer()
 	vidas--;
 	if (vidas == 0)
 	{
-
-		//string file = "..\\muerte.wav";
-		//std::wstring stemp = std::wstring(file.begin(), file.end());
-		//LPCWSTR sw = stemp.c_str();
-		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
+		//Sonido cuando pierde
+		string file = "..\\golpe.wav";
+		std::wstring stemp = std::wstring(file.begin(), file.end());
+		LPCWSTR sw = stemp.c_str();
+		sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
 
 		sceneManager->SetGameOverScene();
 	}
 	else
 	{
-		//string file = "..\\vida.wav";
-		//std::wstring stemp = std::wstring(file.begin(), file.end());
-		//LPCWSTR sw = stemp.c_str();
-		//sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
+		//Sonido cuando pierde vidas
+		string file = "..\\golpe.wav";
+		std::wstring stemp = std::wstring(file.begin(), file.end());
+		LPCWSTR sw = stemp.c_str();
+		sndPlaySound(sw, SND_ASYNC | SND_FILENAME);
 
 		player->SetLifesNum(vidas);
 		this->textLifes->setText("VIDAS: " + to_string(this->player->GetLifesNum()));
@@ -301,30 +302,6 @@ void GameScene::Init() {
 	AddGameObject(textLevel);
 
 	CreateAsteroids();
-
-	//Cube* point1 = new Cube();
-	//point1->SetColor(Color(0, 0, 1));
-	//point1->SetPos(Vector3D(0, 0, 1));
-	//point1->SetSize(0.2);
-	//this->AddGameObject(point1);
-
-	//Cube* point2 = new Cube();
-	//point2->SetColor(Color(0, 0, 1));
-	//point2->SetPos(Vector3D(this->boundary.GetCoordinateX(), 0, 1));
-	//point2->SetSize(0.2);
-	//this->AddGameObject(point2);
-
-	//Cube* point3 = new Cube();
-	//point3->SetColor(Color(0, 0, 1));
-	//point3->SetPos(Vector3D(this->boundary.GetCoordinateX(), this->boundary.GetCoordinateY(), 1));
-	//point3->SetSize(0.2);
-	//this->AddGameObject(point3);
-
-	//Cube* point4 = new Cube();
-	//point4->SetColor(Color(0, 0, 1));
-	//point4->SetPos(Vector3D(0, this->boundary.GetCoordinateY(), 1));
-	//point4->SetSize(0.2);
-	//this->AddGameObject(point4);
 }
 
 /////////////////////////////////////////ACTUALIZACIÓN DE LA ESCENA//////////////////////////////////////////////////

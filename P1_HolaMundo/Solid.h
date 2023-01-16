@@ -11,8 +11,6 @@ private:
 	Vector3D orientationSpeed;
 	Vector3D speed;
 	float hitBoxRadius;
-
-	//quitar más tarde
 	bool isTransparent;
 
 public:
@@ -26,8 +24,6 @@ public:
 	inline Vector3D GetOrientation() const { return this->orientation; }
 	inline Vector3D GetOrientationSpeed() const { return this->orientationSpeed; }
 	inline Vector3D GetSpeed() const { return this->speed; }
-
-	//quitar más tarde
 	inline bool GetIsTransparent() const { return this->isTransparent; }
 	
 	//Setters
@@ -37,8 +33,6 @@ public:
 	inline void SetOrientation(const Vector3D& orientationToSet) { this->orientation = orientationToSet; }
 	inline void SetOrientationSpeed(const Vector3D& orientationSpeedToSet) { this->orientationSpeed = orientationSpeedToSet; }
 	inline void SetSpeed(const Vector3D speedArgument) { this->speed = speedArgument; }
-
-	//quitar más tarde
 	inline void SetIsTransparent(const bool& isTransparentToSet) { this->isTransparent = isTransparentToSet; }
 
 	//Métodos de renderizado y actualización de sólidos

@@ -48,9 +48,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Archivos de origen</Filter>
     </ClCompile>
-    <ClCompile Include="Cube.cpp">
-      <Filter>Archivos de origen\Elements</Filter>
-    </ClCompile>
     <ClCompile Include="Solid.cpp">
       <Filter>Archivos de origen\Elements</Filter>
     </ClCompile>
@@ -117,11 +114,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Cube.h">
-      <Filter>Archivos de encabezado\Elements</Filter>
-    </ClInclude>
     <ClInclude Include="Solid.h">
       <Filter>Archivos de encabezado\Elements</Filter>
     </ClInclude>
